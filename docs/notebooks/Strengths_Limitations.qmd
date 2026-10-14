@@ -1,0 +1,62 @@
+---
+title: "Responsible Use of AI for Non-Coders: What AI Is Good and Bad At"
+subtitle: " <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University"
+author:
+  - "[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)"
+  - "[brc@rockefeller.edu](mailto:brc@rockefeller.edu)"
+---
+
+```{r setup, include=FALSE, purl=FALSE}
+suppressPackageStartupMessages(require(knitr))
+knitr::opts_chunk$set(echo = TRUE, tidy = T)
+```
+
+::: {.content-hidden when-format="revealjs"}
+# Responsible Use of AI for Non-Coders: What AI Is Good and Bad At
+:::
+
+## Overview
+
+*Presenter: Matt — 20 mins*
+
+- [Models are static](#models-are-static)
+- [Hallucinations](#hallucinations)
+- [Exercise](#time-for-an-exercise)
+
+# Strengths and limitations {background-color="#23373B" .center .middle}
+
+## Good and bad uses
+
+??Experiential examples of where AI has helped and where it has failed, each tied back to how LLMs work??
+
+## Models are static
+
+A model's knowledge is fixed at its training cutoff. Unless the app adds information (e.g. via web search), it does not know about:
+
+- Recent news and publications
+- Brand-new tools, packages or software versions
+- Changes to databases, annotations or guidelines
+
+??Examples??
+
+# Hallucinations {background-color="#23373B" .center .middle}
+
+## Hallucinations
+
+A **hallucination** is a fluent, confident answer that is wrong — an invented citation, gene function, function argument or statistic.
+
+??Examples??
+
+## Why is it so confident?
+
+Because the model is trained to produce plausible text, a wrong answer can read exactly like a right one. Confidence in the wording is not evidence of correctness.
+
+??Expand: training rewards plausible answers; how to check outputs??
+
+## Time for an exercise!
+
+Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Hallucination_exercise.html)
+
+## Answers to exercise
+
+Answers can be found [here](../../exercises/answers/Exercise_Hallucination_answers.html)

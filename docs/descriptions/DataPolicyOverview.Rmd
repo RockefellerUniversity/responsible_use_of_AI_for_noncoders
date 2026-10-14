@@ -1,0 +1,6 @@
+#### **Rockefeller Data Policy** (15 mins, Anthony)
+
+What data you are and are not allowed to put into AI tools at Rockefeller.
+
+* HIPAA and other protected data
+* Rockefeller data policy and approved AI tools
