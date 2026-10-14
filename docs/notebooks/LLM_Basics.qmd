@@ -1,0 +1,73 @@
+---
+title: "Responsible Use of AI for Non-Coders: Basics of LLMs"
+subtitle: " <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University"
+author:
+  - "[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)"
+  - "[brc@rockefeller.edu](mailto:brc@rockefeller.edu)"
+---
+
+```{r setup, include=FALSE, purl=FALSE}
+suppressPackageStartupMessages(require(knitr))
+knitr::opts_chunk$set(echo = TRUE, tidy = T)
+```
+
+::: {.content-hidden when-format="revealjs"}
+# Responsible Use of AI for Non-Coders: Basics of LLMs
+:::
+
+## Overview
+
+*Presenter: Claire — 45 mins*
+
+- [How models are built](#how-models-are-built)
+- [Who runs the models](#who-runs-the-models)
+- [Journal policies](#journal-policies)
+- [Terminology](#terminology)
+- [Exploring the interface](#exploring-the-interface)
+
+# How LLMs work {background-color="#23373B" .center .middle}
+
+## How models are built
+
+A large language model (LLM) is trained on very large amounts of text to do one thing: predict the next piece of text (the next *token*) given everything that came before.
+
+??Training data, pre-training vs. fine-tuning / instruction tuning, scale??
+
+## Essentially a text predictor
+
+??Illustrate next-token prediction with a simple example. Emphasise that the model produces *plausible* text, not looked-up facts — this sets up the hallucination session later in the course.??
+
+# The wider picture {background-color="#23373B" .center .middle}
+
+## Who runs the models
+
+??Current events: the main companies building frontier models, and the tensions of private companies running infrastructure that research relies on??
+
+## Journal policies
+
+??Summary of journal and funder policies on AI use in manuscripts, figures, peer review and grant writing??
+
+The key message: **you are the final backstop**. Responsibility for anything an AI tool produces stays with you.
+
+# Terminology {background-color="#23373B" .center .middle}
+
+## Terminology
+
+How the pieces fit together:
+
+- **Model** — the trained LLM itself (e.g. GPT, Claude Opus/Sonnet/Haiku).
+- **App / product** — the interface you use to talk to a model (e.g. ChatGPT, Claude.ai). It adds features around the model such as memory, file upload and web search.
+- **Agent** — a model given tools and allowed to take actions over several steps (e.g. read files, run code, search the web) on your behalf.
+
+??Diagram of model → app → agent??
+
+# Exploring the interface {background-color="#23373B" .center .middle}
+
+## Exploring the interface
+
+??Live demo of the GUI??
+
+- Chat vs. code modes
+- Model selection
+- Effort / thinking settings
+- ??Other settings worth pointing out??

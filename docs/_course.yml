@@ -1,15 +1,31 @@
 Description:
-  CourseName: Course Template
+  CourseName: Responsible Use of AI for Non-Coders
   OverviewRmd: CourseOverview.Rmd
 Presentations:
-  - title: Session1
-    PresRmd: Session1.qmd
-    PresOverviewRmd: Session1Overview.Rmd
+  - title: Rockefeller Data Policy
+    PresRmd: DataPolicy.qmd
+    PresOverviewRmd: DataPolicyOverview.Rmd
+    Exercises: []
+  - title: Basics of LLMs
+    PresRmd: LLM_Basics.qmd
+    PresOverviewRmd: LLM_BasicsOverview.Rmd
+    Exercises: []
+  - title: What Happens With a Query
+    PresRmd: Query_Context.qmd
+    PresOverviewRmd: Query_ContextOverview.Rmd
     Exercises:
-      - MyExercise1.qmd
-      - MyExercise2.qmd
-  - title: Session2
-    PresRmd: Session2.qmd
-    PresOverviewRmd: Session2Overview.Rmd
+      - Exercise_ContextTokens.qmd
+  - title: What AI Is Good and Bad At
+    PresRmd: Strengths_Limitations.qmd
+    PresOverviewRmd: Strengths_LimitationsOverview.Rmd
     Exercises:
-      - MyExercise3.qmd
+      - Exercise_Hallucination.qmd
+  - title: AI in Your Workflow
+    PresRmd: AI_Workflow.qmd
+    PresOverviewRmd: AI_WorkflowOverview.Rmd
+    Exercises: []
+  - title: Customizing Your LLM
+    PresRmd: Customizing.qmd
+    PresOverviewRmd: CustomizingOverview.Rmd
+    Exercises:
+      - Exercise_Customizing.qmd

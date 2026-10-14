@@ -1,0 +1,63 @@
+---
+title: "Responsible Use of AI for Non-Coders: What Happens With a Query"
+subtitle: " <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University"
+author:
+  - "[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)"
+  - "[brc@rockefeller.edu](mailto:brc@rockefeller.edu)"
+---
+
+```{r setup, include=FALSE, purl=FALSE}
+suppressPackageStartupMessages(require(knitr))
+knitr::opts_chunk$set(echo = TRUE, tidy = T)
+```
+
+::: {.content-hidden when-format="revealjs"}
+# Responsible Use of AI for Non-Coders: What Happens With a Query
+:::
+
+## Overview
+
+*Presenter: Tom — 45 mins*
+
+- [The context window](#the-context-window)
+- [Where context comes from](#where-context-comes-from)
+- [Context compression](#context-compression)
+- [Context, tokens and models](#context-tokens-and-models)
+- [Exercise](#time-for-an-exercise)
+
+# Context {background-color="#23373B" .center .middle}
+
+## The context window
+
+The **context window** is everything the model can see when it generates a reply: your messages, its previous replies, and anything else the app has added. The model has no memory outside it.
+
+??Size of typical context windows; what happens when it fills??
+
+## Where context comes from
+
+What you type is only part of what the model sees. Apps add more context, for example:
+
+- System prompts written by the app provider
+- Saved memory and custom instructions
+- Uploaded files and documents
+- Results from web searches and other tools
+
+??Examples from ChatGPT / Claude of injected context??
+
+## Context compression
+
+??How long conversations are summarised or truncated to fit the context window, and why earlier instructions can be lost as a result??
+
+# Tokens {background-color="#23373B" .center .middle}
+
+## Context, tokens and models
+
+??What a token is, how text is split into tokens, and how token count relates to context window size, cost, speed and model choice??
+
+## Time for an exercise!
+
+Exercise on context and tokens can be found [here](../../exercises/exercises/Exercise_ContextTokens_exercise.html)
+
+## Answers to exercise
+
+Answers can be found [here](../../exercises/answers/Exercise_ContextTokens_answers.html)

@@ -1,0 +1,51 @@
+---
+title: "Responsible Use of AI for Non-Coders: Rockefeller Data Policy"
+subtitle: " <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University"
+author:
+  - "[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)"
+  - "[brc@rockefeller.edu](mailto:brc@rockefeller.edu)"
+---
+
+```{r setup, include=FALSE, purl=FALSE}
+suppressPackageStartupMessages(require(knitr))
+knitr::opts_chunk$set(echo = TRUE, tidy = T)
+```
+
+::: {.content-hidden when-format="revealjs"}
+# Responsible Use of AI for Non-Coders: Rockefeller Data Policy
+:::
+
+## Overview
+
+*Presenter: Anthony — 15 mins*
+
+- [Protected data](#protected-data)
+- [Rockefeller data policy](#rockefeller-data-policy)
+
+# Protected data {background-color="#23373B" .center .middle}
+
+## Protected data
+
+??What counts as protected data: HIPAA / protected health information (PHI), human subjects data, identifiable information, other regulated data??
+
+## What this means for AI tools
+
+??Why typing data into an AI tool can count as sharing it with a third party; what is and is not covered by institutional agreements??
+
+# Rockefeller data policy {background-color="#23373B" .center .middle}
+
+## Rockefeller data policy
+
+??Summary of the current Rockefeller data / AI use policy, with a link to the official policy page??
+
+## Approved tools
+
+??Which AI tools are approved at Rockefeller, for which classes of data, and how to get access??
+
+## Where to get help
+
+??Who to contact with policy questions??
+
+## Key takeaways
+
+??Two or three points participants should remember for the rest of the course??

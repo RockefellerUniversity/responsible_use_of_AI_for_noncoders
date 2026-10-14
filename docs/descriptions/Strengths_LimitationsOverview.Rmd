@@ -1,0 +1,7 @@
+#### **What AI Is Good and Bad At** (20 mins, Matt)
+
+Real-world examples of where AI helps and where it fails, tied back to how models work.
+
+* Models are static — limited knowledge of recent news and brand-new tools
+* Hallucinations — and why the model sounds so confident
+* Exercise: provoke a hallucination
