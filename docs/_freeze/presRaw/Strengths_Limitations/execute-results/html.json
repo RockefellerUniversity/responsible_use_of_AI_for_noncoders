@@ -1,0 +1,15 @@
+{
+  "hash": "a2793321275f5c224b74e31d02fcd927",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Responsible Use of AI for Non-Coders: What AI Is Good and Bad At\"\nsubtitle: \" <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University\"\nauthor:\n  - \"[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)\"\n  - \"[brc@rockefeller.edu](mailto:brc@rockefeller.edu)\"\n---\n\n\n\n\n::: {.content-hidden when-format=\"revealjs\"}\n# Responsible Use of AI for Non-Coders: What AI Is Good and Bad At\n:::\n\n## Overview\n\n*Presenter: Matt — 20 mins*\n\n- [Models are static](#models-are-static)\n- [Hallucinations](#hallucinations)\n- [Exercise](#time-for-an-exercise)\n\n# Strengths and limitations {background-color=\"#23373B\" .center .middle}\n\n## Good and bad uses\n\n??Experiential examples of where AI has helped and where it has failed, each tied back to how LLMs work??\n\n## Models are static\n\nA model's knowledge is fixed at its training cutoff. Unless the app adds information (e.g. via web search), it does not know about:\n\n- Recent news and publications\n- Brand-new tools, packages or software versions\n- Changes to databases, annotations or guidelines\n\n??Examples??\n\n# Hallucinations {background-color=\"#23373B\" .center .middle}\n\n## Hallucinations\n\nA **hallucination** is a fluent, confident answer that is wrong — an invented citation, gene function, function argument or statistic.\n\n??Examples??\n\n## Why is it so confident?\n\nBecause the model is trained to produce plausible text, a wrong answer can read exactly like a right one. Confidence in the wording is not evidence of correctness.\n\n??Expand: training rewards plausible answers; how to check outputs??\n\n## Time for an exercise!\n\nExercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Hallucination_exercise.html)\n\n## Answers to exercise\n\nAnswers can be found [here](../../exercises/answers/Exercise_Hallucination_answers.html)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

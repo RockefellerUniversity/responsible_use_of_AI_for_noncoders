@@ -1,0 +1,15 @@
+{
+  "hash": "9ab201f013b1aed402f0403d48437c7f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Responsible Use of AI for Non-Coders: What Happens With a Query\"\nsubtitle: \" <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University\"\nauthor:\n  - \"[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)\"\n  - \"[brc@rockefeller.edu](mailto:brc@rockefeller.edu)\"\n---\n\n\n\n\n::: {.content-hidden when-format=\"revealjs\"}\n# Responsible Use of AI for Non-Coders: What Happens With a Query\n:::\n\n## Overview\n\n*Presenter: Tom — 45 mins*\n\n- [The context window](#the-context-window)\n- [Where context comes from](#where-context-comes-from)\n- [Context compression](#context-compression)\n- [Context, tokens and models](#context-tokens-and-models)\n- [Exercise](#time-for-an-exercise)\n\n# Context {background-color=\"#23373B\" .center .middle}\n\n## The context window\n\nThe **context window** is everything the model can see when it generates a reply: your messages, its previous replies, and anything else the app has added. The model has no memory outside it.\n\n??Size of typical context windows; what happens when it fills??\n\n## Where context comes from\n\nWhat you type is only part of what the model sees. Apps add more context, for example:\n\n- System prompts written by the app provider\n- Saved memory and custom instructions\n- Uploaded files and documents\n- Results from web searches and other tools\n\n??Examples from ChatGPT / Claude of injected context??\n\n## Context compression\n\n??How long conversations are summarised or truncated to fit the context window, and why earlier instructions can be lost as a result??\n\n# Tokens {background-color=\"#23373B\" .center .middle}\n\n## Context, tokens and models\n\n??What a token is, how text is split into tokens, and how token count relates to context window size, cost, speed and model choice??\n\n## Time for an exercise!\n\nExercise on context and tokens can be found [here](../../exercises/exercises/Exercise_ContextTokens_exercise.html)\n\n## Answers to exercise\n\nAnswers can be found [here](../../exercises/answers/Exercise_ContextTokens_answers.html)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

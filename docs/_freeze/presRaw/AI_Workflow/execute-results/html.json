@@ -1,0 +1,15 @@
+{
+  "hash": "11ed7a07d3a31435f1f48e73d857670c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Responsible Use of AI for Non-Coders: AI in Your Workflow\"\nsubtitle: \" <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University\"\nauthor:\n  - \"[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)\"\n  - \"[brc@rockefeller.edu](mailto:brc@rockefeller.edu)\"\n---\n\n\n\n\n::: {.content-hidden when-format=\"revealjs\"}\n# Responsible Use of AI for Non-Coders: AI in Your Workflow\n:::\n\n## Overview\n\n*Presenter: Matt — 50 mins*\n\n- [What is a good workflow](#what-is-a-good-workflow)\n- [Hard lines](#hard-lines)\n- [Controlling what is allowed](#controlling-what-is-allowed)\n\n# Good workflows {background-color=\"#23373B\" .center .middle}\n\n## What is a good workflow\n\n??What a good AI-assisted workflow looks like, framed for people who can't read the code the AI writes??\n\n## When you can't read the code\n\n??How to check work you can't read line by line: ask for explanations, check outputs against known answers, test on small examples??\n\n## Environments and resources\n\n??Which Python / R is being used, software environments, not using compute or data resources it shouldn't??\n\n## Good practice still applies\n\nGood coding practice is still essential when an AI writes the code:\n\n- Clear, specific instructions\n- Working on small subsets of data before the full dataset\n- ??Keeping a record of what was asked and done (messages, version control)??\n\n# Hard lines {background-color=\"#23373B\" .center .middle}\n\n## CLAUDE.md and other configuration files\n\n??What CLAUDE.md and similar instruction files are, and how to write them: be specific, set the tone you want??\n\n## Why rules loosen over time\n\n??Why instructions can weaken over a long session (context compression), and how to guard against it??\n\n## Controlling what is allowed\n\n??Permission settings, approval prompts, and how to restrict what the AI is allowed to do??\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
