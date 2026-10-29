@@ -5,20 +5,10 @@ This course introduces researchers who do not write code to the responsible use 
 
 No programming experience is required.
 
-The course runs as a single half-day session:
-
-| Time | Topic | Presenter |
-|------|-------|-----------|
-| 15 mins | Rockefeller Data Policy | Anthony |
-| 45 mins | Basics of LLMs | Claire |
-| 45 mins | What Happens With a Query (+ exercise) | Tom |
-| 15 mins | *Break* | |
-| 20 mins | What AI Is Good and Bad At (+ exercise) | Matt |
-| 50 mins | AI in Your Workflow | Matt |
-| 30 mins | Customizing Your LLM (+ exercises) | Tom |
-
 Course material and exercises are available to view as rendered HTML at https://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/.
 All material is available to download under GPL v2 license.
+
+*Disclosure of Delegation to Generative AI:* The construction of course infrastructure and the review of course content was assisted by LLMs. The course content was made by people.
 
 <br>
 <br>
