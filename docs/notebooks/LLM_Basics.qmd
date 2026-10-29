@@ -50,13 +50,13 @@ These token IDs are then provided as inputs to a complex algorithm (neural netwo
 
 ## Visualizing Tokenization
 
-![](tokenization.png){fig-align="center" width="80%"}
+![](../imgs/tokenization.png){fig-align="center" width="80%"}
 
 ## Next Token Prediction
 
 How does the LLM select these output tokens? One common method is *next token prediction*. Given some input tokens, the algorithm predicts the token most likely to occur next. It then uses this token along with the rest to find the next token in the sequence, and so on. 
 
-![A simple visualization of next token prediction from https://embracingenigmas.substack.com/p/next-token-prediction-is-a-fundamental.](next-token.png){fig-align="center" width="50%"}
+![A simple visualization of next token prediction from https://embracingenigmas.substack.com/p/next-token-prediction-is-a-fundamental.](../imgs/next-token.png){fig-align="center" width="50%"}
 
 ## Training 
 
@@ -82,7 +82,7 @@ The LLM can also be trained continuously on the interactions it has with users.
 
 The resulting LLMs are extremely sophisticated predictive text generators. 
 
-![An everyday example of predictive text.](autocomplete.png){fig-align="center" width="50%"}
+![An everyday example of predictive text.](../imgs/autocomplete.png){fig-align="center" width="50%"}
 
 It is helpful to think of them in this way to conceptualize:
 
@@ -105,7 +105,7 @@ The algorithm used by LLMs is not deterministic. This means that a given input c
 
 This is what makes chatting with a chat bot seem like you are talking to a human rather than a computer.
 
-![Identical prompts can result in varying results. Observe that it uses the fact that I have already asked it this question to tailor its later responses, and that it uses prior information (or lack thereof) from this chat to form its response.](name.png){fig-align="center" width="50%"}
+![Identical prompts can result in varying results. Observe that it uses the fact that I have already asked it this question to tailor its later responses, and that it uses prior information (or lack thereof) from this chat to form its response.](../imgs/name.png){fig-align="center" width="50%"}
 
 **Think: what does this mean for its ability to do science or perform analysis?**
 
@@ -169,6 +169,6 @@ DON'T: use AI to perform an analysis of your data with no "paper trail".
 
 ## How the pieces fit together
 
-![](model-app-agent.png){fig-align="center" width="80%"}
+![](../imgs/model-app-agent.png){fig-align="center" width="80%"}
 
 
