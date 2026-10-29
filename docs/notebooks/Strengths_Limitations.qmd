@@ -218,9 +218,9 @@ LLMs learn facts in proportion to how often they appear in training data. Facts 
 *Research on this: [Kandpal et al. 2023, "Large Language Models Struggle to Learn Long-Tail Knowledge"](https://arxiv.org/abs/2211.08411) — accuracy on a question tracks how many times the relevant fact appears in the training data.*
 
 ```{r longtail, echo=FALSE, warning=FALSE, message=FALSE, fig.width=9, fig.height=4.5}
-# Snapshot of https://bioconductor.org/packages/stats/bioc/bioc_pkg_scores.tab (downloaded 2026-10-23)
+# Pulled live from Bioconductor each time the slides are built
 suppressPackageStartupMessages({library(ggplot2); library(dplyr); library(ggrepel)})
-scores <- read.delim("data/bioc_pkg_scores_2026-10-23.tab", stringsAsFactors = FALSE)
+scores <- read.delim("https://bioconductor.org/packages/stats/bioc/bioc_pkg_scores.tab", stringsAsFactors = FALSE)
 scores <- scores |> arrange(desc(Download_score)) |> mutate(rank = row_number())
 lab <- filter(scores, Package %in% c("limma", "DESeq2", "scran", "DropletUtils", "scHiCcompare"))
 ggplot(scores, aes(rank, Download_score)) +
@@ -234,7 +234,7 @@ ggplot(scores, aes(rank, Download_score)) +
   theme_minimal(base_size = 14)
 ```
 
-*Download score is a proxy for how much code and documentation exists online, not a measure of what any model saw in training. Data: [Bioconductor package statistics](https://bioconductor.org/packages/stats/bioc/bioc_pkg_scores.tab), snapshot of 23 Oct 2026.*
+*Download score is a proxy for how much code and documentation exists online, not a measure of what any model saw in training. Data: [Bioconductor package statistics](https://bioconductor.org/packages/stats/bioc/bioc_pkg_scores.tab).*
 
 **What to do:** supply the documentation or source code, and check every function argument against the actual help page.
 
