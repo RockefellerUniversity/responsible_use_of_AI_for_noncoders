@@ -104,7 +104,6 @@ You can use package managers like Conda/Mamba or create containers like Dockers 
 
 You do not need to do this alone though. Setting up these software environments is something that Claude and ChatGPT are pretty good at. Once you are set up you can ensure it takes an appropriate snapshot, then you are good to go. 
 
-
 ?Show diagram of how these fit together?
 ? Show an example prompt?
 
@@ -160,6 +159,7 @@ These steps are based on key principles in Bioinformatics that we use when we ru
 - **Cross-check** - Ask in a fresh session, or a different model, and compare. Disagreement means look carefully. You can also ask it to perform an This is *Adversarial Review* of the code that has been generated. 
 
 You remain responsible for everything the tool produces (see *Journal policies* in the LLM Basics section).
+
 
 
 # Other things to consider {background-color="#23373B" .center .middle}
