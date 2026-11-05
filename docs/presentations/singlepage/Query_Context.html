@@ -3047,14 +3047,11 @@ vertical-align: -.125em;
   <ul class="collapse">
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#the-prompt" id="toc-the-prompt" class="nav-link" data-scroll-target="#the-prompt">The prompt</a></li>
-  <li><a href="#writing-our-prompt" id="toc-writing-our-prompt" class="nav-link" data-scroll-target="#writing-our-prompt">Writing our prompt</a>
-  <ul class="collapse">
+  <li><a href="#writing-our-prompt" id="toc-writing-our-prompt" class="nav-link" data-scroll-target="#writing-our-prompt">Writing our prompt</a></li>
   <li><a href="#tokenising" id="toc-tokenising" class="nav-link" data-scroll-target="#tokenising">Tokenising</a></li>
   <li><a href="#the-response" id="toc-the-response" class="nav-link" data-scroll-target="#the-response">The response</a></li>
-  </ul></li>
   <li><a href="#prompt-engineering" id="toc-prompt-engineering" class="nav-link" data-scroll-target="#prompt-engineering">Prompt engineering</a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
-  <ul class="collapse">
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#what-goes-into-context" id="toc-what-goes-into-context" class="nav-link" data-scroll-target="#what-goes-into-context">What goes into context</a></li>
   <li><a href="#system-level-instructions." id="toc-system-level-instructions." class="nav-link" data-scroll-target="#system-level-instructions.">System level instructions.</a></li>
   <li><a href="#user-and-project-instructions." id="toc-user-and-project-instructions." class="nav-link" data-scroll-target="#user-and-project-instructions.">User and project instructions.</a></li>
@@ -3073,7 +3070,6 @@ vertical-align: -.125em;
   <li><a href="#memory.md-and-memory" id="toc-memory.md-and-memory" class="nav-link" data-scroll-target="#memory.md-and-memory">Memory.md and memory/</a></li>
   <li><a href="#retrieval-augmented-generation" id="toc-retrieval-augmented-generation" class="nav-link" data-scroll-target="#retrieval-augmented-generation">Retrieval Augmented Generation</a></li>
   <li><a href="#rag" id="toc-rag" class="nav-link" data-scroll-target="#rag">RAG</a></li>
-  </ul></li>
   <li><a href="#time-for-an-exercise" id="toc-time-for-an-exercise" class="nav-link" data-scroll-target="#time-for-an-exercise">Time for an exercise!</a></li>
   <li><a href="#answers-to-exercise" id="toc-answers-to-exercise" class="nav-link" data-scroll-target="#answers-to-exercise">Answers to exercise</a></li>
   </ul></li>
@@ -3137,8 +3133,9 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <blockquote class="blockquote">
 <p>“Who is Jean-Luc Picard?”</p>
 </blockquote>
-<section id="tokenising" class="level3">
-<h3 class="anchored" data-anchor-id="tokenising">Tokenising</h3>
+</section>
+<section id="tokenising" class="level2">
+<h2 class="anchored" data-anchor-id="tokenising">Tokenising</h2>
 <p><em>(Reminder: ~1M tokens ≈ the scale we’re working at; the 176 TNG scripts ≈ 3M tokens.)</em></p>
 <ul>
 <li>AI models don’t deal with raw text but with numerical <strong>tokens</strong>.</li>
@@ -3147,12 +3144,11 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><a href="https://platform.openai.com/tokenizer">OpenAI Tokenizer</a></li>
 </ul>
 </section>
-<section id="the-response" class="level3">
-<h3 class="anchored" data-anchor-id="the-response">The response</h3>
+<section id="the-response" class="level2">
+<h2 class="anchored" data-anchor-id="the-response">The response</h2>
 <p>The token embedding is then used with a transformer to generate a token response, one token at a time.</p>
 <p>The transformer puts tokens into their context of other tokens within the supplied AI input.</p>
 <p>Output tokens are detokenized back to raw text we receive as a response.</p>
-</section>
 </section>
 <section id="prompt-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="prompt-engineering">Prompt engineering</h2>
@@ -3164,8 +3160,9 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>We have discussed that when generating a response, text/tokens are considered in their context.</p>
 <p>The full input for the AI model is the Context + current prompt.</p>
 <p>Providing the right context is very important in getting the best responses from our AI models.</p>
-<section id="what-goes-into-context" class="level3">
-<h3 class="anchored" data-anchor-id="what-goes-into-context">What goes into context</h3>
+</section>
+<section id="what-goes-into-context" class="level2">
+<h2 class="anchored" data-anchor-id="what-goes-into-context">What goes into context</h2>
 <ul>
 <li>System level instructions.</li>
 <li>System level tool usage.</li>
@@ -3174,20 +3171,20 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Docs and search</li>
 </ul>
 </section>
-<section id="system-level-instructions." class="level3">
-<h3 class="anchored" data-anchor-id="system-level-instructions.">System level instructions.</h3>
+<section id="system-level-instructions." class="level2">
+<h2 class="anchored" data-anchor-id="system-level-instructions.">System level instructions.</h2>
 <p>System level instructions and tools are injected into out context without user awareness.</p>
 <p>System level instructions tell the AI model relevant information and guide how it should act.</p>
 <p>System level tool instructions tell the AI model which tools to use in certain conditions and how to use them.</p>
 <p><a href="https://github.com/asgeirtj/system_prompts_leaks">https://github.com/asgeirtj/system_prompts_leaks</a></p>
 </section>
-<section id="user-and-project-instructions." class="level3">
-<h3 class="anchored" data-anchor-id="user-and-project-instructions.">User and project instructions.</h3>
+<section id="user-and-project-instructions." class="level2">
+<h2 class="anchored" data-anchor-id="user-and-project-instructions.">User and project instructions.</h2>
 <p>The user can also customize how the agent acts and how to use available software.</p>
 <p>This can be implemented in a hierarchy * Globally - Always on preferences (e.g. ) * Project level - Project specific preferences</p>
 </section>
-<section id="claude.md-agents.md" class="level3">
-<h3 class="anchored" data-anchor-id="claude.md-agents.md">Claude.md, Agents.md</h3>
+<section id="claude.md-agents.md" class="level2">
+<h2 class="anchored" data-anchor-id="claude.md-agents.md">Claude.md, Agents.md</h2>
 <ul>
 <li>Simple markdown format.</li>
 <li>Freeform text/rules.</li>
@@ -3195,8 +3192,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Can be easily shared.</li>
 </ul>
 </section>
-<section id="claude.mdagents.md-conventions" class="level3">
-<h3 class="anchored" data-anchor-id="claude.mdagents.md-conventions">Claude.md/Agents.md Conventions</h3>
+<section id="claude.mdagents.md-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="claude.mdagents.md-conventions">Claude.md/Agents.md Conventions</h2>
 <p>Much like the system prompt and again in MD format</p>
 <p>Claude.md is Claude specific and Agents.md is general use.</p>
 <ul>
@@ -3207,8 +3204,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Expected output formats</li>
 </ul>
 </section>
-<section id="additional-documentation." class="level3">
-<h3 class="anchored" data-anchor-id="additional-documentation.">Additional documentation.</h3>
+<section id="additional-documentation." class="level2">
+<h2 class="anchored" data-anchor-id="additional-documentation.">Additional documentation.</h2>
 <p>When loading the Claude.md/Agent.md file only this is read into context.</p>
 <p>If you want to have information available to Claude.md/Agent.md as required you can point to other files/paths.</p>
 <ul>
@@ -3216,8 +3213,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Script/Code - Scripts/code to use for tasks “scripts/”.</li>
 </ul>
 </section>
-<section id="creating-a-claude.md" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-claude.md">Creating a Claude.md</h3>
+<section id="creating-a-claude.md" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-claude.md">Creating a Claude.md</h2>
 <p>Users can initialise an Claude.md file a few different ways.</p>
 <ul>
 <li><code>/init</code> - Creates a Claude.md based on current porject knowledge.</li>
@@ -3225,32 +3222,32 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Recommended practice is to discuss project with Claude/Agent before asking it to make a Claude.md</li>
 </ul>
 </section>
-<section id="editing-an-claude.md" class="level3">
-<h3 class="anchored" data-anchor-id="editing-an-claude.md">Editing an Claude.md</h3>
+<section id="editing-an-claude.md" class="level2">
+<h2 class="anchored" data-anchor-id="editing-an-claude.md">Editing an Claude.md</h2>
 <p>Claude and Agents markdown files should be user curated.</p>
 <p>The project specific markdown often sits in the project route folder and can be edited by hand.</p>
 <p>We can also use <code>#</code> shortcut to write directly to the markdown or we simply ask Claude to update as we go.</p>
 </section>
-<section id="models-and-context-windows" class="level3">
-<h3 class="anchored" data-anchor-id="models-and-context-windows">Models and context windows</h3>
+<section id="models-and-context-windows" class="level2">
+<h2 class="anchored" data-anchor-id="models-and-context-windows">Models and context windows</h2>
 <p>Context windows describe the maximum tokens which can be held in context at one time.</p>
 <p>Frontier models like Fable,Opus,Sonnet, Astra, Sol typically now have a 1 million token context window.</p>
 <p>This corresponds to ~ words. That is most of the Harry Potter books or upto Episode ?? in The Next Generation</p>
 </section>
-<section id="compression" class="level3">
-<h3 class="anchored" data-anchor-id="compression">Compression</h3>
+<section id="compression" class="level2">
+<h2 class="anchored" data-anchor-id="compression">Compression</h2>
 <p>Once the context starts to fill up we need a way to fit everything into the context window.</p>
 <p>One way to do this is start to summarize parts of our context to remove duplicated, unnecessary or overly verbose context.</p>
 <p>In modern Claude/Context compression is handled without user input by default once the context window is close to full.</p>
 </section>
-<section id="manually-triggering-compression" class="level3">
-<h3 class="anchored" data-anchor-id="manually-triggering-compression">Manually triggering compression</h3>
+<section id="manually-triggering-compression" class="level2">
+<h2 class="anchored" data-anchor-id="manually-triggering-compression">Manually triggering compression</h2>
 <p>Autocompression can be turned off.</p>
 <p>In this case compression can be triggered by the <code>/compact</code> command.</p>
 <p><code>/compact</code> allows you to compress/not compress specific aspects of your conversation.</p>
 </section>
-<section id="what-is-compressed" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-compressed">What is compressed</h3>
+<section id="what-is-compressed" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-compressed">What is compressed</h2>
 <ul>
 <li><p>Compressed</p></li>
 <li><p>Messages (prompts and replies)</p></li>
@@ -3261,20 +3258,20 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><p>Memory.md</p></li>
 </ul>
 </section>
-<section id="memory" class="level3">
-<h3 class="anchored" data-anchor-id="memory">Memory</h3>
+<section id="memory" class="level2">
+<h2 class="anchored" data-anchor-id="memory">Memory</h2>
 <p>The memory.md and memory/ directory can be used as a store for memory across sessions.</p>
 <p>In contrast to the Claude.md, the memory.md and memory/ directory are typically controlled by the Agent themselves.</p>
 </section>
-<section id="memory.md" class="level3">
-<h3 class="anchored" data-anchor-id="memory.md">Memory.md</h3>
+<section id="memory.md" class="level2">
+<h2 class="anchored" data-anchor-id="memory.md">Memory.md</h2>
 <p>The memory is typically kept concise.</p>
 <p>One fact per line.</p>
 <p>Consists of date dependent facts which can not be gathered from Claude.md, quick review of code/project, git status.</p>
 <p>Not a change log or transcript of the session.</p>
 </section>
-<section id="memory.md-format" class="level3">
-<h3 class="anchored" data-anchor-id="memory.md-format">Memory.md format</h3>
+<section id="memory.md-format" class="level2">
+<h2 class="anchored" data-anchor-id="memory.md-format">Memory.md format</h2>
 <ul>
 <li>user — User description focused on preferences.</li>
 <li>feedback — How AI model should behave. Corrections i have given for behavior.</li>
@@ -3282,23 +3279,22 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>project - Project specific goals, constraints and potential pitfalls.</li>
 </ul>
 </section>
-<section id="memory.md-and-memory" class="level3">
-<h3 class="anchored" data-anchor-id="memory.md-and-memory">Memory.md and memory/</h3>
+<section id="memory.md-and-memory" class="level2">
+<h2 class="anchored" data-anchor-id="memory.md-and-memory">Memory.md and memory/</h2>
 <p>Since Memory.md are typically kept small they will often act as index files.</p>
 <p>Each line describes a case when to look up linked MD.</p>
 <p>Linked MD looked up as required.</p>
 </section>
-<section id="retrieval-augmented-generation" class="level3">
-<h3 class="anchored" data-anchor-id="retrieval-augmented-generation">Retrieval Augmented Generation</h3>
+<section id="retrieval-augmented-generation" class="level2">
+<h2 class="anchored" data-anchor-id="retrieval-augmented-generation">Retrieval Augmented Generation</h2>
 <p>In some instances we need to be able to rapidly query and retrieve information from a corpus of text.</p>
 <p>This text will not fit in context and its size makes it inappropriate for standard Claude.md linking.</p>
 <p>By using Retrieval Augmented Generation (RAG) we can arrange and index the text for easier retrieval.</p>
 </section>
-<section id="rag" class="level3">
-<h3 class="anchored" data-anchor-id="rag">RAG</h3>
+<section id="rag" class="level2">
+<h2 class="anchored" data-anchor-id="rag">RAG</h2>
 <p>By using RAG and an appropriate indexing scheme we can quickly look up facts from our corpus.</p>
 <p>This allows for us to provide information to our model which wouldnt fit in context while also allowing for referencing and reduction in hallucinations.</p>
-</section>
 </section>
 <section id="time-for-an-exercise" class="level2">
 <h2 class="anchored" data-anchor-id="time-for-an-exercise">Time for an exercise!</h2>
