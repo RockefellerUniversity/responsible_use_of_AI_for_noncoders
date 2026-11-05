@@ -1176,39 +1176,178 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><a href="#/time-for-an-exercise">Exercise</a></li>
 </ul>
 </section>
-<section>
-<section id="context" class="title-slide slide level1 center middle" data-background-color="#23373B">
-<h1>Context</h1>
-
+<section id="the-prompt" class="slide level2">
+<h2>The prompt</h2>
+<p><strong>Prompt</strong> — “The input given to a computer program or AI model.”</p>
+<p>Instructions / Question / Command, as text / image / voice, that you pass to an AI model.</p>
 </section>
-<section id="the-context-window" class="slide level2">
-<h2>The context window</h2>
-<p>The <strong>context window</strong> is everything the model can see when it generates a reply: your messages, its previous replies, and anything else the app has added. The model has no memory outside it.</p>
-<p>??Size of typical context windows; what happens when it fills??</p>
+<section id="writing-our-prompt" class="slide level2">
+<h2>Writing our prompt</h2>
+<blockquote>
+<p>“Who is Jean-Luc Picard?”</p>
+</blockquote>
 </section>
-<section id="where-context-comes-from" class="slide level2">
-<h2>Where context comes from</h2>
-<p>What you type is only part of what the model sees. Apps add more context, for example:</p>
+<section id="tokenising" class="slide level2">
+<h2>Tokenising</h2>
+<p><em>(Reminder: ~1M tokens ≈ the scale we’re working at; the 176 TNG scripts ≈ 3M tokens.)</em></p>
 <ul>
-<li>System prompts written by the app provider</li>
-<li>Saved memory and custom instructions</li>
-<li>Uploaded files and documents</li>
-<li>Results from web searches and other tools</li>
+<li>AI models don’t deal with raw text but with numerical <strong>tokens</strong>.</li>
+<li>Text prompts are converted into tokens using a <strong>Tokenizer</strong>.</li>
+<li>Tokens do not directly correspond to individual characters or words.</li>
+<li><a href="https://platform.openai.com/tokenizer">OpenAI Tokenizer</a></li>
 </ul>
-<p>??Examples from ChatGPT / Claude of injected context??</p>
 </section>
-<section id="context-compression" class="slide level2">
-<h2>Context compression</h2>
-<p>??How long conversations are summarised or truncated to fit the context window, and why earlier instructions can be lost as a result??</p>
-</section></section>
-<section>
-<section id="tokens" class="title-slide slide level1 center middle" data-background-color="#23373B">
-<h1>Tokens</h1>
-
+<section id="the-response" class="slide level2">
+<h2>The response</h2>
+<p>The token embedding is then used with a transformer to generate a token response, one token at a time.</p>
+<p>The transformer puts tokens into their context of other tokens within the supplied AI input.</p>
+<p>Output tokens are detokenized back to raw text we receive as a response.</p>
 </section>
-<section id="context-tokens-and-models" class="slide level2">
-<h2>Context, tokens and models</h2>
-<p>??What a token is, how text is split into tokens, and how token count relates to context window size, cost, speed and model choice??</p>
+<section id="prompt-engineering" class="slide level2">
+<h2>Prompt engineering</h2>
+<p>Best practices for prompting</p>
+</section>
+<section id="context" class="slide level2">
+<h2>Context</h2>
+<p>We are passing more than our prompt to our AI model</p>
+<p>We have discussed that when generating a response, text/tokens are considered in their context.</p>
+<p>The full input for the AI model is the Context + current prompt.</p>
+<p>Providing the right context is very important in getting the best responses from our AI models.</p>
+</section>
+<section id="what-goes-into-context" class="slide level2">
+<h2>What goes into context</h2>
+<ul>
+<li>System level instructions.</li>
+<li>System level tool usage.</li>
+<li>User and project instructions.</li>
+<li>Prompt, prompt-and-response history</li>
+<li>Docs and search</li>
+</ul>
+</section>
+<section id="system-level-instructions." class="slide level2">
+<h2>System level instructions.</h2>
+<p>System level instructions and tools are injected into out context without user awareness.</p>
+<p>System level instructions tell the AI model relevant information and guide how it should act.</p>
+<p>System level tool instructions tell the AI model which tools to use in certain conditions and how to use them.</p>
+<p><a href="https://github.com/asgeirtj/system_prompts_leaks">https://github.com/asgeirtj/system_prompts_leaks</a></p>
+</section>
+<section id="user-and-project-instructions." class="slide level2">
+<h2>User and project instructions.</h2>
+<p>The user can also customize how the agent acts and how to use available software.</p>
+<p>This can be implemented in a hierarchy * Globally - Always on preferences (e.g. ) * Project level - Project specific preferences</p>
+</section>
+<section id="claude.md-agents.md" class="slide level2">
+<h2>Claude.md, Agents.md</h2>
+<ul>
+<li>Simple markdown format.</li>
+<li>Freeform text/rules.</li>
+<li>Read at beginning of every session.</li>
+<li>Can be easily shared.</li>
+</ul>
+</section>
+<section id="claude.mdagents.md-conventions" class="slide level2">
+<h2>Claude.md/Agents.md Conventions</h2>
+<p>Much like the system prompt and again in MD format</p>
+<p>Claude.md is Claude specific and Agents.md is general use.</p>
+<ul>
+<li>Project overview</li>
+<li>Directory structure</li>
+<li>Conventions (Git/Docker/Reporting)</li>
+<li>Specialist commands/software</li>
+<li>Expected output formats</li>
+</ul>
+</section>
+<section id="additional-documentation." class="slide level2">
+<h2>Additional documentation.</h2>
+<p>When loading the Claude.md/Agent.md file only this is read into context.</p>
+<p>If you want to have information available to Claude.md/Agent.md as required you can point to other files/paths.</p>
+<ul>
+<li>Conventions - How you want to act in particular situations “rules/”.</li>
+<li>Script/Code - Scripts/code to use for tasks “scripts/”.</li>
+</ul>
+</section>
+<section id="creating-a-claude.md" class="slide level2">
+<h2>Creating a Claude.md</h2>
+<p>Users can initialise an Claude.md file a few different ways.</p>
+<ul>
+<li><code>/init</code> - Creates a Claude.md based on current porject knowledge.</li>
+<li><code>Ask it to create an Claude.md</code></li>
+<li>Recommended practice is to discuss project with Claude/Agent before asking it to make a Claude.md</li>
+</ul>
+</section>
+<section id="editing-an-claude.md" class="slide level2">
+<h2>Editing an Claude.md</h2>
+<p>Claude and Agents markdown files should be user curated.</p>
+<p>The project specific markdown often sits in the project route folder and can be edited by hand.</p>
+<p>We can also use <code>#</code> shortcut to write directly to the markdown or we simply ask Claude to update as we go.</p>
+</section>
+<section id="models-and-context-windows" class="slide level2">
+<h2>Models and context windows</h2>
+<p>Context windows describe the maximum tokens which can be held in context at one time.</p>
+<p>Frontier models like Fable,Opus,Sonnet, Astra, Sol typically now have a 1 million token context window.</p>
+<p>This corresponds to ~ words. That is most of the Harry Potter books or upto Episode ?? in The Next Generation</p>
+</section>
+<section id="compression" class="slide level2">
+<h2>Compression</h2>
+<p>Once the context starts to fill up we need a way to fit everything into the context window.</p>
+<p>One way to do this is start to summarize parts of our context to remove duplicated, unnecessary or overly verbose context.</p>
+<p>In modern Claude/Context compression is handled without user input by default once the context window is close to full.</p>
+</section>
+<section id="manually-triggering-compression" class="slide level2">
+<h2>Manually triggering compression</h2>
+<p>Autocompression can be turned off.</p>
+<p>In this case compression can be triggered by the <code>/compact</code> command.</p>
+<p><code>/compact</code> allows you to compress/not compress specific aspects of your conversation.</p>
+</section>
+<section id="what-is-compressed" class="slide level2">
+<h2>What is compressed</h2>
+<ul>
+<li><p>Compressed</p></li>
+<li><p>Messages (prompts and replies)</p></li>
+<li><p>Tool outputs and logs</p></li>
+<li><p>Uncompressed</p></li>
+<li><p>System prompts and tools</p></li>
+<li><p>Claude.md/Agents.md</p></li>
+<li><p>Memory.md</p></li>
+</ul>
+</section>
+<section id="memory" class="slide level2">
+<h2>Memory</h2>
+<p>The memory.md and memory/ directory can be used as a store for memory across sessions.</p>
+<p>In contrast to the Claude.md, the memory.md and memory/ directory are typically controlled by the Agent themselves.</p>
+</section>
+<section id="memory.md" class="slide level2">
+<h2>Memory.md</h2>
+<p>The memory is typically kept concise.</p>
+<p>One fact per line.</p>
+<p>Consists of date dependent facts which can not be gathered from Claude.md, quick review of code/project, git status.</p>
+<p>Not a change log or transcript of the session.</p>
+</section>
+<section id="memory.md-format" class="slide level2">
+<h2>Memory.md format</h2>
+<ul>
+<li>user — User description focused on preferences.</li>
+<li>feedback — How AI model should behave. Corrections i have given for behavior.</li>
+<li>references - Docs and URLs I want the AI to be aware of.</li>
+<li>project - Project specific goals, constraints and potential pitfalls.</li>
+</ul>
+</section>
+<section id="memory.md-and-memory" class="slide level2">
+<h2>Memory.md and memory/</h2>
+<p>Since Memory.md are typically kept small they will often act as index files.</p>
+<p>Each line describes a case when to look up linked MD.</p>
+<p>Linked MD looked up as required.</p>
+</section>
+<section id="retrieval-augmented-generation" class="slide level2">
+<h2>Retrieval Augmented Generation</h2>
+<p>In some instances we need to be able to rapidly query and retrieve information from a corpus of text.</p>
+<p>This text will not fit in context and its size makes it inappropriate for standard Claude.md linking.</p>
+<p>By using Retrieval Augmented Generation (RAG) we can arrange and index the text for easier retrieval.</p>
+</section>
+<section id="rag" class="slide level2">
+<h2>RAG</h2>
+<p>By using RAG and an appropriate indexing scheme we can quickly look up facts from our corpus.</p>
+<p>This allows for us to provide information to our model which wouldnt fit in context while also allowing for referencing and reduction in hallucinations.</p>
 </section>
 <section id="time-for-an-exercise" class="slide level2">
 <h2>Time for an exercise!</h2>
@@ -1222,7 +1361,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

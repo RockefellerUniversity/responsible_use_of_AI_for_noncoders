@@ -25,34 +25,205 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 - [Context, tokens and models](#context-tokens-and-models)
 - [Exercise](#time-for-an-exercise)
 
-# Context {background-color="#23373B" .center .middle}
+## The prompt
 
-## The context window
+**Prompt** — "The input given to a computer program or AI model."
 
-The **context window** is everything the model can see when it generates a reply: your messages, its previous replies, and anything else the app has added. The model has no memory outside it.
+Instructions / Question / Command, as text / image / voice, that you pass to an
+AI model.
 
-??Size of typical context windows; what happens when it fills??
+## Writing our prompt
 
-## Where context comes from
+> "Who is Jean-Luc Picard?"
 
-What you type is only part of what the model sees. Apps add more context, for example:
+## Tokenising
 
-- System prompts written by the app provider
-- Saved memory and custom instructions
-- Uploaded files and documents
-- Results from web searches and other tools
+*(Reminder: ~1M tokens ≈ the scale we're working at; the 176 TNG scripts ≈ 3M tokens.)*
 
-??Examples from ChatGPT / Claude of injected context??
+- AI models don't deal with raw text but with numerical **tokens**.
+- Text prompts are converted into tokens using a **Tokenizer**.
+- Tokens do not directly correspond to individual characters or words.
+- [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
 
-## Context compression
+## The response
 
-??How long conversations are summarised or truncated to fit the context window, and why earlier instructions can be lost as a result??
+The token embedding is then used with a transformer to generate a token response, one token at a time.
 
-# Tokens {background-color="#23373B" .center .middle}
+The transformer puts tokens into their context of other tokens within the supplied AI input.
 
-## Context, tokens and models
+Output tokens are detokenized back to raw text we receive as a response.
 
-??What a token is, how text is split into tokens, and how token count relates to context window size, cost, speed and model choice??
+## Prompt engineering
+
+Best practices for prompting
+
+
+
+## Context
+
+We are passing more than our prompt to our AI model
+
+We have discussed that when generating a response, text/tokens are considered in their context.
+
+The full input for the AI model is the Context + current prompt.
+
+Providing the right context is very important in getting the best responses from our AI models.
+
+
+## What goes into context
+
+- System level instructions.
+- System level tool usage.
+- User and project instructions.
+- Prompt, prompt-and-response history
+- Docs and search
+
+## System level instructions.
+
+System level instructions and tools are injected into out context without user awareness.
+
+System level instructions tell the AI model relevant information and guide how it should act.
+
+System level tool instructions tell the AI model which tools to use in certain conditions and how to use them.
+
+[https://github.com/asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)
+
+
+
+## User and project instructions.
+
+The user can also customize how the agent acts and how to use available software.
+
+This can be implemented in a hierarchy
+ * Globally - Always on preferences (e.g. )
+ * Project level - Project specific preferences
+
+## Claude.md, Agents.md
+
+* Simple markdown format.
+* Freeform text/rules.
+* Read at beginning of every session.
+* Can be easily shared.
+
+## Claude.md/Agents.md Conventions
+
+Much like the system prompt and again in MD format
+
+Claude.md is Claude specific and Agents.md is general use.
+
+* Project overview
+* Directory structure
+* Conventions (Git/Docker/Reporting)
+* Specialist commands/software
+* Expected output formats
+
+## Additional documentation.
+
+When loading the Claude.md/Agent.md file only this is read into context.
+
+If you want to have information available to Claude.md/Agent.md as required you can point to other files/paths.
+
+  * Conventions - How you want to act in particular situations "rules/".
+  * Script/Code - Scripts/code to use for tasks "scripts/". 
+  
+
+## Creating a Claude.md
+
+Users can initialise an Claude.md file a few different ways.
+
+*   `/init` - Creates a Claude.md based on current porject knowledge.
+* `Ask it to create an Claude.md`
+* Recommended practice is to discuss project with Claude/Agent before asking it to make a Claude.md
+
+## Editing an Claude.md
+
+Claude and Agents markdown files should be user curated.
+
+The project specific markdown often sits in the project route folder and can be edited by hand.
+
+We can also use `#` shortcut to write directly to the markdown or we simply ask Claude to update as we go.
+
+## Models and context windows
+
+Context windows describe the maximum tokens which can be held in context at one time.
+
+Frontier models like Fable,Opus,Sonnet, Astra, Sol typically now have a 1 million token context window.
+
+This corresponds to ~ words. That is most of the Harry Potter books or upto Episode ?? in The Next Generation
+
+## Compression
+
+Once the context starts to fill up we need a way to fit everything into the context window.
+
+One way to do this is start to summarize parts of our context to remove duplicated, unnecessary or overly verbose context.
+
+In modern Claude/Context compression is handled without user input by default once the context window is close to full.
+
+## Manually triggering compression
+
+Autocompression can be turned off.
+
+In this case compression can be triggered by the `/compact` command.
+
+`/compact` allows you to compress/not compress specific aspects of your conversation.
+
+## What is compressed
+
+- Compressed
+* Messages (prompts and replies)
+* Tool outputs and logs
+
+- Uncompressed
+* System prompts and tools
+* Claude.md/Agents.md
+* Memory.md
+
+
+
+## Memory
+
+The memory.md and memory/ directory can be used as a store for memory across sessions.
+
+In contrast to the Claude.md, the memory.md and memory/ directory are typically controlled by the Agent themselves.
+
+## Memory.md
+
+The memory is typically kept concise.
+
+One fact per line.
+
+Consists of date dependent facts which can not be gathered from Claude.md, quick review of code/project, git status.
+
+Not a change log or transcript of the session.
+
+## Memory.md format
+
+* user — User description focused on preferences.
+* feedback — How AI model should behave. Corrections i have given for behavior.
+* references - Docs and URLs I want the AI to be aware of.
+* project - Project specific goals, constraints and potential pitfalls.
+
+## Memory.md and memory/
+
+Since Memory.md are typically kept small they will often act as index files.
+
+Each line describes a case when to look up linked MD.
+
+Linked MD looked up as required.
+
+## Retrieval Augmented Generation
+
+In some instances we need to be able to rapidly query and retrieve information from a corpus of text.
+
+This text will not fit in context and its size makes it inappropriate for standard Claude.md linking.
+
+By using Retrieval Augmented Generation (RAG) we can arrange and index the text for easier retrieval.
+
+## RAG
+
+By using RAG and an appropriate indexing scheme we can quickly look up facts from our corpus.
+
+This allows for us to provide information to our model which wouldnt fit in context while also allowing for referencing and reduction in hallucinations. 
 
 ## Time for an exercise!
 
