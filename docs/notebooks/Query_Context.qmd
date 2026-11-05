@@ -36,7 +36,7 @@ AI model.
 
 > "Who is Jean-Luc Picard?"
 
-### Tokenising
+## Tokenising
 
 *(Reminder: ~1M tokens ≈ the scale we're working at; the 176 TNG scripts ≈ 3M tokens.)*
 
@@ -45,7 +45,7 @@ AI model.
 - Tokens do not directly correspond to individual characters or words.
 - [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
 
-### The response
+## The response
 
 The token embedding is then used with a transformer to generate a token response, one token at a time.
 
@@ -70,7 +70,7 @@ The full input for the AI model is the Context + current prompt.
 Providing the right context is very important in getting the best responses from our AI models.
 
 
-### What goes into context
+## What goes into context
 
 - System level instructions.
 - System level tool usage.
@@ -78,7 +78,7 @@ Providing the right context is very important in getting the best responses from
 - Prompt, prompt-and-response history
 - Docs and search
 
-### System level instructions.
+## System level instructions.
 
 System level instructions and tools are injected into out context without user awareness.
 
@@ -90,7 +90,7 @@ System level tool instructions tell the AI model which tools to use in certain c
 
 
 
-### User and project instructions.
+## User and project instructions.
 
 The user can also customize how the agent acts and how to use available software.
 
@@ -98,14 +98,14 @@ This can be implemented in a hierarchy
  * Globally - Always on preferences (e.g. )
  * Project level - Project specific preferences
 
-### Claude.md, Agents.md
+## Claude.md, Agents.md
 
 * Simple markdown format.
 * Freeform text/rules.
 * Read at beginning of every session.
 * Can be easily shared.
 
-### Claude.md/Agents.md Conventions
+## Claude.md/Agents.md Conventions
 
 Much like the system prompt and again in MD format
 
@@ -117,7 +117,7 @@ Claude.md is Claude specific and Agents.md is general use.
 * Specialist commands/software
 * Expected output formats
 
-### Additional documentation.
+## Additional documentation.
 
 When loading the Claude.md/Agent.md file only this is read into context.
 
@@ -127,7 +127,7 @@ If you want to have information available to Claude.md/Agent.md as required you 
   * Script/Code - Scripts/code to use for tasks "scripts/". 
   
 
-### Creating a Claude.md
+## Creating a Claude.md
 
 Users can initialise an Claude.md file a few different ways.
 
@@ -135,7 +135,7 @@ Users can initialise an Claude.md file a few different ways.
 * `Ask it to create an Claude.md`
 * Recommended practice is to discuss project with Claude/Agent before asking it to make a Claude.md
 
-### Editing an Claude.md
+## Editing an Claude.md
 
 Claude and Agents markdown files should be user curated.
 
@@ -143,7 +143,7 @@ The project specific markdown often sits in the project route folder and can be 
 
 We can also use `#` shortcut to write directly to the markdown or we simply ask Claude to update as we go.
 
-### Models and context windows
+## Models and context windows
 
 Context windows describe the maximum tokens which can be held in context at one time.
 
@@ -151,7 +151,7 @@ Frontier models like Fable,Opus,Sonnet, Astra, Sol typically now have a 1 millio
 
 This corresponds to ~ words. That is most of the Harry Potter books or upto Episode ?? in The Next Generation
 
-### Compression
+## Compression
 
 Once the context starts to fill up we need a way to fit everything into the context window.
 
@@ -159,7 +159,7 @@ One way to do this is start to summarize parts of our context to remove duplicat
 
 In modern Claude/Context compression is handled without user input by default once the context window is close to full.
 
-### Manually triggering compression
+## Manually triggering compression
 
 Autocompression can be turned off.
 
@@ -167,7 +167,7 @@ In this case compression can be triggered by the `/compact` command.
 
 `/compact` allows you to compress/not compress specific aspects of your conversation.
 
-### What is compressed
+## What is compressed
 
 - Compressed
 * Messages (prompts and replies)
@@ -180,13 +180,13 @@ In this case compression can be triggered by the `/compact` command.
 
 
 
-### Memory
+## Memory
 
 The memory.md and memory/ directory can be used as a store for memory across sessions.
 
 In contrast to the Claude.md, the memory.md and memory/ directory are typically controlled by the Agent themselves.
 
-### Memory.md
+## Memory.md
 
 The memory is typically kept concise.
 
@@ -196,14 +196,14 @@ Consists of date dependent facts which can not be gathered from Claude.md, quick
 
 Not a change log or transcript of the session.
 
-### Memory.md format
+## Memory.md format
 
 * user — User description focused on preferences.
 * feedback — How AI model should behave. Corrections i have given for behavior.
 * references - Docs and URLs I want the AI to be aware of.
 * project - Project specific goals, constraints and potential pitfalls.
 
-### Memory.md and memory/
+## Memory.md and memory/
 
 Since Memory.md are typically kept small they will often act as index files.
 
@@ -211,7 +211,7 @@ Each line describes a case when to look up linked MD.
 
 Linked MD looked up as required.
 
-### Retrieval Augmented Generation
+## Retrieval Augmented Generation
 
 In some instances we need to be able to rapidly query and retrieve information from a corpus of text.
 
@@ -219,7 +219,7 @@ This text will not fit in context and its size makes it inappropriate for standa
 
 By using Retrieval Augmented Generation (RAG) we can arrange and index the text for easier retrieval.
 
-### RAG
+## RAG
 
 By using RAG and an appropriate indexing scheme we can quickly look up facts from our corpus.
 
