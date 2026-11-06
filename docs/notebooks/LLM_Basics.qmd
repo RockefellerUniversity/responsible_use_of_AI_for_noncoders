@@ -105,6 +105,8 @@ The algorithm used by LLMs is not deterministic. This means that a given input c
 
 This is what makes chatting with a chat bot seem like you are talking to a human rather than a computer.
 
+## Determinism in LLMs
+
 ![Identical prompts can result in varying results. Observe that it uses the fact that I have already asked it this question to tailor its later responses, and that it uses prior information (or lack thereof) from this chat to form its response.](../imgs/name.png){fig-align="center" width="50%"}
 
 **Think: what does this mean for its ability to do science or perform analysis?**
