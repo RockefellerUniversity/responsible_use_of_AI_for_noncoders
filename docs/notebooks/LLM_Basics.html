@@ -119,7 +119,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2 class="anchored" data-anchor-id="visualizing-tokenization">Visualizing Tokenization</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="tokenization.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="../imgs/tokenization.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </section>
@@ -128,7 +128,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>How does the LLM select these output tokens? One common method is <em>next token prediction</em>. Given some input tokens, the algorithm predicts the token most likely to occur next. It then uses this token along with the rest to find the next token in the sequence, and so on.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="next-token.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="../imgs/next-token.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>A simple visualization of next token prediction from https://embracingenigmas.substack.com/p/next-token-prediction-is-a-fundamental.</figcaption>
 </figure>
 </div>
@@ -152,7 +152,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>The resulting LLMs are extremely sophisticated predictive text generators.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="autocomplete.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="../imgs/autocomplete.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>An everyday example of predictive text.</figcaption>
 </figure>
 </div>
@@ -173,9 +173,12 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2 class="anchored" data-anchor-id="determinism-in-llms">Determinism in LLMs</h2>
 <p>The algorithm used by LLMs is not deterministic. This means that a given input can result in a variety of outputs, both due to the inherent randomness of the algorithm as well as the use of previous queries to modify future results (as seen below).</p>
 <p>This is what makes chatting with a chat bot seem like you are talking to a human rather than a computer.</p>
+</section>
+<section id="determinism-in-llms-1" class="level2">
+<h2 class="anchored" data-anchor-id="determinism-in-llms-1">Determinism in LLMs</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="name.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="../imgs/name.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Identical prompts can result in varying results. Observe that it uses the fact that I have already asked it this question to tailor its later responses, and that it uses prior information (or lack thereof) from this chat to form its response.</figcaption>
 </figure>
 </div>
@@ -212,8 +215,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <section id="caveat-siloing" class="level2">
 <h2 class="anchored" data-anchor-id="caveat-siloing">Caveat: Siloing</h2>
 <p>A caveat to some of these privacy concerns is <em>siloing</em>.</p>
-<p>RU has reached agreements with several AI companies (Anthropic/Claude and Microsoft/Copilot) so that data of users with RU emails will not be used to train models.</p>
-<p>This is important because it prevents the leakage of private data and research ideas to other users of the LLMs. Always try to use enterprise models with your RU email address.</p>
+<p>For Claude and Copilot, data from users with RU emails will not be used to train models.You can also adjust settings to have the same effect in other models.</p>
+<p>This is important because it prevents the leakage of private data and research ideas to other users of the LLMs.</p>
 <p>It is unclear whether the AI companies have control over the siloing of their models.</p>
 </section>
 <section id="funder-and-journal-policies" class="level2">
@@ -244,7 +247,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2 class="anchored" data-anchor-id="how-the-pieces-fit-together">How the pieces fit together</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="model-app-agent.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="../imgs/model-app-agent.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </section>

@@ -105,6 +105,8 @@ The algorithm used by LLMs is not deterministic. This means that a given input c
 
 This is what makes chatting with a chat bot seem like you are talking to a human rather than a computer.
 
+## Determinism in LLMs
+
 ![Identical prompts can result in varying results. Observe that it uses the fact that I have already asked it this question to tailor its later responses, and that it uses prior information (or lack thereof) from this chat to form its response.](../imgs/name.png){fig-align="center" width="50%"}
 
 **Think: what does this mean for its ability to do science or perform analysis?**
@@ -136,9 +138,9 @@ NEVER give LLMs access to PHI or PII (ex: patient health records, financial info
 
 A caveat to some of these privacy concerns is *siloing*. 
 
-RU has reached agreements with several AI companies (Anthropic/Claude and Microsoft/Copilot) so that data of users with RU emails will not be used to train models.
+For Claude and Copilot, data from users with RU emails will not be used to train models.You can also adjust settings to have the same effect in other models.
 
-This is important because it prevents the leakage of private data and research ideas to other users of the LLMs. Always try to use enterprise models with your RU email address.
+This is important because it prevents the leakage of private data and research ideas to other users of the LLMs. 
 
 It is unclear whether the AI companies have control over the siloing of their models.
 
