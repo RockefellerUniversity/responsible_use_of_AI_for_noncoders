@@ -1,5 +1,5 @@
 ---
-title: "Responsible Use of AI for Non-Coders: Rockefeller Data Policy"
+title: "Responsible Use of AI for Non-Coders: AI Strategy at Rockefeller"
 subtitle: " <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University"
 author:
   - "[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)"
@@ -12,40 +12,60 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 ```
 
 ::: {.content-hidden when-format="revealjs"}
-# Responsible Use of AI for Non-Coders: Rockefeller Data Policy
+# Responsible Use of AI for Non-Coders: AI Strategy at Rockefeller
 :::
 
 ## Overview
 
-*Presenter: Anthony — 15 mins*
+- [Claude at Rockefeller](#claude-at-rockefeller)
+- [RU AI Sandbox](#ru-ai-sandbox)
+- [Policy and protected data](#policy-and-protected-data)
+- [Agents and further support](#agents-and-further-support)
 
-- [Protected data](#protected-data)
-- [Rockefeller data policy](#rockefeller-data-policy)
+# Claude at Rockefeller {#claude-at-rockefeller background-color="#23373B" .center .middle}
 
-# Protected data {background-color="#23373B" .center .middle}
+## Claude for EDU
 
-## Protected data
+Rockefeller has licensed Claude under the **"Claude for EDU"** program.
 
-??What counts as protected data: HIPAA / protected health information (PHI), human subjects data, identifiable information, other regulated data??
+- **Data:** Sharing data with Anthropic is prevented according to our agreement
+- **Limits:** Usage limits/tokens should be more favorable than the standard Claude Pro/Max plans
+- **Life sciences:** Rockefeller has applied to the **"Life Sciences Verification Program"**. If accepted, Rockefeller Claude users should experience reduced blocking for biological research questions
 
-## What this means for AI tools
 
-??Why typing data into an AI tool can count as sharing it with a third party; what is and is not covered by institutional agreements??
+## Integrating Claude
 
-# Rockefeller data policy {background-color="#23373B" .center .middle}
+Rockefeller is working to bring its own resources into Claude:
 
-## Rockefeller data policy
+- **Journal content:** Rockefeller intends to make journal content available to Claude when feasible
+- **RU-developed methods:** These will also be made available via RU Claude
+- **Connectors:** Used to link to RU's standard productivity tools
+- **Community contributions:** Feedback welcome
 
-??Summary of the current Rockefeller data / AI use policy, with a link to the official policy page??
+# RU AI Sandbox {#ru-ai-sandbox background-color="#23373B" .center .middle}
 
-## Approved tools
+## RU AI Sandbox
 
-??Which AI tools are approved at Rockefeller, for which classes of data, and how to get access??
+RU has developed a private interface to select LLMs called the **"RU AI Sandbox"**.
 
-## Where to get help
+- Privacy is not just enforced via an agreement as the LLMs are **technically isolated**.
+- A chatbot/agent is available on this platform called the **"Forms and Policies Agent"**.
+- The goal is to integrate all or most of RU's content into this platform, as it can be challenging to navigate RU's content.
 
-??Who to contact with policy questions??
+# Policy and protected data {#policy-and-protected-data background-color="#23373B" .center .middle}
 
-## Key takeaways
+## AI Policy
 
-??Two or three points participants should remember for the rest of the course??
+The governing policy on AI use at Rockefeller is the **"Responsible Use of AI Policy"**.
+
+This includes the **"approved AI list"**
+
+
+# Agents and further support {#agents-and-further-support background-color="#23373B" .center .middle}
+
+## Agentic identities
+
+Separate "identities" for your agents are available **upon request**.
+
+Especially recommended if your agent is expected to have broad autonomy or presents any sort of elevated risk
+

@@ -1,0 +1,7 @@
+#### **BRC and AI Tools**
+
+How the Bioinformatics Resource Center uses AI and what it offers to help you use it well.
+
+* How the BRC uses AI in its own work
+* BRC tools and resources
+* When and how to work with the BRC
