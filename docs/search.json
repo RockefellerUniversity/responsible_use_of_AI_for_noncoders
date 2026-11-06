@@ -18,7 +18,7 @@
     "href": "index.html#setting-up",
     "title": "Responsible Use of AI for Non-Coders",
     "section": "Setting up",
-    "text": "Setting up\n\n\nManual InstallDocker\n\n\n\nSystem Requirements\n\n\n\nA Docker image is not configured for this course. Use the Manual Install tab."
+    "text": "Setting up\n\n\nManual InstallDocker\n\n\n\nSystem Requirements\n\n\nInstall a LLM GUI\nWe recommend that you have a LLM GUI installed. The two most popular frontier LLMs are Claude and ChatGPT. Specifically we will demonstrate working with their agent-enabled tools: Claude Code or ChatGPT codex.\nThe GUI for Claude Code can be downloaded here, but it has very limited functionality at the free tier, restricting users to its Chat.\nThe GUI for ChatGPT Codex can be downloaded here. The free tier allows for more functionality including delegating to agents.\nIf you are more comfortable you can also use the CLIs for these tools.\n\n\n\n\nA Docker image is not configured for this course. Use the Manual Install tab."
   },
   {
     "objectID": "index.html#download-the-material",
