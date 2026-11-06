@@ -12,5 +12,5 @@ Description: Dependency + system-requirements manifest for the course. The cours
 License: GPL (>= 2)
 Depends: methods
 Imports: ggplot2, dplyr, ggrepel, scales
-SystemRequirements:
+SystemRequirements: LLM.GUI
 biocViews: Training
