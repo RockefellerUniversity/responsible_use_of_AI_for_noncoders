@@ -1,0 +1,15 @@
+{
+  "hash": "d9b1259b5eaf783b0035404ec34d3332",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Responsible Use of AI for Non-Coders: BRC and AI Tools\"\nsubtitle: \" <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> Bioinformatics Resource Center - Rockefeller University\"\nauthor:\n  - \"[http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/](http://rockefelleruniversity.github.io/responsible_use_of_AI_for_noncoders/)\"\n  - \"[brc@rockefeller.edu](mailto:brc@rockefeller.edu)\"\n---\n\n\n\n\n::: {.content-hidden when-format=\"revealjs\"}\n# Responsible Use of AI for Non-Coders: BRC and AI Tools\n:::\n\n## Overview\n\n*Presenter: ?? — ?? mins*\n\n- [How the BRC uses AI](#how-the-brc-uses-ai)\n- [Tools and resources from the BRC](#tools-and-resources-from-the-brc)\n- [Working with the BRC](#working-with-the-brc)\n\n??Suggested slide titles and content are below. Keep, cut or replace them. Everything in this section is a placeholder until you fill it.??\n\n# BRC and AI tools {#how-the-brc-uses-ai background-color=\"#23373B\" .center .middle}\n\n## How the BRC uses AI\n\n??How the BRC uses AI in its own work: where it helps and where we don't use it. Ties back to the strengths and limitations section, with one or two concrete examples from past projects (e.g. the SCENIC+ example).??\n\n## What we have learned\n\n??Lessons from using AI on core facility projects: what went well, what cost more time than it saved, and what we changed as a result.??\n\n# Tools and resources from the BRC {#tools-and-resources-from-the-brc background-color=\"#23373B\" .center .middle}\n\n## BRC tools available through RU Claude\n\nRockefeller intends to make RU-developed methods, for example BRC's tools, available via RU Claude (see *AI Strategy at Rockefeller*).\n\n??List the BRC tools and resources that will be available this way, how to access them and their current status (available now / planned).??\n\n## Course and teaching materials\n\n??Link to BRC training materials and how they can be used with AI tools (e.g. as context to supply in a prompt).??\n\n## Skills, templates and shared configuration\n\n??Examples of packaged instructions, project templates or configuration files the BRC provides so that everyone starts from the same good defaults. Links to the *Customizing Your LLM* and *AI in Your Workflow* sections.??\n\n# Working with the BRC {#working-with-the-brc background-color=\"#23373B\" .center .middle}\n\n## When to talk to us\n\n??When to contact the BRC: reviewing an AI-assisted analysis, choosing a method, setting up a reproducible workflow, a new tool you want to try.??\n\n## Feedback and community contributions\n\n??How to send feedback, request tools and contribute (the AI Strategy section says community contributions are welcome).??\n\n## Contact\n\n??Contact details and where to find BRC resources.??\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
