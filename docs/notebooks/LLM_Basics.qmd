@@ -136,9 +136,9 @@ NEVER give LLMs access to PHI or PII (ex: patient health records, financial info
 
 A caveat to some of these privacy concerns is *siloing*. 
 
-RU has reached agreements with several AI companies (Anthropic/Claude and Microsoft/Copilot) so that data of users with RU emails will not be used to train models.
+For Claude and Copilot, data from users with RU emails will not be used to train models.You can also adjust settings to have the same effect in other models.
 
-This is important because it prevents the leakage of private data and research ideas to other users of the LLMs. Always try to use enterprise models with your RU email address.
+This is important because it prevents the leakage of private data and research ideas to other users of the LLMs. 
 
 It is unclear whether the AI companies have control over the siloing of their models.
 
