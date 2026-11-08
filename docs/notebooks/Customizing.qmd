@@ -17,30 +17,152 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-*Presenter: Tom — 30 mins*
 
 - [Skills](#skills)
-- [Connectors and plugins](#connectors-and-plugins)
-- [Knowledge-based queries](#knowledge-based-queries)
+- [Connectors ](#connectors)
+- [Plugins](#plugins)
 - [Exercises](#time-for-an-exercise)
 
 # Customizing {background-color="#23373B" .center .middle}
 
-## Skills
+## Customising your AI agent
 
-??What a skill is (packaged instructions the model loads for a particular kind of task), and examples??
+We have seen that we can guide how an AI agent acts by providing relevant files -
 
-## Connectors and plugins
+* CLAUDE.md, Agents.md.
+* Memory.md.
+* RAG databases.
 
-??Connectors and plugins, introducing the Model Context Protocol (MCP) as the standard way to connect an AI tool to other services and data??
+## Customising AI agent's abilities.
 
-## Knowledge-based queries
+We can also control how an agent acts when it wants to perform a certain task and/or undergo an action.
 
-??What connectors and retrieval mean for knowledge-based queries: grounding answers in your own documents rather than the model's training data??
+To do this we can make use of SKILLs and/or MCP servers.
 
-## Going further
+SKILLs - Self contained markdown files describing tool use or computational protocol.
+MCP - API service allowing the use of specific functions.
 
-??Related topics and a link to the expanded course??
+## Built-in Slash commands {.smaller}
+
+Agent harnesses such as as Claude Code/Codex/Opencode have built in commands which we can use to control our sessions.
+
+The names differ between tools, but the ideas are the same.
+
+| What it does | Claude Code | Codex | opencode |
+|---|---|---|---|
+| Summarise the conversation to free up context | `/compact` | `/compact` | `/compact` |
+| Ask a quick side question without adding it to the conversation | `/btw` | `/side` (or `/btw`) | `/btw` |
+| Go back to an earlier point (conversation and/or files) | `/rewind` | `Esc Esc` (edit last message, fork from there) | `/undo`, `/redo` |
+| Plan first, change nothing until you approve | `/plan` | `/plan` | `Tab` (switch to Plan agent) |
+| Share or view outputs outside the terminal | `/artifacts` | `/app` (open in desktop app, which previews files) | `/share` (link to the session) |
+
+Type `/` in any of them to see the full list for your version.
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Commands change between versions; checked November 2026. opencode's /undo and /redo need the project to be a git repository. Codex's /side opens a temporary side chat (/btw is an alias); opencode's built-in /btw is in recent versions, older ones need a plugin.
+:::
+:::::
+
+
+# SKILLs {#skills .center .middle background-color="#23373B"}
+
+## What is a Skill
+
+A SKILL is a way for you to extend your AI agent's abilities with additional information such as a workflow and/or protocol.
+
+SKILLs are loaded on demand as required by the user using a "/" invocation or by the AI agent as it determines necessary.
+
+## The Skill format
+
+Originally formalized by Anthropic, SKILLs follow a open format - [Agent Skills](https://agentskills.io/specification) standard
+
+A SKILL is directory containing at a minimum a SKILL.md file.
+
+My_favourite_Skill/
+├── SKILL.md          # Required: metadata + instructions
+├── scripts/          # Optional: executable code
+├── references/       # Optional: documentation
+├── assets/           # Optional: templates, resources
+└── ...               # Any additional files or directories
+
+# SKILL.md file {#skill-md .center .middle background-color="#23373B"}
+
+## SKILL.md file - YAML header
+
+The required *SKILL.md* file needs a YAML header and must have the `name` and `description` fields.
+
+  - **name:** can only contain lower case letters, numbers, and hypens (no hyphens at the beginning or end of the name)
+  - **description:** max of 1024 characters outlining what this skill does, and when the model should use it. 
+  
+
+```{.yaml filename="SKILL.md"}
+---
+name: bioinformatics-skill
+description: What does this skill do? When should it be used?
+---
+
+```
+
+## SKILL.md file - Body section
+
+After the metadata header, the rest of the SKILL.md file is markdown-formatted text providing instructions to the model. This can take many forms, but it might include:
+
+- steps in a workflow
+- expected outputs
+- common problems to avoid
+- when to run scripts in the skills folder
+- recommended to keep below 500 lines (~5k tokens) - more details or code templates can be selectively read from the *references* or *assets* folders.
+
+## Templates.
+
+When making reports it can be good to provide template files in the "references/" folder to allow for consistency in your reporting.
+
+Templates can be in any format but Markdown and Quarto formats provide an easily readable format for reports with code for plotting/visualisation including and citation management included.
+
+## Good skill practice
+
+
+# SKILL management and installation {#skillmanagment .center .middle background-color="#23373B"}
+
+## Skill scope
+
+The location of this folder will determine where that skill is available.
+
+  - for global skills, with claude this will be located at *~/.claude/skills*
+  - this will be slightly different for other models (e.g. *~/.codex/skills/*)
+  - skills can also be limited to specific folders or projects. 
+  - a *.claude* or *.codex* directory can exist anywhere on your system, and your session will read any skill that exists in the path of that project. 
+
+## Public Skill repositories
+
+ - [awesome-skills.com](https://awesome-skills.com/?tags=review)
+ - [https://github.com/anthropics/skills](https://github.com/anthropics/skills)
+ - [https://github.com/openai/plugins](https://github.com/openai/plugins)
+ - [https://github.com/mattpocock/skills](https://github.com/mattpocock/skills)
+ - [https://github.com/obra/superpowers](https://github.com/obra/superpowers)
+ - [https://github.com/GoekeLab/awesome-genomic-skills](https://github.com/GoekeLab/awesome-genomic-skills): good resource for bioinformatics or science-focused skills
+
+
+### Example skills
+- `grill-me`
+- `Docker`
+- `no slop`
+
+### Skill creator
+- `/skill-creator`
+
+## Connectors
+
+### Loading connectors
+
+### Connector repositories
+
+## Plugins
+
+### Plugin repositories
+
+### BRC MCP
 
 ## Time for an exercise!
 
