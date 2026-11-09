@@ -3102,14 +3102,13 @@ vertical-align: -.125em;
   <li><a href="#skillmanagment" id="toc-skillmanagment" class="nav-link" data-scroll-target="#skillmanagment">SKILL management and installation</a>
   <ul class="collapse">
   <li><a href="#skill-scope" id="toc-skill-scope" class="nav-link" data-scroll-target="#skill-scope">Skill scope</a></li>
-  <li><a href="#public-skill-repositories" id="toc-public-skill-repositories" class="nav-link" data-scroll-target="#public-skill-repositories">Public Skill repositories</a>
-  <ul class="collapse">
-  <li><a href="#example-skills" id="toc-example-skills" class="nav-link" data-scroll-target="#example-skills">Example skills</a></li>
+  <li><a href="#public-skill-repositories" id="toc-public-skill-repositories" class="nav-link" data-scroll-target="#public-skill-repositories">Public Skill repositories</a></li>
+  <li><a href="#installing-skills" id="toc-installing-skills" class="nav-link" data-scroll-target="#installing-skills">Installing Skills</a></li>
+  <li><a href="#some-useful-skills" id="toc-some-useful-skills" class="nav-link" data-scroll-target="#some-useful-skills">Some useful SKILLs</a></li>
   <li><a href="#skill-creator" id="toc-skill-creator" class="nav-link" data-scroll-target="#skill-creator">Skill creator</a></li>
-  </ul></li>
-  <li><a href="#connectors" id="toc-connectors" class="nav-link" data-scroll-target="#connectors">Connectors</a>
+  <li><a href="#connectors" id="toc-connectors" class="nav-link" data-scroll-target="#connectors">Connectors</a></li>
+  <li><a href="#loading-connectors" id="toc-loading-connectors" class="nav-link" data-scroll-target="#loading-connectors">Loading connectors</a>
   <ul class="collapse">
-  <li><a href="#loading-connectors" id="toc-loading-connectors" class="nav-link" data-scroll-target="#loading-connectors">Loading connectors</a></li>
   <li><a href="#connector-repositories" id="toc-connector-repositories" class="nav-link" data-scroll-target="#connector-repositories">Connector repositories</a></li>
   </ul></li>
   <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a>
@@ -3316,26 +3315,68 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><a href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a></li>
 <li><a href="https://github.com/GoekeLab/awesome-genomic-skills">https://github.com/GoekeLab/awesome-genomic-skills</a>: good resource for bioinformatics or science-focused skills</li>
 </ul>
-<section id="example-skills" class="level3">
-<h3 class="anchored" data-anchor-id="example-skills">Example skills</h3>
+</section>
+<section id="installing-skills" class="level2">
+<h2 class="anchored" data-anchor-id="installing-skills">Installing Skills</h2>
+<p>Installing SKILLs should be straightforward.</p>
+<p>Lets use the <a href="https://github.com/docker/skills/">Docker skills</a> as an example.</p>
 <ul>
-<li><code>grill-me</code></li>
-<li><code>Docker</code></li>
-<li><code>no slop</code></li>
+<li>We can simply download and copy the SKILLs directories to our local AI agents central skills directory.</li>
+<li>We can use the <a href="https://www.skills.sh"><em>npx skills</em> CLI command</a> to add skills from GitHub - <strong>npx skills add docker/skills –all</strong></li>
+<li>Ask your agent to install a SKILL by pointing it at the GitHub.</li>
 </ul>
 </section>
-<section id="skill-creator" class="level3">
-<h3 class="anchored" data-anchor-id="skill-creator">Skill creator</h3>
-<ul>
-<li><code>/skill-creator</code></li>
-</ul>
+<section id="some-useful-skills" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="some-useful-skills">Some useful SKILLs</h2>
+<p>Your SKILLs setup will develop over time as you find the ones most useful to your work.</p>
+<p>Here are some interesting SKILLs which you may find useful.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Skill</th>
+<th>Source</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>find-skills</code></td>
+<td><a href="https://github.com/vercel-labs/skills">vercel-labs/skills</a></td>
+<td>Searches the skills.sh directory and installs skills for a task you describe</td>
+</tr>
+<tr class="even">
+<td><code>grill-me</code></td>
+<td><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></td>
+<td>Interviews you, one question at a time, until your plan has no loose ends</td>
+</tr>
+<tr class="odd">
+<td><code>stop-slop</code></td>
+<td><a href="https://github.com/hardikpandya/stop-slop">hardikpandya/stop-slop</a></td>
+<td>Removes “AI-sounding” writing: filler phrases, passive voice, em dashes</td>
+</tr>
+<tr class="even">
+<td><code>discernment-nudge</code></td>
+<td><a href="https://github.com/anthropics/skills">anthropics/skills</a></td>
+<td>Ends answers you might act on with 2-3 questions to help you check facts, reasoning and missing context</td>
+</tr>
+</tbody>
+</table>
+<p>Most can be installed with <code>npx skills add &lt;source&gt;</code>. Read the SKILL.md before you install.</p>
 </section>
+<section id="skill-creator" class="level2">
+<h2 class="anchored" data-anchor-id="skill-creator">Skill creator</h2>
+<p>Anthropic have created a <a href="https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md">skill-creator SKILL</a> to create more SKILLs</p>
+<p>During or after a session you can ask your agent to create a SKILL with an appropriate SKILL.md file and associated templates and resources.</p>
+<p>Custom SKILLs as well as existing SKILLs can be reviewed and updated as required.</p>
 </section>
 <section id="connectors" class="level2">
 <h2 class="anchored" data-anchor-id="connectors">Connectors</h2>
-<section id="loading-connectors" class="level3">
-<h3 class="anchored" data-anchor-id="loading-connectors">Loading connectors</h3>
+<p>Connectors allow for coding Agents to interact with 3rdd party software, apps and web services though a defined catalog of functionality.</p>
+<p>This allows AI agents to interact with real world data securely and with guardrails.</p>
+<p>Model Context Protocol (MCP) servers are the standard setup for AI agent connectors.</p>
 </section>
+<section id="loading-connectors" class="level2">
+<h2 class="anchored" data-anchor-id="loading-connectors">Loading connectors</h2>
 <section id="connector-repositories" class="level3">
 <h3 class="anchored" data-anchor-id="connector-repositories">Connector repositories</h3>
 </section>
