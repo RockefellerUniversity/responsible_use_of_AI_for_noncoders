@@ -1,4 +1,4 @@
-#### **Customizing Your LLM** (30 mins, Tom)
+#### **Customizing Your LLM**
 
 Extending an AI assistant with your own instructions, skills and connections.
 

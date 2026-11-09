@@ -1,4 +1,4 @@
-#### **AI in Your Workflow** (50 mins, Matt)
+#### **AI in Your Workflow**
 
 How to work with AI safely and effectively, even if you can't read the code it writes.
 

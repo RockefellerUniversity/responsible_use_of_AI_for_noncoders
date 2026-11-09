@@ -1,4 +1,4 @@
-#### **Basics of LLMs** (45 mins, Claire)
+#### **Basics of LLMs**
 
 What large language models (LLMs) are, how they are built, and how the tools you use fit together.
 

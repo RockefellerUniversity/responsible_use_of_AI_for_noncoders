@@ -17,8 +17,6 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-*Presenter: Claire — 30 mins*
-
 - [How models are built](#how-models-are-built)
 - [Who runs the models](#who-runs-the-models)
 - [Journal policies](#journal-policies)

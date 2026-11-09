@@ -17,8 +17,6 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-*Presenter: Tom — 30 mins*
-
 - [Skills](#skills)
 - [Connectors and plugins](#connectors-and-plugins)
 - [Knowledge-based queries](#knowledge-based-queries)

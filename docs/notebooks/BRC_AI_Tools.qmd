@@ -17,8 +17,6 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-*Presenter: ?? — ?? mins*
-
 - [How the BRC uses AI](#how-the-brc-uses-ai)
 - [Tools and resources from the BRC](#tools-and-resources-from-the-brc)
 - [Working with the BRC](#working-with-the-brc)
