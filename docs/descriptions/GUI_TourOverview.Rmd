@@ -1,4 +1,4 @@
-#### **Interface Tour** (10 mins)
+#### **Interface Tour**
 
 A quick side-by-side tour of the Codex and Claude Code graphical apps, showing where the key features live.
 
