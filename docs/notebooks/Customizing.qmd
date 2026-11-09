@@ -193,16 +193,90 @@ This allows AI agents to interact with real world data securely and with guardra
 
 Model Context Protocol (MCP) servers are the standard setup for AI agent connectors. 
 
-## Loading connectors
+## MCP connectors
+
+MCP standard was established by Anthropic.
+
+Each MCP server has an overall description and each tool which is callable has a description of its inputs/outputs and use.
+
+The AI agent can see the function descriptions and make function calls but can not interact with the MCP internals beyond this.
 
 
-### Connector repositories
+## MCP repositories
 
-## Plugins
+Many repositories for MCP servers exists.
 
-### Plugin repositories
+Two popular places to search for MCP servers are
 
-### BRC MCP
+[Official MCP registry](https://registry.modelcontextprotocol.io)
+
+[punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)
+
+Installation of a MCP server involves updating a settings.json files so best done by asking your Agent to do for you.
+
+## Some useful MCP resources {.smaller}
+
+| MCP | Source | Used for |
+|---|---|---|
+| Google | [google/mcp](https://github.com/google/mcp) | Catalogue of Google's official servers: Workspace (Docs, Sheets, Gmail, Calendar), Maps, BigQuery and Google Cloud |
+| Microsoft | [microsoft/mcp](https://github.com/microsoft/mcp) | Catalogue of Microsoft's official servers: Azure, Microsoft 365, and MarkItDown (turns Office files and PDFs into text) |
+| GitHub | [github/github-mcp-server](https://github.com/github/github-mcp-server) | Reading and managing repositories, issues and pull requests |
+| AWS | [awslabs/mcp](https://github.com/awslabs/mcp) | Working with Amazon Web Services and their documentation |
+| Context7 | [upstash/context7](https://github.com/upstash/context7) | Up-to-date documentation for software libraries, so the agent isn't relying on old training data |
+
+Prefer official servers from the company that owns the service: an MCP server can read and act on your data.
+
+## Plugins {.smaller}
+
+A plugin is a **bundle** of the things we have seen so far, packaged so it can be installed in one step.
+
+:::: {.columns}
+::: {.column width="50%"}
+A single plugin can contain:
+
+- Skills
+- Slash commands
+- Subagents (helpers with their own instructions)
+- Hooks (actions that run automatically)
+- MCP servers
+:::
+::: {.column width="50%"}
+Plugins are installed from a **marketplace**: a GitHub repository that lists plugins.
+
+- Claude Code: `/plugin`
+- Codex: `/plugins`
+- opencode: added in its config file
+:::
+::::
+
+Plugins can run code and connect to services, so treat them like installing software: check who publishes them.
+
+## Plugin repositories {.smaller}
+
+| Repository | Agent | What's in it |
+|---|---|---|
+| [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | Claude Code | Anthropic's official directory of reviewed plugins |
+| [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Claude Code, Cowork | Plugins aimed at knowledge workers rather than coders |
+| [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | Claude Code, Codex and others | 170+ science skills (databases, literature review, statistics, writing) |
+| [openai/plugins](https://github.com/openai/plugins) | Codex | OpenAI's curated plugins, e.g. Notion, Figma and Google Slides |
+| [awesome-opencode](https://github.com/awesome-opencode/awesome-opencode) | opencode | Community list of opencode plugins and agents |
+
+In Claude Code, add a marketplace with `/plugin marketplace add <repository>`, then install from the list.
+
+## Useful plugins {.smaller}
+
+| Plugin | Source | What it gives you |
+|---|---|---|
+| `bio-research` | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Connections to PubMed, bioRxiv/medRxiv, clinical trials, Open Targets and BioRender, plus analysis skills |
+| `scientific-agent-skills` | [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills) | 170+ science skills: literature review, databases, statistics, scientific writing |
+| `data` | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) | Explore datasets, build charts and summarise results |
+| `claude-md-management` | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | Audits your CLAUDE.md and adds what was learned in a session |
+| `session-report` | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | A report of where your tokens went: context, caching and the most expensive prompts |
+| `context-mode` | [mksglu/context-mode](https://github.com/mksglu/context-mode) | Keeps large tool outputs (web pages, files) out of the context window |
+
+Install only what you need: every plugin adds to the context of every session.
+
+## BRC MCP
 
 ## Time for an exercise!
 
