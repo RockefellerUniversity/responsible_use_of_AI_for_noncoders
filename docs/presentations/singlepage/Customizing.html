@@ -3107,15 +3107,13 @@ vertical-align: -.125em;
   <li><a href="#some-useful-skills" id="toc-some-useful-skills" class="nav-link" data-scroll-target="#some-useful-skills">Some useful SKILLs</a></li>
   <li><a href="#skill-creator" id="toc-skill-creator" class="nav-link" data-scroll-target="#skill-creator">Skill creator</a></li>
   <li><a href="#connectors" id="toc-connectors" class="nav-link" data-scroll-target="#connectors">Connectors</a></li>
-  <li><a href="#loading-connectors" id="toc-loading-connectors" class="nav-link" data-scroll-target="#loading-connectors">Loading connectors</a>
-  <ul class="collapse">
-  <li><a href="#connector-repositories" id="toc-connector-repositories" class="nav-link" data-scroll-target="#connector-repositories">Connector repositories</a></li>
-  </ul></li>
-  <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a>
-  <ul class="collapse">
+  <li><a href="#mcp-connectors" id="toc-mcp-connectors" class="nav-link" data-scroll-target="#mcp-connectors">MCP connectors</a></li>
+  <li><a href="#mcp-repositories" id="toc-mcp-repositories" class="nav-link" data-scroll-target="#mcp-repositories">MCP repositories</a></li>
+  <li><a href="#some-useful-mcp-resources" id="toc-some-useful-mcp-resources" class="nav-link" data-scroll-target="#some-useful-mcp-resources">Some useful MCP resources</a></li>
+  <li><a href="#plugins" id="toc-plugins" class="nav-link" data-scroll-target="#plugins">Plugins</a></li>
   <li><a href="#plugin-repositories" id="toc-plugin-repositories" class="nav-link" data-scroll-target="#plugin-repositories">Plugin repositories</a></li>
+  <li><a href="#useful-plugins" id="toc-useful-plugins" class="nav-link" data-scroll-target="#useful-plugins">Useful plugins</a></li>
   <li><a href="#brc-mcp" id="toc-brc-mcp" class="nav-link" data-scroll-target="#brc-mcp">BRC MCP</a></li>
-  </ul></li>
   <li><a href="#time-for-an-exercise" id="toc-time-for-an-exercise" class="nav-link" data-scroll-target="#time-for-an-exercise">Time for an exercise!</a></li>
   <li><a href="#answers-to-exercise" id="toc-answers-to-exercise" class="nav-link" data-scroll-target="#answers-to-exercise">Answers to exercise</a></li>
   </ul></li>
@@ -3375,20 +3373,171 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>This allows AI agents to interact with real world data securely and with guardrails.</p>
 <p>Model Context Protocol (MCP) servers are the standard setup for AI agent connectors.</p>
 </section>
-<section id="loading-connectors" class="level2">
-<h2 class="anchored" data-anchor-id="loading-connectors">Loading connectors</h2>
-<section id="connector-repositories" class="level3">
-<h3 class="anchored" data-anchor-id="connector-repositories">Connector repositories</h3>
+<section id="mcp-connectors" class="level2">
+<h2 class="anchored" data-anchor-id="mcp-connectors">MCP connectors</h2>
+<p>MCP standard was established by Anthropic.</p>
+<p>Each MCP server has an overall description and each tool which is callable has a description of its inputs/outputs and use.</p>
+<p>The AI agent can see the function descriptions and make function calls but can not interact with the MCP internals beyond this.</p>
 </section>
+<section id="mcp-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="mcp-repositories">MCP repositories</h2>
+<p>Many repositories for MCP servers exists.</p>
+<p>Two popular places to search for MCP servers are</p>
+<p><a href="https://registry.modelcontextprotocol.io">Official MCP registry</a></p>
+<p><a href="https://github.com/punkpeye/awesome-mcp-servers">punkpeye/awesome-mcp-servers</a></p>
+<p>Installation of a MCP server involves updating a settings.json files so best done by asking your Agent to do for you.</p>
 </section>
-<section id="plugins" class="level2">
-<h2 class="anchored" data-anchor-id="plugins">Plugins</h2>
-<section id="plugin-repositories" class="level3">
-<h3 class="anchored" data-anchor-id="plugin-repositories">Plugin repositories</h3>
+<section id="some-useful-mcp-resources" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="some-useful-mcp-resources">Some useful MCP resources</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>MCP</th>
+<th>Source</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Google</td>
+<td><a href="https://github.com/google/mcp">google/mcp</a></td>
+<td>Catalogue of Google’s official servers: Workspace (Docs, Sheets, Gmail, Calendar), Maps, BigQuery and Google Cloud</td>
+</tr>
+<tr class="even">
+<td>Microsoft</td>
+<td><a href="https://github.com/microsoft/mcp">microsoft/mcp</a></td>
+<td>Catalogue of Microsoft’s official servers: Azure, Microsoft 365, and MarkItDown (turns Office files and PDFs into text)</td>
+</tr>
+<tr class="odd">
+<td>GitHub</td>
+<td><a href="https://github.com/github/github-mcp-server">github/github-mcp-server</a></td>
+<td>Reading and managing repositories, issues and pull requests</td>
+</tr>
+<tr class="even">
+<td>AWS</td>
+<td><a href="https://github.com/awslabs/mcp">awslabs/mcp</a></td>
+<td>Working with Amazon Web Services and their documentation</td>
+</tr>
+<tr class="odd">
+<td>Context7</td>
+<td><a href="https://github.com/upstash/context7">upstash/context7</a></td>
+<td>Up-to-date documentation for software libraries, so the agent isn’t relying on old training data</td>
+</tr>
+</tbody>
+</table>
+<p>Prefer official servers from the company that owns the service: an MCP server can read and act on your data.</p>
 </section>
-<section id="brc-mcp" class="level3">
-<h3 class="anchored" data-anchor-id="brc-mcp">BRC MCP</h3>
+<section id="plugins" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="plugins">Plugins</h2>
+<p>A plugin is a <strong>bundle</strong> of the things we have seen so far, packaged so it can be installed in one step.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>A single plugin can contain:</p>
+<ul>
+<li>Skills</li>
+<li>Slash commands</li>
+<li>Subagents (helpers with their own instructions)</li>
+<li>Hooks (actions that run automatically)</li>
+<li>MCP servers</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Plugins are installed from a <strong>marketplace</strong>: a GitHub repository that lists plugins.</p>
+<ul>
+<li>Claude Code: <code>/plugin</code></li>
+<li>Codex: <code>/plugins</code></li>
+<li>opencode: added in its config file</li>
+</ul>
+</div>
+</div>
+<p>Plugins can run code and connect to services, so treat them like installing software: check who publishes them.</p>
 </section>
+<section id="plugin-repositories" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="plugin-repositories">Plugin repositories</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Repository</th>
+<th>Agent</th>
+<th>What’s in it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://github.com/anthropics/claude-plugins-official">anthropics/claude-plugins-official</a></td>
+<td>Claude Code</td>
+<td>Anthropic’s official directory of reviewed plugins</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/anthropics/knowledge-work-plugins">anthropics/knowledge-work-plugins</a></td>
+<td>Claude Code, Cowork</td>
+<td>Plugins aimed at knowledge workers rather than coders</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></td>
+<td>Claude Code, Codex and others</td>
+<td>170+ science skills (databases, literature review, statistics, writing)</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/openai/plugins">openai/plugins</a></td>
+<td>Codex</td>
+<td>OpenAI’s curated plugins, e.g. Notion, Figma and Google Slides</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/awesome-opencode/awesome-opencode">awesome-opencode</a></td>
+<td>opencode</td>
+<td>Community list of opencode plugins and agents</td>
+</tr>
+</tbody>
+</table>
+<p>In Claude Code, add a marketplace with <code>/plugin marketplace add &lt;repository&gt;</code>, then install from the list.</p>
+</section>
+<section id="useful-plugins" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="useful-plugins">Useful plugins</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Plugin</th>
+<th>Source</th>
+<th>What it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>bio-research</code></td>
+<td><a href="https://github.com/anthropics/knowledge-work-plugins">anthropics/knowledge-work-plugins</a></td>
+<td>Connections to PubMed, bioRxiv/medRxiv, clinical trials, Open Targets and BioRender, plus analysis skills</td>
+</tr>
+<tr class="even">
+<td><code>scientific-agent-skills</code></td>
+<td><a href="https://github.com/K-Dense-AI/scientific-agent-skills">K-Dense-AI/scientific-agent-skills</a></td>
+<td>170+ science skills: literature review, databases, statistics, scientific writing</td>
+</tr>
+<tr class="odd">
+<td><code>data</code></td>
+<td><a href="https://github.com/anthropics/knowledge-work-plugins">anthropics/knowledge-work-plugins</a></td>
+<td>Explore datasets, build charts and summarise results</td>
+</tr>
+<tr class="even">
+<td><code>claude-md-management</code></td>
+<td><a href="https://github.com/anthropics/claude-plugins-official">anthropics/claude-plugins-official</a></td>
+<td>Audits your CLAUDE.md and adds what was learned in a session</td>
+</tr>
+<tr class="odd">
+<td><code>session-report</code></td>
+<td><a href="https://github.com/anthropics/claude-plugins-official">anthropics/claude-plugins-official</a></td>
+<td>A report of where your tokens went: context, caching and the most expensive prompts</td>
+</tr>
+<tr class="even">
+<td><code>context-mode</code></td>
+<td><a href="https://github.com/mksglu/context-mode">mksglu/context-mode</a></td>
+<td>Keeps large tool outputs (web pages, files) out of the context window</td>
+</tr>
+</tbody>
+</table>
+<p>Install only what you need: every plugin adds to the context of every session.</p>
+</section>
+<section id="brc-mcp" class="level2">
+<h2 class="anchored" data-anchor-id="brc-mcp">BRC MCP</h2>
 </section>
 <section id="time-for-an-exercise" class="level2">
 <h2 class="anchored" data-anchor-id="time-for-an-exercise">Time for an exercise!</h2>
