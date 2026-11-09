@@ -73,6 +73,8 @@ A SKILL is a way for you to extend your AI agent's abilities with additional inf
 
 SKILLs are loaded on demand as required by the user using a "/" invocation or by the AI agent as it determines necessary.
 
+
+
 ## The Skill format
 
 Originally formalized by Anthropic, SKILLs follow a open format - [Agent Skills](https://agentskills.io/specification) standard
@@ -143,18 +145,56 @@ The location of this folder will determine where that skill is available.
  - [https://github.com/obra/superpowers](https://github.com/obra/superpowers)
  - [https://github.com/GoekeLab/awesome-genomic-skills](https://github.com/GoekeLab/awesome-genomic-skills): good resource for bioinformatics or science-focused skills
 
+## Installing Skills
 
-### Example skills
-- `grill-me`
-- `Docker`
-- `no slop`
+Installing SKILLs should be straightforward.
 
-### Skill creator
-- `/skill-creator`
+Lets use the [Docker skills](https://github.com/docker/skills/) as an example.
+
+* We can simply download and copy the SKILLs directories to our local AI agents central skills directory.
+* We can use the [*npx skills* CLI command](https://www.skills.sh) to add skills from GitHub - **npx skills add docker/skills --all**
+* Ask your agent to install a SKILL by pointing it at the GitHub.
+
+## Some useful SKILLs {.smaller}
+
+Your SKILLs setup will develop over time as you find the ones most useful to your work.
+
+Here are some interesting SKILLs which you may find useful.
+
+| Skill | Source | What it does |
+|---|---|---|
+| `find-skills` | [vercel-labs/skills](https://github.com/vercel-labs/skills) | Searches the skills.sh directory and installs skills for a task you describe |
+| `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) | Interviews you, one question at a time, until your plan has no loose ends |
+| `stop-slop` | [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop) | Removes "AI-sounding" writing: filler phrases, passive voice, em dashes |
+| `discernment-nudge` | [anthropics/skills](https://github.com/anthropics/skills) | Ends answers you might act on with 2-3 questions to help you check facts, reasoning and missing context |
+
+Most can be installed with `npx skills add <source>`. Read the SKILL.md before you install.
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Token-saving skills such as caveman exist, but the savings are small (they only shorten output, a small share of tokens), and terse replies tend to drop the caveats you need to check the answer.
+:::
+:::::
+
+## Skill creator
+
+Anthropic have created a [skill-creator SKILL](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) to create more SKILLs
+
+During or after a session you can ask your agent to create a SKILL with an appropriate SKILL.md file and associated templates and resources.
+
+Custom SKILLs as well as existing SKILLs can be reviewed and updated as required.
+
 
 ## Connectors
 
-### Loading connectors
+Connectors allow for coding Agents to interact with 3rdd party software, apps and web services though a defined catalog of functionality.
+
+This allows AI agents to interact with real world data securely and with guardrails.
+
+Model Context Protocol (MCP) servers are the standard setup for AI agent connectors. 
+
+## Loading connectors
+
 
 ### Connector repositories
 
