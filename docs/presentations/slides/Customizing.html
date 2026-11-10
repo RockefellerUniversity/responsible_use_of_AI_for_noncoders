@@ -1353,6 +1353,7 @@ display:block!important;
 ├── references/       # Optional: documentation
 ├── assets/           # Optional: templates, resources
 └── ...               # Any additional files or directories</code></pre>
+<p><a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/global/skills/gene-summary" target="_blank">See an example skill folder</a></p>
 </section></section>
 <section>
 <section id="skill-md" class="title-slide slide level1 center middle" data-background-color="#23373B">
@@ -1375,6 +1376,7 @@ display:block!important;
 <span id="cb2-3"><a href></a><span class="fu">description</span><span class="kw">:</span><span class="at"> What does this skill do? When should it be used?</span></span>
 <span id="cb2-4"><a href></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/global/skills/gene-summary/SKILL.md" target="_blank">See an example SKILL.md</a></p>
 </section>
 <section id="skill.md-file---body-section" class="slide level2">
 <h2>SKILL.md file - Body section</h2>
@@ -1389,11 +1391,47 @@ display:block!important;
 </section>
 <section id="templates." class="slide level2">
 <h2>Templates.</h2>
-<p>When making reports it can be good to provide template files in the “references/” folder to allow for consistency in your reporting.</p>
+<p>When making reports it can be good to provide template files in the “assets/” folder to allow for consistency in your reporting.</p>
 <p>Templates can be in any format but Markdown and Quarto formats provide an easily readable format for reports with code for plotting/visualisation including and citation management included.</p>
+<p><a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/global/skills/gene-summary/assets/gene_summary_template.md" target="_blank">Example: a Markdown gene summary template</a></p>
 </section>
-<section id="good-skill-practice" class="slide level2">
+<section id="good-skill-practice" class="slide level2 smaller">
 <h2>Good skill practice</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Writing it</strong></p>
+<ol type="1">
+<li><strong>The description is the trigger.</strong> Until a skill is used, the agent sees only its name and description. Say <em>what</em> it does and <em>when</em> to use it, in the words people will type.</li>
+<li><strong>Only add what the model doesn’t know:</strong> your lab’s steps, sources, formats and pitfalls.</li>
+<li><strong>Keep SKILL.md short</strong> (under 500 lines). Put detail in <code>references/</code> and templates in <code>assets/</code>, linked from SKILL.md.</li>
+<li><strong>Script the exact parts.</strong> Steps that must give the same answer every time (IDs, conversions, calculations) belong in <code>scripts/</code>.</li>
+<li><strong>Show the output you want:</strong> a template or example, and a checklist for multi-step work.</li>
+</ol>
+</div><div class="column" style="width:50%;">
+<p><strong>Testing and trusting it</strong></p>
+<ol start="6" type="1">
+<li><strong>Test on real requests</strong> in a fresh session. Does it load when it should, and not when it shouldn’t? Is the result better than without it?</li>
+<li><strong>Build in checks:</strong> “open every reference”, “write <em>Not found</em>, never guess”, “list what you didn’t check”.</li>
+<li><strong>Avoid what goes stale:</strong> dates, versions, “the latest”.</li>
+<li><strong>Read before you install.</strong> Skills can run scripts on your computer. Use trusted sources.</li>
+<li><strong>Keep it in git</strong> and fix it when it gets something wrong.</li>
+</ol>
+</div>
+</div>
+<p><strong>A skill is still a guide:</strong> it makes good behaviour likely, not certain. <a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/global/skills/gene-summary" target="_blank">See an example skill</a></p>
+<aside class="notes">
+<p>Sources: Agent Skills specification (agentskills.io/specification); Anthropic, Skill authoring best practices (platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); Claude Code skills docs (code.claude.com/docs/en/skills). Description: third person (“Looks up a gene…”, not “I can help you…”), specific keywords, max 1024 characters. It is injected into the system prompt so the agent can decide when to load the skill. Progressive disclosure: name + description (~100 tokens) always loaded; SKILL.md on use (&lt;5k tokens); references/assets/scripts only when needed. Keep references one level deep: the agent may only skim files linked from other files. Scripts: more reliable and cheaper than having the model regenerate code each time. Say clearly whether to <em>run</em> a script or <em>read</em> it. Testing: Anthropic suggests at least three test scenarios, a baseline without the skill, and testing with each model you use (smaller models need more guidance). Claude Code: <code>disable-model-invocation: true</code> stops the agent loading a skill on its own (useful for anything with side effects); <code>allowed-tools</code> in a skill lets it use tools without asking, so check it in skills you didn’t write. Example: gene-summary skill (NCBI script, Markdown template in assets/, sources in references/, checklist and source tags in SKILL.md).</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section></section>
 <section>
 <section id="skillmanagment" class="title-slide slide level1 center middle" data-background-color="#23373B">
