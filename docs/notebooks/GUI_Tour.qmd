@@ -52,6 +52,8 @@ There are several key parts of the GUI.
 3. Project Organization
 4. Model Picker
 
+:::
+
 ::::
 
 
@@ -70,6 +72,8 @@ There are several key parts of the GUI.
 2. Conversation Area
 3. Project Organization
 4. Model Picker
+
+:::
 
 ::::
 
