@@ -24,6 +24,10 @@ Each folder here shows where the files really live on your computer:
 - `project/docs/decisions.md`: imported with `@`, so it is always read at the start.
 - `project/docs/analysis_plan.md`: only *pointed to*, so it is read only when needed.
 - `memory/MEMORY.md` + topic files: what Claude has learned about you and the project.
+- `global/skills/gene-summary/`: an example **skill**. `SKILL.md` gives the steps, `assets/` holds a
+  Markdown report template, `references/` lists the sources to search, and `scripts/` has a small
+  NCBI Gene lookup. Personal skills live in `~/.claude/skills/`; put one in a project's
+  `.claude/skills/` to share it with your team.
 
 **Hard rules (enforced by Claude Code itself, whatever the model "decides"):**
 

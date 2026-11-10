@@ -93,6 +93,8 @@ My_favourite_Skill/
 └── ...               # Any additional files or directories
 ```
 
+[See an example skill folder](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/global/skills/gene-summary){target="_blank"}
+
 # SKILL.md file {#skill-md .center .middle background-color="#23373B"}
 
 ## SKILL.md file - YAML header
@@ -111,6 +113,8 @@ description: What does this skill do? When should it be used?
 
 ```
 
+[See an example SKILL.md](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/global/skills/gene-summary/SKILL.md){target="_blank"}
+
 ## SKILL.md file - Body section
 
 After the metadata header, the rest of the SKILL.md file is markdown-formatted text providing instructions to the model. This can take many forms, but it might include:
@@ -123,11 +127,51 @@ After the metadata header, the rest of the SKILL.md file is markdown-formatted t
 
 ## Templates.
 
-When making reports it can be good to provide template files in the "references/" folder to allow for consistency in your reporting.
+When making reports it can be good to provide template files in the "assets/" folder to allow for consistency in your reporting.
 
 Templates can be in any format but Markdown and Quarto formats provide an easily readable format for reports with code for plotting/visualisation including and citation management included.
 
-## Good skill practice
+[Example: a Markdown gene summary template](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/global/skills/gene-summary/assets/gene_summary_template.md){target="_blank"}
+
+## Good skill practice {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Writing it**
+
+1. **The description is the trigger.** Until a skill is used, the agent sees only its name and description. Say *what* it does and *when* to use it, in the words people will type.
+2. **Only add what the model doesn't know:** your lab's steps, sources, formats and pitfalls.
+3. **Keep SKILL.md short** (under 500 lines). Put detail in `references/` and templates in `assets/`, linked from SKILL.md.
+4. **Script the exact parts.** Steps that must give the same answer every time (IDs, conversions, calculations) belong in `scripts/`.
+5. **Show the output you want:** a template or example, and a checklist for multi-step work.
+:::
+
+::: {.column width="50%"}
+**Testing and trusting it**
+
+6. **Test on real requests** in a fresh session. Does it load when it should, and not when it shouldn't? Is the result better than without it?
+7. **Build in checks:** "open every reference", "write *Not found*, never guess", "list what you didn't check".
+8. **Avoid what goes stale:** dates, versions, "the latest".
+9. **Read before you install.** Skills can run scripts on your computer. Use trusted sources.
+10. **Keep it in git** and fix it when it gets something wrong.
+:::
+
+::::
+
+**A skill is still a guide:** it makes good behaviour likely, not certain. [See an example skill](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/global/skills/gene-summary){target="_blank"}
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Sources: Agent Skills specification (agentskills.io/specification); Anthropic, Skill authoring best practices (platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); Claude Code skills docs (code.claude.com/docs/en/skills).
+Description: third person ("Looks up a gene...", not "I can help you..."), specific keywords, max 1024 characters. It is injected into the system prompt so the agent can decide when to load the skill.
+Progressive disclosure: name + description (~100 tokens) always loaded; SKILL.md on use (<5k tokens); references/assets/scripts only when needed. Keep references one level deep: the agent may only skim files linked from other files.
+Scripts: more reliable and cheaper than having the model regenerate code each time. Say clearly whether to *run* a script or *read* it.
+Testing: Anthropic suggests at least three test scenarios, a baseline without the skill, and testing with each model you use (smaller models need more guidance).
+Claude Code: `disable-model-invocation: true` stops the agent loading a skill on its own (useful for anything with side effects); `allowed-tools` in a skill lets it use tools without asking, so check it in skills you didn't write.
+Example: gene-summary skill (NCBI script, Markdown template in assets/, sources in references/, checklist and source tags in SKILL.md).
+:::
+:::::
 
 
 # SKILL management and installation {#skillmanagment .center .middle background-color="#23373B"}
