@@ -49,13 +49,67 @@ AI model.
 - [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
 
 
-## The response
+## From prompt to response
 
-The token embedding is then used with a transformer to generate a token response, one token at a time.
+```{mermaid}
+%%{init: {"flowchart": {"htmlLabels": false}}}%%
+flowchart LR
+  P(["Your prompt<br/>+ hidden instructions"]) --> T["Tokenise<br/>text → numbers"]
+  T --> M["Transformer<br/>(attention: each token<br/>weighs every other)"]
+  M --> N["Probability of<br/>every possible<br/>next token"]
+  N --> S["Pick one"]
+  S -- "add it, go again" --> M
+  S --> O(["Detokenise<br/>numbers → text"])
+```
 
-The transformer puts tokens into their context of other tokens within the supplied AI input.
+- The answer is built **one token at a time**; each new token is added to the input and the model runs again.
+- Knowledge comes from patterns learned in training. Nothing is looked up.
 
-Output tokens are detokenized back to raw text we receive as a response.
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Hidden instructions = system prompt (who the model is, today's date, tools available) plus the earlier conversation.
+Attention: "it" gets linked back to "Ikzf1"; this is what "tokens in their context" means.
+A 500-word answer is roughly 700 passes through the whole model. Text appears word by word because each token is detokenised as soon as it is picked.
+:::
+:::::
+
+## Attention: tokens in context
+
+> "What does Ikzf1 do, and is it linked to leukaemia?"
+
+- Inside the transformer, **attention** lets every token look at every other token in the input.
+- "it" attends to "Ikzf1", so the model knows what *it* means; "leukaemia" shapes what "linked" means.
+- The same word means different things in different context: "IKZF1 **expression**" vs "a facial **expression**".
+- Attention covers the **whole input**, not just your last prompt: everything in the context can change the answer.
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+This is the bridge to the rest of the session: because every token can attend to everything in the input, what is in the context matters.
+Good context steers the answer; irrelevant or wrong context can steer it just as strongly (later: context rot).
+:::
+:::::
+
+## One token at a time
+
+"IKZF1 encodes" → **Ikaros** (92%) · a (5%) · the (2%) …
+
+- The model picks a **likely** next token, not a checked fact: fluent text can still be wrong.
+- Some randomness in the pick (*temperature*) means the same prompt can give different answers.
+- Once a token is written, it can't be taken back.
+- Many models first write hidden **"thinking"** tokens, then the answer. The *effort* setting controls how much. You pay for these tokens even though you don't see them.
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Percentages are illustrative, not real model output.
+Hallucinated citations come from this: a plausible-looking reference is a likely sequence of tokens.
+Can't take tokens back is why "think step by step" helps: the model writes its reasoning before the answer.
+Thinking tokens are ordinary tokens in a section marked by special start/end tokens; the app hides that section or shows a summary.
+The model learned to think first in training because working-out led to more right answers. Effort is passed with the request and the model writes more or less thinking to match.
+Thinking is generated text, not a true window into how the model works: it can be confidently wrong too.
+Rarely, the model runs out of room mid-thinking and returns nothing: ask again or lower the effort.
+Where to set effort: see the GUI Tour session (Models and Effort).
+:::
+:::::
 
 ## Model has no memory
 
@@ -65,7 +119,7 @@ As this proceeds the full string of conversations and responses is sent alongsid
 
 The model's response therefore considers the latest prompt in the context of the whole conversation (previous prompts and responses)
 
-## The agent loop
+## The agent loop {.smaller}
 
 > "What does Ikzf1 do, and is it linked to leukaemia?"
 
@@ -82,6 +136,17 @@ flowchart LR
 
 - The model can't search anything itself. It *asks*, and the harness (e.g. Claude Code) runs the tool.
 - Every loop resends the **whole** context, which grows with each tool result.
+- The model decides whether to use a tool and when it's done, so it may answer from memory or stop early. Ask explicitly: "search for…", "check the file".
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+A tool call is just formatted text: the model writes e.g. WebSearch {"query": "IKZF1 deletion B-ALL prognosis"} and stops; it has not searched anything.
+It knows tools exist because the harness puts a hidden list (name, description, inputs) in the context. Calling one is still next-token prediction: "current literature" in the prompt matches "search the web for current information" in the tool description.
+Built-in tools (WebSearch, Read, Bash) and MCP tools look identical to the model; only the harness knows where to send the request.
+The loop ends when an output contains no tool call. Nothing is decided in advance: it is still one token at a time.
+The loop is the harness's code, not the model's: call model, run any tools, add results, call again. The harness also sets permissions and step limits, which is why Claude Code, Codex and opencode feel different on similar models.
+:::
+:::::
 
 ## Two questions, four model calls
 
@@ -102,9 +167,12 @@ flowchart LR
 - The first answer used no search: it came from training data, so it may be out of date.
 - Every call resends the conversation so far: our questions, its answers and the search results.
 
+[See the full session transcript](../../data/Ikzf1_transcript.html){target="_blank"}
+
 ::::: {.content-visible when-format="revealjs"}
 ::: notes
 Real session "Context", Claude Code, 8 Nov 2026.
+The transcript link shows each call's tokens in/out, stop reason, hidden thinking, tool calls and results, and what the harness attached.
 Ask: why did call 1 not search? (We didn't ask for current literature; the model judged training data was enough.)
 Chatbot = one call per question. Agent = loops until it decides it's done.
 :::
@@ -142,7 +210,7 @@ Providing the right context is very important in getting the best responses from
 ::: {.column width="55%"}
 - **52,300 tokens** used before we send a word: system tools, MCP tools, system prompt and skills.
 - ~89,000 more tokens of tools are *deferred*: listed by name only, loaded when needed (call 2 in our loop).
-- 33,000 tokens are held back as an **autocompact buffer**, so compression starts before the window is full.
+- 33,000 tokens are held back as an **autocompact buffer**, so the agent harness can be alerted to an almost full context window.
 :::
 
 ::::
@@ -157,11 +225,17 @@ Providing the right context is very important in getting the best responses from
 
 ::: {.column width="55%"}
 - 52.3k → **67.7k**. A new **Messages** slice of 16.4k appears, but our question was only **13 tokens** and the answer ~1,200.
-- The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, a plugin's instructions, our environment and the date.
-- **Everything you install costs context in every session**, before you type: plugins, skills, MCP servers.
+- The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, MCP server instructions, a plugin's instructions, our environment, email and the date.
 :::
 
 ::::
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Checked in the session transcript: attached to the first message were the skill list (~25.5k characters), deferred tool names (~11.5k), the ponytail plugin's hook text (~5.8k), agents (~4.7k), MCP server instructions (~2.5k), plus environment, model, email and date: about 51k characters, roughly 13-15k tokens.
+The figures are approximate: the panel's own categories appear to overlap (skills are shown before we type, but arrive with the first message), and the answer may include some hidden thinking tokens.
+:::
+:::::
 
 ## After a literature search
 
@@ -175,6 +249,8 @@ Providing the right context is very important in getting the best responses from
 - 67.7k → **76.8k**. Four web searches added ~8,000 tokens in one turn.
 - Still only 8% of the window, but every later message resends all of it.
 - A full paper, a large dataset or "review everything on Ikzf1" fills it much faster.
+
+[See the searches in the transcript](../../data/Ikzf1_transcript.html#call-3){target="_blank"}
 :::
 
 ::::
@@ -315,7 +391,7 @@ Compression is lossy and facts can be misread or misinterpreted once their conte
 
 ## The Daily example
 
-Our Ikzf1 session after `/compact`: **80,863 → 12,999 tokens**.
+Our Ikzf1 session after `/compact`: the conversation went from **~37k → ~13k tokens**; the ~44k of system prompt and tools stayed (total ~81k → ~57k).
 
 | Survived | Lost |
 |---|---|
@@ -329,6 +405,8 @@ The summary also said the review had **not yet been written**. It had.
 ::::: {.content-visible when-format="revealjs"}
 ::: notes
 From the session file of the "Context" session, 8 Nov 2026 (compact_boundary record: preTokens 80,863, postTokens 12,999).
+Those two numbers measure different things: 80,863 is the whole context; 12,999 is only the conversation after compaction (summary ~5.4k characters, last messages kept verbatim ~7.3k, plus the re-attached skill list, tool names, agents, MCP and plugin instructions ~50k characters).
+System prompt and tool definitions (~44k in the context panel: system tools 20.1k, MCP tools 14.5k, system prompt 9.5k) are never compressed, so conversation ~37k → ~13k, total ~81k → ~57k. Approximate: the panel and session file count slightly differently.
 Claude Code keeps the last few messages verbatim; the summary replaces everything before them, and was written without seeing those kept messages, hence the stale "not yet written".
 The summary also included facts never shown in either answer (e.g. RUNX1/3 protecting IKZFs), picked from raw search results.
 Lesson: numbers tend to survive, caveats and nuance don't, and a summary can be confidently wrong about what already happened.

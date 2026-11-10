@@ -3112,11 +3112,92 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><a href="https://platform.openai.com/tokenizer">OpenAI Tokenizer</a></li>
 </ul>
 </section>
-<section id="the-response" class="slide level2">
-<h2>The response</h2>
-<p>The token embedding is then used with a transformer to generate a token response, one token at a time.</p>
-<p>The transformer puts tokens into their context of other tokens within the supplied AI input.</p>
-<p>Output tokens are detokenized back to raw text we receive as a response.</p>
+<section id="from-prompt-to-response" class="slide level2">
+<h2>From prompt to response</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {&quot;flowchart&quot;: {&quot;htmlLabels&quot;: false}}}%%
+flowchart LR
+  P([&quot;Your prompt&lt;br/&gt;+ hidden instructions&quot;]) --&gt; T[&quot;Tokenise&lt;br/&gt;text → numbers&quot;]
+  T --&gt; M[&quot;Transformer&lt;br/&gt;(attention: each token&lt;br/&gt;weighs every other)&quot;]
+  M --&gt; N[&quot;Probability of&lt;br/&gt;every possible&lt;br/&gt;next token&quot;]
+  N --&gt; S[&quot;Pick one&quot;]
+  S -- &quot;add it, go again&quot; --&gt; M
+  S --&gt; O([&quot;Detokenise&lt;br/&gt;numbers → text&quot;])
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>The answer is built <strong>one token at a time</strong>; each new token is added to the input and the model runs again.</li>
+<li>Knowledge comes from patterns learned in training. Nothing is looked up.</li>
+</ul>
+<aside class="notes">
+<p>Hidden instructions = system prompt (who the model is, today’s date, tools available) plus the earlier conversation. Attention: “it” gets linked back to “Ikzf1”; this is what “tokens in their context” means. A 500-word answer is roughly 700 passes through the whole model. Text appears word by word because each token is detokenised as soon as it is picked.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="attention-tokens-in-context" class="slide level2">
+<h2>Attention: tokens in context</h2>
+<blockquote>
+<p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
+</blockquote>
+<ul>
+<li>Inside the transformer, <strong>attention</strong> lets every token look at every other token in the input.</li>
+<li>“it” attends to “Ikzf1”, so the model knows what <em>it</em> means; “leukaemia” shapes what “linked” means.</li>
+<li>The same word means different things in different context: “IKZF1 <strong>expression</strong>” vs “a facial <strong>expression</strong>”.</li>
+<li>Attention covers the <strong>whole input</strong>, not just your last prompt: everything in the context can change the answer.</li>
+</ul>
+<aside class="notes">
+<p>This is the bridge to the rest of the session: because every token can attend to everything in the input, what is in the context matters. Good context steers the answer; irrelevant or wrong context can steer it just as strongly (later: context rot).</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="one-token-at-a-time" class="slide level2">
+<h2>One token at a time</h2>
+<p>“IKZF1 encodes” → <strong>Ikaros</strong> (92%) · a (5%) · the (2%) …</p>
+<ul>
+<li>The model picks a <strong>likely</strong> next token, not a checked fact: fluent text can still be wrong.</li>
+<li>Some randomness in the pick (<em>temperature</em>) means the same prompt can give different answers.</li>
+<li>Once a token is written, it can’t be taken back.</li>
+<li>Many models first write hidden <strong>“thinking”</strong> tokens, then the answer. The <em>effort</em> setting controls how much. You pay for these tokens even though you don’t see them.</li>
+</ul>
+<aside class="notes">
+<p>Percentages are illustrative, not real model output. Hallucinated citations come from this: a plausible-looking reference is a likely sequence of tokens. Can’t take tokens back is why “think step by step” helps: the model writes its reasoning before the answer. Thinking tokens are ordinary tokens in a section marked by special start/end tokens; the app hides that section or shows a summary. The model learned to think first in training because working-out led to more right answers. Effort is passed with the request and the model writes more or less thinking to match. Thinking is generated text, not a true window into how the model works: it can be confidently wrong too. Rarely, the model runs out of room mid-thinking and returns nothing: ask again or lower the effort. Where to set effort: see the GUI Tour session (Models and Effort).</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="model-has-no-memory" class="slide level2">
 <h2>Model has no memory</h2>
@@ -3124,7 +3205,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>As this proceeds the full string of conversations and responses is sent alongside our latest prompt.</p>
 <p>The model’s response therefore considers the latest prompt in the context of the whole conversation (previous prompts and responses)</p>
 </section>
-<section id="the-agent-loop" class="slide level2">
+<section id="the-agent-loop" class="slide level2 smaller">
 <h2>The agent loop</h2>
 <blockquote>
 <p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
@@ -3151,7 +3232,21 @@ flowchart LR
 <ul>
 <li>The model can’t search anything itself. It <em>asks</em>, and the harness (e.g. Claude Code) runs the tool.</li>
 <li>Every loop resends the <strong>whole</strong> context, which grows with each tool result.</li>
+<li>The model decides whether to use a tool and when it’s done, so it may answer from memory or stop early. Ask explicitly: “search for…”, “check the file”.</li>
 </ul>
+<aside class="notes">
+<p>A tool call is just formatted text: the model writes e.g. WebSearch {“query”: “IKZF1 deletion B-ALL prognosis”} and stops; it has not searched anything. It knows tools exist because the harness puts a hidden list (name, description, inputs) in the context. Calling one is still next-token prediction: “current literature” in the prompt matches “search the web for current information” in the tool description. Built-in tools (WebSearch, Read, Bash) and MCP tools look identical to the model; only the harness knows where to send the request. The loop ends when an output contains no tool call. Nothing is decided in advance: it is still one token at a time. The loop is the harness’s code, not the model’s: call model, run any tools, add results, call again. The harness also sets permissions and step limits, which is why Claude Code, Codex and opencode feel different on similar models.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="two-questions-four-model-calls" class="slide level2">
 <h2>Two questions, four model calls</h2>
@@ -3180,8 +3275,9 @@ flowchart LR
 <li>The first answer used no search: it came from training data, so it may be out of date.</li>
 <li>Every call resends the conversation so far: our questions, its answers and the search results.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html" target="_blank">See the full session transcript</a></p>
 <aside class="notes">
-<p>Real session “Context”, Claude Code, 8 Nov 2026. Ask: why did call 1 not search? (We didn’t ask for current literature; the model judged training data was enough.) Chatbot = one call per question. Agent = loops until it decides it’s done.</p>
+<p>Real session “Context”, Claude Code, 8 Nov 2026. The transcript link shows each call’s tokens in/out, stop reason, hidden thinking, tool calls and results, and what the harness attached. Ask: why did call 1 not search? (We didn’t ask for current literature; the model judged training data was enough.) Chatbot = one call per question. Agent = loops until it decides it’s done.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -3224,7 +3320,7 @@ display:block!important;
 <ul>
 <li><strong>52,300 tokens</strong> used before we send a word: system tools, MCP tools, system prompt and skills.</li>
 <li>~89,000 more tokens of tools are <em>deferred</em>: listed by name only, loaded when needed (call 2 in our loop).</li>
-<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so compression starts before the window is full.</li>
+<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so the agent harness can be alerted to an almost full context window.</li>
 </ul>
 </div>
 </div>
@@ -3241,11 +3337,23 @@ display:block!important;
 </div><div class="column" style="width:55%;">
 <ul>
 <li>52.3k → <strong>67.7k</strong>. A new <strong>Messages</strong> slice of 16.4k appears, but our question was only <strong>13 tokens</strong> and the answer ~1,200.</li>
-<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, a plugin’s instructions, our environment and the date.</li>
-<li><strong>Everything you install costs context in every session</strong>, before you type: plugins, skills, MCP servers.</li>
+<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, MCP server instructions, a plugin’s instructions, our environment, email and the date.</li>
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Checked in the session transcript: attached to the first message were the skill list (~25.5k characters), deferred tool names (~11.5k), the ponytail plugin’s hook text (~5.8k), agents (~4.7k), MCP server instructions (~2.5k), plus environment, model, email and date: about 51k characters, roughly 13-15k tokens. The figures are approximate: the panel’s own categories appear to overlap (skills are shown before we type, but arrive with the first message), and the answer may include some hidden thinking tokens.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="after-a-literature-search" class="slide level2">
 <h2>After a literature search</h2>
@@ -3262,6 +3370,7 @@ display:block!important;
 <li>Still only 8% of the window, but every later message resends all of it.</li>
 <li>A full paper, a large dataset or “review everything on Ikzf1” fills it much faster.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html#call-3" target="_blank">See the searches in the transcript</a></p>
 </div>
 </div>
 <aside class="notes">
@@ -3386,7 +3495,7 @@ display:block!important;
 </section>
 <section id="the-daily-example" class="slide level2">
 <h2>The Daily example</h2>
-<p>Our Ikzf1 session after <code>/compact</code>: <strong>80,863 → 12,999 tokens</strong>.</p>
+<p>Our Ikzf1 session after <code>/compact</code>: the conversation went from <strong>~37k → ~13k tokens</strong>; the ~44k of system prompt and tools stayed (total ~81k → ~57k).</p>
 <table>
 <colgroup>
 <col style="width: 50%">
@@ -3419,7 +3528,7 @@ display:block!important;
 </table>
 <p>The summary also said the review had <strong>not yet been written</strong>. It had.</p>
 <aside class="notes">
-<p>From the session file of the “Context” session, 8 Nov 2026 (compact_boundary record: preTokens 80,863, postTokens 12,999). Claude Code keeps the last few messages verbatim; the summary replaces everything before them, and was written without seeing those kept messages, hence the stale “not yet written”. The summary also included facts never shown in either answer (e.g. RUNX1/3 protecting IKZFs), picked from raw search results. Lesson: numbers tend to survive, caveats and nuance don’t, and a summary can be confidently wrong about what already happened. Source count (5 of 11 kept) is a manual tally.</p>
+<p>From the session file of the “Context” session, 8 Nov 2026 (compact_boundary record: preTokens 80,863, postTokens 12,999). Those two numbers measure different things: 80,863 is the whole context; 12,999 is only the conversation after compaction (summary ~5.4k characters, last messages kept verbatim ~7.3k, plus the re-attached skill list, tool names, agents, MCP and plugin instructions ~50k characters). System prompt and tool definitions (~44k in the context panel: system tools 20.1k, MCP tools 14.5k, system prompt 9.5k) are never compressed, so conversation ~37k → ~13k, total ~81k → ~57k. Approximate: the panel and session file count slightly differently. Claude Code keeps the last few messages verbatim; the summary replaces everything before them, and was written without seeing those kept messages, hence the stale “not yet written”. The summary also included facts never shown in either answer (e.g. RUNX1/3 protecting IKZFs), picked from raw search results. Lesson: numbers tend to survive, caveats and nuance don’t, and a summary can be confidently wrong about what already happened. Source count (5 of 11 kept) is a manual tally.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

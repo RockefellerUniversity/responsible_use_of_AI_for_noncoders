@@ -393,8 +393,9 @@ Adversarial review can help, but ultimately you need to make sure you need to un
 
 ## Time for an exercise! {#time-for-an-exercise}
 
-Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Hallucination_exercise.html)
+Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_StrengthsLimitations_exercise.html)
 
 ## Answers to exercise
 
-Answers can be found [here](../../exercises/answers/Exercise_Hallucination_answers.html) 
+Answers can be found [here](../../exercises/answers/Exercise_StrengthsLimitations_answers.html) 
+

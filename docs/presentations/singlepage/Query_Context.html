@@ -4961,7 +4961,9 @@ z-index: 1000;
   <li><a href="#the-prompt" id="toc-the-prompt" class="nav-link" data-scroll-target="#the-prompt">The prompt</a></li>
   <li><a href="#writing-our-prompt" id="toc-writing-our-prompt" class="nav-link" data-scroll-target="#writing-our-prompt">Writing our prompt</a></li>
   <li><a href="#tokenising" id="toc-tokenising" class="nav-link" data-scroll-target="#tokenising">Tokenising</a></li>
-  <li><a href="#the-response" id="toc-the-response" class="nav-link" data-scroll-target="#the-response">The response</a></li>
+  <li><a href="#from-prompt-to-response" id="toc-from-prompt-to-response" class="nav-link" data-scroll-target="#from-prompt-to-response">From prompt to response</a></li>
+  <li><a href="#attention-tokens-in-context" id="toc-attention-tokens-in-context" class="nav-link" data-scroll-target="#attention-tokens-in-context">Attention: tokens in context</a></li>
+  <li><a href="#one-token-at-a-time" id="toc-one-token-at-a-time" class="nav-link" data-scroll-target="#one-token-at-a-time">One token at a time</a></li>
   <li><a href="#model-has-no-memory" id="toc-model-has-no-memory" class="nav-link" data-scroll-target="#model-has-no-memory">Model has no memory</a></li>
   <li><a href="#the-agent-loop" id="toc-the-agent-loop" class="nav-link" data-scroll-target="#the-agent-loop">The agent loop</a></li>
   <li><a href="#two-questions-four-model-calls" id="toc-two-questions-four-model-calls" class="nav-link" data-scroll-target="#two-questions-four-model-calls">Two questions, four model calls</a></li>
@@ -5073,11 +5075,53 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><a href="https://platform.openai.com/tokenizer">OpenAI Tokenizer</a></li>
 </ul>
 </section>
-<section id="the-response" class="level2">
-<h2 class="anchored" data-anchor-id="the-response">The response</h2>
-<p>The token embedding is then used with a transformer to generate a token response, one token at a time.</p>
-<p>The transformer puts tokens into their context of other tokens within the supplied AI input.</p>
-<p>Output tokens are detokenized back to raw text we receive as a response.</p>
+<section id="from-prompt-to-response" class="level2">
+<h2 class="anchored" data-anchor-id="from-prompt-to-response">From prompt to response</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {&quot;flowchart&quot;: {&quot;htmlLabels&quot;: false}}}%%
+flowchart LR
+  P([&quot;Your prompt&lt;br/&gt;+ hidden instructions&quot;]) --&gt; T[&quot;Tokenise&lt;br/&gt;text → numbers&quot;]
+  T --&gt; M[&quot;Transformer&lt;br/&gt;(attention: each token&lt;br/&gt;weighs every other)&quot;]
+  M --&gt; N[&quot;Probability of&lt;br/&gt;every possible&lt;br/&gt;next token&quot;]
+  N --&gt; S[&quot;Pick one&quot;]
+  S -- &quot;add it, go again&quot; --&gt; M
+  S --&gt; O([&quot;Detokenise&lt;br/&gt;numbers → text&quot;])
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>The answer is built <strong>one token at a time</strong>; each new token is added to the input and the model runs again.</li>
+<li>Knowledge comes from patterns learned in training. Nothing is looked up.</li>
+</ul>
+</section>
+<section id="attention-tokens-in-context" class="level2">
+<h2 class="anchored" data-anchor-id="attention-tokens-in-context">Attention: tokens in context</h2>
+<blockquote class="blockquote">
+<p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
+</blockquote>
+<ul>
+<li>Inside the transformer, <strong>attention</strong> lets every token look at every other token in the input.</li>
+<li>“it” attends to “Ikzf1”, so the model knows what <em>it</em> means; “leukaemia” shapes what “linked” means.</li>
+<li>The same word means different things in different context: “IKZF1 <strong>expression</strong>” vs “a facial <strong>expression</strong>”.</li>
+<li>Attention covers the <strong>whole input</strong>, not just your last prompt: everything in the context can change the answer.</li>
+</ul>
+</section>
+<section id="one-token-at-a-time" class="level2">
+<h2 class="anchored" data-anchor-id="one-token-at-a-time">One token at a time</h2>
+<p>“IKZF1 encodes” → <strong>Ikaros</strong> (92%) · a (5%) · the (2%) …</p>
+<ul>
+<li>The model picks a <strong>likely</strong> next token, not a checked fact: fluent text can still be wrong.</li>
+<li>Some randomness in the pick (<em>temperature</em>) means the same prompt can give different answers.</li>
+<li>Once a token is written, it can’t be taken back.</li>
+<li>Many models first write hidden <strong>“thinking”</strong> tokens, then the answer. The <em>effort</em> setting controls how much. You pay for these tokens even though you don’t see them.</li>
+</ul>
 </section>
 <section id="model-has-no-memory" class="level2">
 <h2 class="anchored" data-anchor-id="model-has-no-memory">Model has no memory</h2>
@@ -5085,8 +5129,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>As this proceeds the full string of conversations and responses is sent alongside our latest prompt.</p>
 <p>The model’s response therefore considers the latest prompt in the context of the whole conversation (previous prompts and responses)</p>
 </section>
-<section id="the-agent-loop" class="level2">
-<h2 class="anchored" data-anchor-id="the-agent-loop">The agent loop</h2>
+<section id="the-agent-loop" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="the-agent-loop">The agent loop</h2>
 <blockquote class="blockquote">
 <p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
 </blockquote>
@@ -5112,6 +5156,7 @@ flowchart LR
 <ul>
 <li>The model can’t search anything itself. It <em>asks</em>, and the harness (e.g. Claude Code) runs the tool.</li>
 <li>Every loop resends the <strong>whole</strong> context, which grows with each tool result.</li>
+<li>The model decides whether to use a tool and when it’s done, so it may answer from memory or stop early. Ask explicitly: “search for…”, “check the file”.</li>
 </ul>
 </section>
 <section id="two-questions-four-model-calls" class="level2">
@@ -5141,6 +5186,7 @@ flowchart LR
 <li>The first answer used no search: it came from training data, so it may be out of date.</li>
 <li>Every call resends the conversation so far: our questions, its answers and the search results.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html" target="_blank">See the full session transcript</a></p>
 </section>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
@@ -5172,7 +5218,7 @@ flowchart LR
 <ul>
 <li><strong>52,300 tokens</strong> used before we send a word: system tools, MCP tools, system prompt and skills.</li>
 <li>~89,000 more tokens of tools are <em>deferred</em>: listed by name only, loaded when needed (call 2 in our loop).</li>
-<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so compression starts before the window is full.</li>
+<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so the agent harness can be alerted to an almost full context window.</li>
 </ul>
 </div>
 </div>
@@ -5189,8 +5235,7 @@ flowchart LR
 </div><div class="column" style="width:55%;">
 <ul>
 <li>52.3k → <strong>67.7k</strong>. A new <strong>Messages</strong> slice of 16.4k appears, but our question was only <strong>13 tokens</strong> and the answer ~1,200.</li>
-<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, a plugin’s instructions, our environment and the date.</li>
-<li><strong>Everything you install costs context in every session</strong>, before you type: plugins, skills, MCP servers.</li>
+<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, MCP server instructions, a plugin’s instructions, our environment, email and the date.</li>
 </ul>
 </div>
 </div>
@@ -5210,6 +5255,7 @@ flowchart LR
 <li>Still only 8% of the window, but every later message resends all of it.</li>
 <li>A full paper, a large dataset or “review everything on Ikzf1” fills it much faster.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html#call-3" target="_blank">See the searches in the transcript</a></p>
 </div>
 </div>
 </section>
@@ -5321,7 +5367,7 @@ flowchart LR
 </section>
 <section id="the-daily-example" class="level2">
 <h2 class="anchored" data-anchor-id="the-daily-example">The Daily example</h2>
-<p>Our Ikzf1 session after <code>/compact</code>: <strong>80,863 → 12,999 tokens</strong>.</p>
+<p>Our Ikzf1 session after <code>/compact</code>: the conversation went from <strong>~37k → ~13k tokens</strong>; the ~44k of system prompt and tools stayed (total ~81k → ~57k).</p>
 <table class="table">
 <colgroup>
 <col style="width: 50%">

@@ -99,7 +99,10 @@
       if ("timeout" %in% names(formals(curlGetHeaders))) args$timeout <- timeout
       st <- attr(do.call(curlGetHeaders, args), "status")
       if (is.null(st)) st <- NA_integer_
-      list(ok = !is.na(st) && st >= 200 && st < 400, detail = paste("HTTP", st))
+      ## 401/403/429: the server is up but refuses automated clients (NYT, SSRN,
+      ## OpenAI...), so the link can't be judged; report it as skipped, not broken.
+      list(ok = !is.na(st) && st >= 200 && st < 400, detail = paste("HTTP", st),
+           blocked = !is.na(st) && st %in% c(401L, 403L, 429L))
     }
   }, error = function(e) list(ok = FALSE, detail = conditionMessage(e)))
   cache[[url]] <- res
@@ -150,6 +153,7 @@
         if (!checkRemote) { rec(rel, h, "remote", "SKIPPED", "remote check disabled"); next }
         url <- if (grepl("^//", h)) paste0("https:", h) else h
         r <- .remoteStatus(url, remoteCache, timeout)
+        if (isTRUE(r$blocked)) { rec(rel, h, "remote", "SKIPPED", paste(r$detail, "(blocks automated checks)")); next }
         rec(rel, h, "remote", if (r$ok) "PASS" else "FAIL", r$detail)
         next
       }

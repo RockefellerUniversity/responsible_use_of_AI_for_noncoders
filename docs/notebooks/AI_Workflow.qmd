@@ -332,4 +332,10 @@ This happens despite these limits being saved in CLAUDE.md files.
 - Liu et al. 2023, [Lost in the Middle](https://arxiv.org/abs/2307.03172)
 - Sharma et al. 2023, [Towards Understanding Sycophancy in Language Models](https://arxiv.org/abs/2310.13548)
 
+## Time for an exercise! {#time-for-an-exercise}
 
+Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Workflow_exercise.html)
+
+## Answers to exercise
+
+Answers can be found [here](../../exercises/answers/Exercise_Workflow_answers.html) 
