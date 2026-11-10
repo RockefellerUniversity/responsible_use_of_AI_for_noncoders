@@ -3183,9 +3183,10 @@ display:block!important;
 <li>The model picks a <strong>likely</strong> next token, not a checked fact: fluent text can still be wrong.</li>
 <li>Some randomness in the pick (<em>temperature</em>) means the same prompt can give different answers.</li>
 <li>Once a token is written, it can’t be taken back.</li>
+<li>Many models first write hidden <strong>“thinking”</strong> tokens, then the answer. The <em>effort</em> setting controls how much. You pay for these tokens even though you don’t see them.</li>
 </ul>
 <aside class="notes">
-<p>Percentages are illustrative, not real model output. Hallucinated citations come from this: a plausible-looking reference is a likely sequence of tokens. Can’t take tokens back is why “think step by step” helps: the model writes its reasoning before the answer.</p>
+<p>Percentages are illustrative, not real model output. Hallucinated citations come from this: a plausible-looking reference is a likely sequence of tokens. Can’t take tokens back is why “think step by step” helps: the model writes its reasoning before the answer. Thinking tokens are ordinary tokens in a section marked by special start/end tokens; the app hides that section or shows a summary. The model learned to think first in training because working-out led to more right answers. Effort is passed with the request and the model writes more or less thinking to match. Thinking is generated text, not a true window into how the model works: it can be confidently wrong too. Rarely, the model runs out of room mid-thinking and returns nothing: ask again or lower the effort. Where to set effort: see the GUI Tour session (Models and Effort).</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -3274,8 +3275,9 @@ flowchart LR
 <li>The first answer used no search: it came from training data, so it may be out of date.</li>
 <li>Every call resends the conversation so far: our questions, its answers and the search results.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html" target="_blank">See the full session transcript</a></p>
 <aside class="notes">
-<p>Real session “Context”, Claude Code, 8 Nov 2026. Ask: why did call 1 not search? (We didn’t ask for current literature; the model judged training data was enough.) Chatbot = one call per question. Agent = loops until it decides it’s done.</p>
+<p>Real session “Context”, Claude Code, 8 Nov 2026. The transcript link shows each call’s tokens in/out, stop reason, hidden thinking, tool calls and results, and what the harness attached. Ask: why did call 1 not search? (We didn’t ask for current literature; the model judged training data was enough.) Chatbot = one call per question. Agent = loops until it decides it’s done.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -3318,7 +3320,7 @@ display:block!important;
 <ul>
 <li><strong>52,300 tokens</strong> used before we send a word: system tools, MCP tools, system prompt and skills.</li>
 <li>~89,000 more tokens of tools are <em>deferred</em>: listed by name only, loaded when needed (call 2 in our loop).</li>
-<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so compression starts before the window is full.</li>
+<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so the agent harness can be alerted to an almost full context window.</li>
 </ul>
 </div>
 </div>
@@ -3335,11 +3337,23 @@ display:block!important;
 </div><div class="column" style="width:55%;">
 <ul>
 <li>52.3k → <strong>67.7k</strong>. A new <strong>Messages</strong> slice of 16.4k appears, but our question was only <strong>13 tokens</strong> and the answer ~1,200.</li>
-<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, a plugin’s instructions, our environment and the date.</li>
-<li><strong>Everything you install costs context in every session</strong>, before you type: plugins, skills, MCP servers.</li>
+<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, MCP server instructions, a plugin’s instructions, our environment, email and the date.</li>
 </ul>
 </div>
 </div>
+<aside class="notes">
+<p>Checked in the session transcript: attached to the first message were the skill list (~25.5k characters), deferred tool names (~11.5k), the ponytail plugin’s hook text (~5.8k), agents (~4.7k), MCP server instructions (~2.5k), plus environment, model, email and date: about 51k characters, roughly 13-15k tokens. The figures are approximate: the panel’s own categories appear to overlap (skills are shown before we type, but arrive with the first message), and the answer may include some hidden thinking tokens.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="after-a-literature-search" class="slide level2">
 <h2>After a literature search</h2>
@@ -3356,6 +3370,7 @@ display:block!important;
 <li>Still only 8% of the window, but every later message resends all of it.</li>
 <li>A full paper, a large dataset or “review everything on Ikzf1” fills it much faster.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html#call-3" target="_blank">See the searches in the transcript</a></p>
 </div>
 </div>
 <aside class="notes">

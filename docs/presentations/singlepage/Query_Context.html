@@ -5120,6 +5120,7 @@ flowchart LR
 <li>The model picks a <strong>likely</strong> next token, not a checked fact: fluent text can still be wrong.</li>
 <li>Some randomness in the pick (<em>temperature</em>) means the same prompt can give different answers.</li>
 <li>Once a token is written, it can’t be taken back.</li>
+<li>Many models first write hidden <strong>“thinking”</strong> tokens, then the answer. The <em>effort</em> setting controls how much. You pay for these tokens even though you don’t see them.</li>
 </ul>
 </section>
 <section id="model-has-no-memory" class="level2">
@@ -5185,6 +5186,7 @@ flowchart LR
 <li>The first answer used no search: it came from training data, so it may be out of date.</li>
 <li>Every call resends the conversation so far: our questions, its answers and the search results.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html" target="_blank">See the full session transcript</a></p>
 </section>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
@@ -5216,7 +5218,7 @@ flowchart LR
 <ul>
 <li><strong>52,300 tokens</strong> used before we send a word: system tools, MCP tools, system prompt and skills.</li>
 <li>~89,000 more tokens of tools are <em>deferred</em>: listed by name only, loaded when needed (call 2 in our loop).</li>
-<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so compression starts before the window is full.</li>
+<li>33,000 tokens are held back as an <strong>autocompact buffer</strong>, so the agent harness can be alerted to an almost full context window.</li>
 </ul>
 </div>
 </div>
@@ -5233,8 +5235,7 @@ flowchart LR
 </div><div class="column" style="width:55%;">
 <ul>
 <li>52.3k → <strong>67.7k</strong>. A new <strong>Messages</strong> slice of 16.4k appears, but our question was only <strong>13 tokens</strong> and the answer ~1,200.</li>
-<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, a plugin’s instructions, our environment and the date.</li>
-<li><strong>Everything you install costs context in every session</strong>, before you type: plugins, skills, MCP servers.</li>
+<li>The other ~15k is text the harness quietly attaches to our first message: the list of skills, names of deferred tools, available agents, MCP server instructions, a plugin’s instructions, our environment, email and the date.</li>
 </ul>
 </div>
 </div>
@@ -5254,6 +5255,7 @@ flowchart LR
 <li>Still only 8% of the window, but every later message resends all of it.</li>
 <li>A full paper, a large dataset or “review everything on Ikzf1” fills it much faster.</li>
 </ul>
+<p><a href="../../data/Ikzf1_transcript.html#call-3" target="_blank">See the searches in the transcript</a></p>
 </div>
 </div>
 </section>
