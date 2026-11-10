@@ -1,4 +1,3 @@
-## NA
 ## flowchart LR
 ##   subgraph CHECK ["All three must be true"]
 ##     direction LR

@@ -289,6 +289,8 @@ This can be implemented in a hierarchy:
 - Globally - Always on preferences (e.g. "explain steps in plain English")
 - Project level - Project specific preferences
 
+Examples: [global CLAUDE.md](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/global/CLAUDE.md){target="_blank"} · [project CLAUDE.md](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/project/CLAUDE.md){target="_blank"} · [all example files](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/){target="_blank"}
+
 ## Claude.md/Agents.md Conventions
 
 Much like the system prompt and again in MD format
@@ -301,6 +303,8 @@ Claude.md is Claude specific and Agents.md is general use.
 * Specialist commands/software
 * Expected output formats
 
+[See an example project CLAUDE.md](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/project/CLAUDE.md){target="_blank"}
+
 ## Additional documentation.
 
 When loading the Claude.md/Agent.md file only this is read into context at first.
@@ -310,6 +314,8 @@ If you want to have information available to Claude.md/Agent.md as required you 
   * Script/Code - Scripts/code to use for tasks "scripts/".
 
 Conventions in `.claude/rules/` don't need pointing to: Claude Code loads them automatically, or only for matching files if the rule lists `paths:`.
+
+Examples: [rules](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/project/.claude/rules){target="_blank"} · [imported decisions](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/project/docs/decisions.md){target="_blank"} · [pointed-to plan](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/project/docs/analysis_plan.md){target="_blank"}
   
 
 ## Creating a Claude.md
@@ -458,6 +464,8 @@ Not a change log or transcript of the session.
 * references - Docs and URLs I want the AI to be aware of.
 * project - Project specific goals, constraints and potential pitfalls.
 
+[See example memory files](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/memory){target="_blank"}
+
 ## MEMORY.md and memory/
 
 Since MEMORY.md is kept small (only its first 200 lines load) they will often act as index files.
@@ -465,6 +473,8 @@ Since MEMORY.md is kept small (only its first 200 lines load) they will often ac
 Each line describes a case when to look up linked MD.
 
 Linked MD looked up as required.
+
+[See an example MEMORY.md](https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/memory/MEMORY.md){target="_blank"}
 
 
 ## MDs are Guides, not hard rules

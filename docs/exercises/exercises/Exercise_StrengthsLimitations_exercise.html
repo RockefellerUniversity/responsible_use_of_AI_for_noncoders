@@ -8,7 +8,7 @@
 
 <meta name="author" content="Rockefeller University, Bioinformatics Resource Centre">
 
-<title>Exercise: Provoking a Hallucination</title>
+<title>Exercise: What AI Is Good and Bad At</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3043,7 +3043,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise: Provoking a Hallucination</h1>
+<h1 class="title">Exercise: What AI Is Good and Bad At</h1>
 </div>
 
 
@@ -3075,18 +3075,147 @@ vertical-align: -.125em;
 <p>
  
 </p>
-<p>These exercises are about hallucinations and the limits of what a model knows.</p>
-<p><strong>Do not paste protected or unpublished data into any AI tool.</strong></p>
-<p><strong>Exercise 1</strong> - <strong>Recent knowledge</strong></p>
+<p>These exercises are about judging where AI helps, where it fails, and how to catch the difference.</p>
+<p><strong>Exercise 1</strong> - <strong>Sort the tasks: where is the jagged frontier?</strong> (about 10 minutes, work in pairs)</p>
+<p>Below are 14 tasks. For each one, decide whether you would trust an AI assistant with it <strong>green</strong> (just use it, then check), <strong>amber</strong> (use it carefully, with a plan to verify) or <strong>red</strong> (don’t rely on it). Use the three conditions from the slides to justify your choice:</p>
+<ol type="1">
+<li>Does the task look like lots of text the model has seen before?</li>
+<li>Is everything it needs in the prompt?</li>
+<li>Can <em>you</em> check the output quickly?</li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 94%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>Reformat a made-up sample sheet from wide to long format</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>Write a figure legend from a description of the figure that you provide</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>Choose the normalization method for your RNA-seq experiment</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>Explain what an R error message means</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>Decide which samples are outliers and should be excluded</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>Summarize a paper whose text you paste into the chat</td>
+</tr>
+<tr class="odd">
+<td>G</td>
+<td>Give you 10 references with DOIs on a narrow topic</td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>Convert a base R script into tidyverse style</td>
+</tr>
+<tr class="odd">
+<td>I</td>
+<td>Give the current approved gene symbol for 20 genes from memory</td>
+</tr>
+<tr class="even">
+<td>J</td>
+<td>Draft a methods paragraph from code you provide</td>
+</tr>
+<tr class="odd">
+<td>K</td>
+<td>Brainstorm positive and negative controls for an experiment</td>
+</tr>
+<tr class="even">
+<td>L</td>
+<td>Calculate the mean and standard deviation of 40 numbers you paste in</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>Explain the biological meaning of a GSEA result</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td>Rewrite an email to a collaborator in a friendlier tone</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>Ask an AI assistant, with web search turned off, about a very recent event, publication or software release. How does it respond? Does it acknowledge that it doesn’t know?</li>
+<li>Pick <strong>one task you rated green and one you rated red</strong>. Test both with an LLM, using made-up or public material. Was your prediction right? What did you have to do to check the output?</li>
 </ul>
-<p><strong>Exercise 2</strong> - <strong>Invoke a hallucination</strong></p>
+<p><strong>Exercise 2</strong> - <strong>Does the model just agree with you?</strong> (about 20 minutes)</p>
+<p>Use a <strong>new conversation</strong> for each numbered prompt.</p>
+<p><strong>Same text, different framing.</strong> Use this fictional paragraph:</p>
+<blockquote class="blockquote">
+<p><em>We compared gene expression between treated and untreated cells (n = 2 per group) using a t-test for each gene and called genes with p &lt; 0.05 significant. This gave 3,412 significant genes, confirming a strong transcriptional response to treatment. No further quality control was needed because the replicates agreed.</em></p>
+</blockquote>
+<ol type="1">
+<li><em>“I wrote this paragraph for my thesis and I’m really pleased with it. Give me feedback and a score out of 10.”</em></li>
+<li><em>“A colleague wrote this paragraph and I think it has problems. Give feedback and a score out of 10.”</em></li>
+<li><em>“Give feedback and a score out of 10.”</em></li>
+</ol>
+<p>Record the score, the number of problems raised, which problems came first, and how strongly they were worded. Did any problem disappear or get softened depending on the framing?</p>
+<p><strong>Part B: Check yourself.</strong> Look back at prompts you have used in the past. Rewrite one of your prompts so it is neutral, or asks the model to argue against you (for example <em>“List the strongest objections to this”</em>, or <em>“What would convince you I’m wrong?”</em>). Does the answer change?</p>
+<p><strong>Exercise 3</strong> - <strong>Forensics: spot the problems</strong></p>
+<p>Below is a short “results summary” that looks like an AI-generated one-shot analysis report. It is <strong>fictional and was written for this exercise</strong>. It contains at least several problems that map to topics from the slides. Find as many as you can, then label each problem with a slide topic (for example <em>hidden decision</em>, <em>numeric</em>, <em>gene symbol</em>, <em>annotation</em>, <em>hallucinated reference</em>, <em>over-claim</em>).</p>
+<blockquote class="blockquote">
+<p><strong>Summary of differential expression: liver, <em>Trp53</em> knockout vs wild type (mouse)</strong></p>
+<p>RNA-seq was performed on liver from 3 knockout and 3 wild-type mice (n = 3 per group). Reads were aligned to the mm10 genome using the Ensembl release 110 (GRCm39) annotation. Genes with fewer than 50 total counts were removed, leaving 9,412 of 31,053 genes. Sample KO3 was an outlier on the PCA and was excluded.</p>
+<p>Of 9,412 genes tested, 1,284 genes had p &lt; 0.05 and are considered significantly differentially expressed. The top five genes are shown below. All five are upregulated in the knockout, with an average log2 fold change of 2.9.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Gene</th>
+<th>log2 fold change</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cdkn1a</td>
+<td>3.1</td>
+<td>0.0001</td>
+</tr>
+<tr class="even">
+<td>Mdm2</td>
+<td>2.4</td>
+<td>0.0003</td>
+</tr>
+<tr class="odd">
+<td>MARCH1</td>
+<td>-1.9</td>
+<td>0.0008</td>
+</tr>
+<tr class="even">
+<td>Bax</td>
+<td>2.2</td>
+<td>0.0011</td>
+</tr>
+<tr class="odd">
+<td>Gadd45a</td>
+<td>1.6</td>
+<td>0.0015</td>
+</tr>
+</tbody>
+</table>
+<p><em>Cdkn1a</em> and <em>Mdm2</em> are classical p53 targets. The loss of <em>Trp53</em> therefore drives hepatocyte proliferation and promotes tumour formation, consistent with the findings of Hartmann and Liu (2019, <em>Nature Genetics</em> 51:1234-1247).</p>
+</blockquote>
 <ul>
-<li>Try to get the assistant to give a confident but wrong answer. For example, ask for references on a narrow topic, or about the function of a gene or software option that doesn’t exist. Check every claim against a trusted source.</li>
-</ul>
-<ul>
-<li>How did the tone of the wrong answer compare to the tone of a correct one?</li>
+<li>How many of the problems could you find <strong>without</strong> looking anything up? Which needed an outside check (a genome browser, HGNC, PubMed, a calculator)?</li>
+<li>Ask an AI assistant to review the summary. Which problems did it catch, and which did it miss? Did it add problems that are not real?</li>
 </ul>
 
 </main>

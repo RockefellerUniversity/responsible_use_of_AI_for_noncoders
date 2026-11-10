@@ -3080,9 +3080,17 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
-<li><a href="#/good-workflows">Good workflows</a></li>
-<li><a href="#/hard-lines">Hard lines</a></li>
+<li><a href="#/should-i-use-ai-for-this-task">Should I use AI for this task?</a></li>
+<li><a href="#/what-is-a-good-ai-workflow">What is a good AI workflow</a></li>
+<li><a href="#/planning">Planning</a></li>
+<li><a href="#/reproducibility">Reproducibility</a></li>
+<li><a href="#/checkpoints-and-review">Checkpoints and review</a></li>
+<li><a href="#/other-things-to-consider">Other things to consider</a></li>
+<li><a href="#/the-analysis-loop-one-step-at-a-time">The analysis loop</a></li>
+<li><a href="#/bad-practice">Bad practice</a></li>
 <li><a href="#/controlling-what-is-allowed">Controlling what is allowed</a></li>
+<li><a href="#/hard-lines">Hard lines</a></li>
+<li><a href="#/time-for-an-exercise">Exercise</a></li>
 </ul>
 </section>
 <section id="should-i-use-ai-for-this-task" class="slide level2">
@@ -3344,6 +3352,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2>Controlling what is allowed</h2>
 <p>In the context section we saw that CLAUDE.md/Agents.md can only <em>ask</em> the agent to stay away from specific directories, functions or methods: they are guides.</p>
 <p>To outright ban them, use <a href="https://code.claude.com/docs/en/settings-reference#permissions">settings</a> permissions or hooks, which the harness enforces.</p>
+<p>Examples: <a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/project/.claude/settings.json" target="_blank">project settings.json</a> · <a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/blob/master/docs/data/claude_examples/project/.claude/hooks/protect-raw.sh" target="_blank">a hook that protects raw data</a></p>
 </section>
 <section id="hard-lines" class="slide level2">
 <h2>Hard lines</h2>
@@ -3400,14 +3409,6 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>Similarly we have seen hard lines which have been set flouted for similar semantic reasons i.e. do not interact with the HPC or do not commit anything without my review.</p>
 <p>This happens despite these limits being saved in CLAUDE.md files.</p>
 </section>
-<section id="time-for-an-exercise" class="slide level2">
-<h2>Time for an exercise!</h2>
-<p>Exercise on hallucinations and maybe generating a multi-step workflow can be found <a href="../../exercises/exercises/Exercise_Hallucination_exercise.html">here</a></p>
-</section>
-<section id="answers-to-exercise" class="slide level2">
-<h2>Answers to exercise</h2>
-<p>Answers can be found <a href="../../exercises/answers/Exercise_Hallucination_answers.html">here</a></p>
-</section>
 <section id="further-reading" class="slide level2">
 <h2>Further reading</h2>
 <ul>
@@ -3419,6 +3420,14 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Liu et al. 2023, <a href="https://arxiv.org/abs/2307.03172">Lost in the Middle</a></li>
 <li>Sharma et al. 2023, <a href="https://arxiv.org/abs/2310.13548">Towards Understanding Sycophancy in Language Models</a></li>
 </ul>
+</section>
+<section id="time-for-an-exercise" class="slide level2">
+<h2>Time for an exercise!</h2>
+<p>Exercise on hallucinations can be found <a href="../../exercises/exercises/Exercise_Workflow_exercise.html">here</a></p>
+</section>
+<section id="answers-to-exercise" class="slide level2">
+<h2>Answers to exercise</h2>
+<p>Answers can be found <a href="../../exercises/answers/Exercise_Workflow_answers.html">here</a></p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 

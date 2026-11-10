@@ -239,8 +239,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Exercise_Customizing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./exercises/exercises/Exercise_Hallucination_exercise.html">
- <span class="dropdown-text">Exercise_Hallucination</span></a>
+    <a class="dropdown-item" href="./exercises/exercises/Exercise_StrengthsLimitations_exercise.html">
+ <span class="dropdown-text">Exercise_StrengthsLimitations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./exercises/exercises/Exercise_Workflow_exercise.html">
+ <span class="dropdown-text">Exercise_Workflow</span></a>
   </li>  
     </ul>
   </li>
@@ -258,8 +262,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Exercise_Customizing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./exercises/answers/Exercise_Hallucination_answers.html">
- <span class="dropdown-text">Exercise_Hallucination</span></a>
+    <a class="dropdown-item" href="./exercises/answers/Exercise_StrengthsLimitations_answers.html">
+ <span class="dropdown-text">Exercise_StrengthsLimitations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./exercises/answers/Exercise_Workflow_answers.html">
+ <span class="dropdown-text">Exercise_Workflow</span></a>
   </li>  
     </ul>
   </li>
@@ -389,7 +397,6 @@ ul.task-list li input[type="checkbox"] {
 <li>Claude at Rockefeller (Claude for EDU) and how it will be integrated</li>
 <li>The RU AI Sandbox</li>
 <li>The Responsible Use of AI Policy, the approved AI list and protected data</li>
-<li>Agentic identities and the Data Science Platform</li>
 </ul>
 <iframe src="presentations/slides/DataPolicy.html" width="100%" height="400" title="AI Strategy at Rockefeller">
 </iframe>
@@ -406,10 +413,9 @@ ul.task-list li input[type="checkbox"] {
 <p>What large language models (LLMs) are, how they are built, and how the tools you use fit together.</p>
 <ul>
 <li>How models are built and what they are trained to do — next-token prediction</li>
-<li>Current events: who builds and runs these models</li>
-<li>Journal policies on AI use — you are the final backstop</li>
+<li>Who builds and runs these models, and access restrictions</li>
+<li>Funder and journal policies on AI use — you are the final backstop</li>
 <li>Terminology: model vs.&nbsp;app (ChatGPT/Claude) vs.&nbsp;agent</li>
-<li>Exploring the interface: chat vs.&nbsp;code, effort, model selection</li>
 </ul>
 <iframe src="presentations/slides/LLM_Basics.html" width="100%" height="400" title="Basics of LLMs">
 </iframe>
@@ -425,10 +431,10 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="interface-tour"><strong>Interface Tour</strong></h4>
 <p>A quick side-by-side tour of the Codex and Claude Code graphical apps, showing where the key features live.</p>
 <ul>
-<li>Chat vs.&nbsp;code, and choosing a project folder</li>
+<li>The layout of each app</li>
+<li>Chat vs.&nbsp;code</li>
+<li>Choosing a project folder</li>
 <li>Models and effort settings</li>
-<li>Usage and limits</li>
-<li>Permissions, giving context and reviewing what the agent did</li>
 </ul>
 <iframe src="presentations/slides/GUI_Tour.html" width="100%" height="400" title="Interface Tour">
 </iframe>
@@ -444,11 +450,11 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="what-happens-with-a-query"><strong>What Happens With a Query</strong></h4>
 <p>What the model actually “sees” when you send a message.</p>
 <ul>
-<li>The context window</li>
-<li>Where context comes from beyond what you type (system prompts, memory, files, tools)</li>
-<li>Context compression in long conversations</li>
-<li>How context relates to tokens, cost and model choice</li>
-<li>Exercise: context and tokens</li>
+<li>The prompt, tokens and the agent loop</li>
+<li>The context window: where context comes from beyond what you type (system prompts, CLAUDE.md, memory, files, tools)</li>
+<li>Context rot and compression in long conversations</li>
+<li>Memory and retrieval augmented generation (RAG)</li>
+<li>Prompt and context engineering, and exercise: context and tokens</li>
 </ul>
 <iframe src="presentations/slides/Query_Context.html" width="100%" height="400" title="What Happens With a Query">
 </iframe>
@@ -464,9 +470,10 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="customizing-your-llm"><strong>Customizing Your LLM</strong></h4>
 <p>Extending an AI assistant with your own instructions, skills and connections.</p>
 <ul>
-<li>Skills</li>
-<li>Connectors and plugins — an introduction to MCP</li>
-<li>Knowledge-based queries and where to learn more</li>
+<li>Built-in slash commands</li>
+<li>Skills: the SKILL.md format, scope and installation</li>
+<li>Connectors and MCP</li>
+<li>Plugins</li>
 <li>Exercises: CLAUDE.md before/after, invoking a skill, querying an MCP connector</li>
 </ul>
 <iframe src="presentations/slides/Customizing.html" width="100%" height="400" title="Customizing Your LLM">
@@ -483,9 +490,10 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="what-ai-is-good-and-bad-at"><strong>What AI Is Good and Bad At</strong></h4>
 <p>Real-world examples of where AI helps and where it fails, tied back to how models work.</p>
 <ul>
-<li>Models are static — limited knowledge of recent news and brand-new tools</li>
-<li>Hallucinations — and why the model sounds so confident</li>
-<li>Exercise: provoke a hallucination</li>
+<li>The jagged frontier: what works and what is a struggle</li>
+<li>Models are static, and minor methods</li>
+<li>Bioinformatics pitfalls: numbers, gene symbols, annotation versions</li>
+<li>Hallucinations and sycophancy</li>
 </ul>
 <iframe src="presentations/slides/Strengths_Limitations.html" width="100%" height="400" title="What AI Is Good and Bad At">
 </iframe>
@@ -501,11 +509,11 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="ai-in-your-workflow"><strong>AI in Your Workflow</strong></h4>
 <p>How to work with AI safely and effectively, even if you can’t read the code it writes.</p>
 <ul>
-<li>What a good workflow looks like</li>
-<li>Software environments and resource use</li>
-<li>Good practice still applies: clear instructions, working on subsets, checking results</li>
-<li>Hard lines: CLAUDE.md and other configuration files</li>
-<li>Controlling what the AI is allowed to do</li>
+<li>Should I use AI for this task? Stakes and verifiability</li>
+<li>A good workflow: planning, reproducibility, checkpoints and review</li>
+<li>Checking work you can’t read, and the step-by-step analysis loop</li>
+<li>Software environments, resources and reports</li>
+<li>Bad practice, hard lines and controlling what the AI is allowed to do</li>
 </ul>
 <iframe src="presentations/slides/AI_Workflow.html" width="100%" height="400" title="AI in Your Workflow">
 </iframe>
