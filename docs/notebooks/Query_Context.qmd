@@ -113,7 +113,7 @@ As this proceeds the full string of conversations and responses is sent alongsid
 
 The model's response therefore considers the latest prompt in the context of the whole conversation (previous prompts and responses)
 
-## The agent loop
+## The agent loop {.smaller}
 
 > "What does Ikzf1 do, and is it linked to leukaemia?"
 
@@ -130,6 +130,17 @@ flowchart LR
 
 - The model can't search anything itself. It *asks*, and the harness (e.g. Claude Code) runs the tool.
 - Every loop resends the **whole** context, which grows with each tool result.
+- The model decides whether to use a tool and when it's done, so it may answer from memory or stop early. Ask explicitly: "search for…", "check the file".
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+A tool call is just formatted text: the model writes e.g. WebSearch {"query": "IKZF1 deletion B-ALL prognosis"} and stops; it has not searched anything.
+It knows tools exist because the harness puts a hidden list (name, description, inputs) in the context. Calling one is still next-token prediction: "current literature" in the prompt matches "search the web for current information" in the tool description.
+Built-in tools (WebSearch, Read, Bash) and MCP tools look identical to the model; only the harness knows where to send the request.
+The loop ends when an output contains no tool call. Nothing is decided in advance: it is still one token at a time.
+The loop is the harness's code, not the model's: call model, run any tools, add results, call again. The harness also sets permissions and step limits, which is why Claude Code, Codex and opencode feel different on similar models.
+:::
+:::::
 
 ## Two questions, four model calls
 
