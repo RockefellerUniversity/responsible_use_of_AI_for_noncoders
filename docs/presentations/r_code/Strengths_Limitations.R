@@ -10,8 +10,8 @@
 ##   G(["<b>Good fit for an LLM</b><br/>a good workflow"])
 ##   C --> G
 ## 
-##   classDef cond fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000
-##   classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff
+##   classDef cond fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000,font-family:Arial
+##   classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff,font-family:Arial
 ##   class A,B,C cond
 ##   class G ok
 ## 
@@ -27,20 +27,20 @@
 ## 
 ##   subgraph STEP ["Step-by-step with checkpoints"]
 ##     direction LR
-##     R1["<b>Prompt 1</b><br/>With this scRNAseq mouse PBMC dataset read the cells<br/>into Seurat in R and do some basic QC. Make a report."]
-##     R2{{"Review report<br/>Any QC concerns?"}}
-##     R3["<b>Prompt 2</b><br/>Add filtering for cells with mt rate > 1, regress out cell cycle,<br/>and check for doublets using Scrublet."]
+##     R1["<b>Prompt 1</b><br/>Read this scRNAseq mouse PBMC<br/>dataset into Seurat in R and do<br/>some basic QC. Make a report."]
+##     R2{{"Review report<br/>QC concerns?"}}
+##     R3["<b>Prompt 2</b><br/>Filter cells with mt rate > 1,<br/>regress out cell cycle, and check<br/>for doublets using Scrublet."]
 ##     R4{{"Re-review results"}}
-##     R5(["...and many more steps"])
+##     R5(["...many more<br/>steps"])
 ##     R1 --> R2 --> R3 --> R4
 ##     R4 -.-> R5
 ##   end
 ## 
 ##   ONE ~~~ STEP
 ## 
-##   classDef prompt fill:#23373B,stroke:#23373B,color:#ffffff
-##   classDef review fill:#EB811B,stroke:#EB811B,color:#000000
-##   classDef more fill:#ffffff,stroke:#999999,stroke-dasharray: 5 5,color:#555555
+##   classDef prompt fill:#23373B,stroke:#23373B,color:#ffffff,font-family:Arial
+##   classDef review fill:#EB811B,stroke:#EB811B,color:#000000,font-family:Arial
+##   classDef more fill:#ffffff,stroke:#999999,stroke-dasharray: 5 5,color:#555555,font-family:Arial
 ##   class L1,R1,R3 prompt
 ##   class L2,R2,R4 review
 ##   class R5 more
