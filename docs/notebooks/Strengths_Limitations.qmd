@@ -93,7 +93,7 @@ flowchart LR
 
 | Task | Why it suits an LLM |
 |------------------------------------|------------------------------------|
-| Code review | Common bugs and idioms are very well represented in training data where common idioms are heavily represented |
+| Code review | Common bugs and idioms are very well represented in training data |
 | Intuitive reports | Turning structured results into readable text and figure legends is a language task |
 | Regular workflows, standardized outputs | The same pattern repeated many times. We also allocate more time to reviewing pipelines and have distinct expectations. |
 
