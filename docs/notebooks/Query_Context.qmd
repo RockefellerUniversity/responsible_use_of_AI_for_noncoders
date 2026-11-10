@@ -49,13 +49,61 @@ AI model.
 - [OpenAI Tokenizer](https://platform.openai.com/tokenizer)
 
 
-## The response
+## From prompt to response
 
-The token embedding is then used with a transformer to generate a token response, one token at a time.
+```{mermaid}
+%%{init: {"flowchart": {"htmlLabels": false}}}%%
+flowchart LR
+  P(["Your prompt<br/>+ hidden instructions"]) --> T["Tokenise<br/>text → numbers"]
+  T --> M["Transformer<br/>(attention: each token<br/>weighs every other)"]
+  M --> N["Probability of<br/>every possible<br/>next token"]
+  N --> S["Pick one"]
+  S -- "add it, go again" --> M
+  S --> O(["Detokenise<br/>numbers → text"])
+```
 
-The transformer puts tokens into their context of other tokens within the supplied AI input.
+- The answer is built **one token at a time**; each new token is added to the input and the model runs again.
+- Knowledge comes from patterns learned in training. Nothing is looked up.
 
-Output tokens are detokenized back to raw text we receive as a response.
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Hidden instructions = system prompt (who the model is, today's date, tools available) plus the earlier conversation.
+Attention: "it" gets linked back to "Ikzf1"; this is what "tokens in their context" means.
+A 500-word answer is roughly 700 passes through the whole model. Text appears word by word because each token is detokenised as soon as it is picked.
+:::
+:::::
+
+## Attention: tokens in context
+
+> "What does Ikzf1 do, and is it linked to leukaemia?"
+
+- Inside the transformer, **attention** lets every token look at every other token in the input.
+- "it" attends to "Ikzf1", so the model knows what *it* means; "leukaemia" shapes what "linked" means.
+- The same word means different things in different context: "IKZF1 **expression**" vs "a facial **expression**".
+- Attention covers the **whole input**, not just your last prompt: everything in the context can change the answer.
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+This is the bridge to the rest of the session: because every token can attend to everything in the input, what is in the context matters.
+Good context steers the answer; irrelevant or wrong context can steer it just as strongly (later: context rot).
+:::
+:::::
+
+## One token at a time
+
+"IKZF1 encodes" → **Ikaros** (92%) · a (5%) · the (2%) …
+
+- The model picks a **likely** next token, not a checked fact: fluent text can still be wrong.
+- Some randomness in the pick (*temperature*) means the same prompt can give different answers.
+- Once a token is written, it can't be taken back.
+
+::::: {.content-visible when-format="revealjs"}
+::: notes
+Percentages are illustrative, not real model output.
+Hallucinated citations come from this: a plausible-looking reference is a likely sequence of tokens.
+Can't take tokens back is why "think step by step" helps: the model writes its reasoning before the answer.
+:::
+:::::
 
 ## Model has no memory
 
