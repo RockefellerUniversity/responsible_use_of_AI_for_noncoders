@@ -332,7 +332,7 @@ This happens despite these limits being saved in CLAUDE.md files.
 
 ## Time for an exercise! {#time-for-an-exercise}
 
-Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Workflow_exercise.html)
+Exercises can be found [here](../../exercises/exercises/Exercise_Workflow_exercise.html)
 
 ## Answers to exercise
 
