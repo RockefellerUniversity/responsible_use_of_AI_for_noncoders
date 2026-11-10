@@ -264,7 +264,9 @@ When we start a project in Claude Code or Codex this sets the scope of the proje
 
 ## Controlling what is allowed
 
-In the context section we also outlined how you can use config files like CLAUDE.md/Agents.md or [settings](https://code.claude.com/docs/en/settings-reference#permissions) to outright ban interactions with specific directories, the use of specific functions or methods.
+In the context section we saw that CLAUDE.md/Agents.md can only *ask* the agent to stay away from specific directories, functions or methods: they are guides.
+
+To outright ban them, use [settings](https://code.claude.com/docs/en/settings-reference#permissions) permissions or hooks, which the harness enforces.
 
 ## Hard lines
 
