@@ -3075,19 +3075,59 @@ vertical-align: -.125em;
 <p>
  
 </p>
-<p>These exercises are about customizing an AI assistant with instruction files, skills and connectors.</p>
+<p>These exercises are about customizing an AI agent with built-in commands, skills, connectors (MCP servers) and plugins.</p>
+<p>You will need Claude Code or Codex, and a new, empty project folder. All the data used here are public.</p>
 <p><strong>Do not paste protected or unpublished data into any AI tool.</strong></p>
-<p><strong>Exercise 1</strong> - <strong>Before and after CLAUDE.md</strong></p>
+<p><strong>Exercise 1</strong> - <strong>Find your built-in commands</strong></p>
 <ul>
-<li>??Ask the assistant a question. Then add an instruction to your CLAUDE.md (or equivalent custom instructions), start a new conversation and ask the same question. What changed??</li>
+<li>In your agent, type <code>/</code> and look through the list. Find the commands from the slides that: compress the conversation, ask a side question, go back to an earlier point, and plan before changing anything.</li>
+<li>Run <code>/context</code> (Claude Code) to see how full the context is. Ask a side question with <code>/btw</code> (for example “what does <code>log2FoldChange</code> mean?”), then run <code>/context</code> again. Did the side question add to the context?</li>
+<li>Switch to plan mode (<code>/plan</code>) and ask it to “make a folder called <code>results</code> and write a README in it”. What does it do?</li>
 </ul>
-<p><strong>Exercise 2</strong> - <strong>Invoke a skill</strong></p>
+<p><strong>Exercise 2</strong> - <strong>Read a skill before you use it</strong></p>
+<p>Open this skill from the BRC’s <em>Responsible use of Agentic AI</em> course: <a href="https://github.com/RockefellerUniversity/responsible_use_of_Agentic_AI/blob/master/docs/data/de-volcano-report-skill/SKILL.md" target="_blank">de-volcano-report-skill/SKILL.md</a>. It turns a DESeq2 results table into a volcano-plot report.</p>
+<p>Without installing it, answer:</p>
 <ul>
-<li>??Invoke a provided skill and compare the result with the same request made without the skill??</li>
+<li><strong>When will it load?</strong> What would you have to say for the agent to use it?</li>
+<li><strong>What does it read and write?</strong> Does it ever change your data?</li>
+<li><strong>Does it run anything without asking?</strong></li>
+<li><strong>Is it written for you?</strong> What would you change before using it in your lab?</li>
 </ul>
-<p><strong>Exercise 3</strong> - <strong>Query an MCP connector</strong></p>
+<p><strong>Exercise 3</strong> - <strong>Write a skill of your own</strong></p>
+<p>Use the public RNA-seq results table <a href="https://raw.githubusercontent.com/RockefellerUniversity/responsible_use_of_Agentic_AI/master/docs/data/p53_null_minus_p53_WT_DGE.csv" target="_blank">p53_null_minus_p53_WT_DGE.csv</a> (a DESeq2 comparison of p53-null vs p53 wild-type cells; right-click and save it into your project folder).</p>
 <ul>
-<li>??Use a connector to answer a question from an outside source, and compare with the answer the model gives without it??</li>
+<li>Build a skill that makes a reusable differential expression report from a table like this. The report should at least include:
+<ul>
+<li>a summary of how many genes go up and down</li>
+<li>a volcano plot (log2 fold change vs significance)</li>
+<li>a searchable table of the results</li>
+</ul></li>
+<li>The skill should save a <code>.qmd</code> or <code>.Rmd</code> file that produces the report, so the analysis can be re-run. A static HTML file is not enough.</li>
+<li>Save the skill so it is available <strong>only in this project</strong>, not everywhere on your computer.</li>
+<li>Choose your approach: write the folder and <code>SKILL.md</code> yourself, or ask the agent to build it with its skill creator. Either way, put the report template in the skill’s <code>assets/</code> folder.</li>
+<li><strong>Test it.</strong> In a fresh session, try at least four prompts and note whether the skill loads:
+<ul>
+<li>“Make a DE report for this table.”</li>
+<li>“Volcano plot please.”</li>
+<li>“Summarise the p53 results.”</li>
+<li>“What is p53?” (this one should <strong>not</strong> load it)</li>
+</ul></li>
+<li><strong>Check the result.</strong> Does the report get the direction of the comparison right?</li>
+</ul>
+<p><strong>Exercise 4</strong> - <strong>The same question, with and without a skill</strong></p>
+<p>This course has an example skill, <a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/global/skills/gene-summary" target="_blank">gene-summary</a>, that looks a gene up in NCBI Gene, UniProt and PubMed and fills in a Markdown template.</p>
+<ul>
+<li>In a fresh session <strong>without</strong> the skill, ask: “Summarise the human gene IKZF1: ID, location, aliases, function and three key papers.”</li>
+<li>Copy the <code>gene-summary</code> folder into your project’s <code>.claude/skills/</code> folder, start a new session and ask the same question.</li>
+<li>Compare the two answers. Which facts come with a source? Which papers can you open? What does each answer say it could not check?</li>
+</ul>
+<p><strong>Exercise 5</strong> - <strong>Check a plugin before you install it</strong></p>
+<p>Look at the <code>bio-research</code> plugin in <a href="https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research" target="_blank">anthropics/knowledge-work-plugins</a>. Without installing it, open its <code>.mcp.json</code> file and its <code>skills</code> folder.</p>
+<ul>
+<li>How many MCP servers does it add, and <strong>who runs each one</strong>?</li>
+<li>What would leave your computer when you use them?</li>
+<li>What would installing it cost in context, in every session?</li>
+<li>Would you install all of it? What would you do instead?</li>
 </ul>
 
 </main>
