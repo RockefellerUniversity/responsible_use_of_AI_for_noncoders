@@ -396,3 +396,38 @@ Exercises can be found [here](../../exercises/exercises/Exercise_StrengthsLimita
 
 Answers can be found [here](../../exercises/answers/Exercise_StrengthsLimitations_answers.html) 
 
+
+```{=html}
+<script>
+// Mermaid draws each diagram on page load, while its slide is still hidden, and
+// sizes the node boxes from that measurement. On a slow load the boxes come out
+// too small for their text. Redraw every diagram once the first pass is done.
+(function () {
+  var srcs = Array.prototype.map.call(
+    document.querySelectorAll("pre.mermaid-js"),
+    function (p) { return p.textContent.replace(/&nbsp;/g, " "); }
+  );
+  if (!srcs.length) return;
+  window.addEventListener("load", function () {
+    var tries = 0;
+    (function wait() {
+      var svgs = document.querySelectorAll("svg.mermaid-js");
+      if (svgs.length < srcs.length && tries++ < 50) return setTimeout(wait, 200);
+      document.fonts.ready.then(async function () {
+        for (var i = 0; i < srcs.length && i < svgs.length; i++) {
+          try {
+            var out = await mermaid.mermaidAPI.render("mermaid-re-" + i, srcs[i]);
+            var tmp = document.createElement("div");
+            tmp.innerHTML = out.svg;
+            var fresh = tmp.querySelector("svg");
+            fresh.classList.add("mermaid-js");
+            svgs[i].replaceWith(fresh);
+            _quartoMermaid.postProcess(fresh);
+          } catch (e) { /* keep the original diagram */ }
+        }
+      });
+    })();
+  });
+})();
+</script>
+```
