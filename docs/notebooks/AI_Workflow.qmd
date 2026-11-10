@@ -318,10 +318,6 @@ Similarly we have seen hard lines which have been set flouted for similar semant
 This happens despite these limits being saved in CLAUDE.md files. 
 
 
-## Time for an exercise! {#time-for-an-exercise}
-
-??Workflow exercise to come (e.g. generating a multi-step workflow). The hallucination exercise now sits in *What AI Is Good and Bad At*.??
-
 ## Further reading
 
 - Anthropic: [Models overview](https://platform.claude.com/docs/en/about-claude/models/overview) and [Transparency Hub](https://www.anthropic.com/transparency) (knowledge cutoffs, release dates, training data descriptions)
