@@ -142,7 +142,7 @@
     reveal <- .isRevealDeck(txt)
 
     for (href in .extractHrefs(txt)) {
-      h <- trimws(href)
+      h <- trimws(gsub("&amp;", "&", href, fixed = TRUE))  # hrefs are HTML-escaped; request the real URL
       if (!nzchar(h)) next
       if (grepl("^(data:|javascript:)", h, ignore.case = TRUE)) next
       if (grepl("^(mailto:|tel:)", h, ignore.case = TRUE)) {
