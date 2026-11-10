@@ -80,7 +80,7 @@ A 500-word answer is roughly 700 passes through the whole model. Text appears wo
 - Inside the transformer, **attention** lets every token look at every other token in the input.
 - "it" attends to "Ikzf1", so the model knows what *it* means; "leukaemia" shapes what "linked" means.
 - The same word means different things in different context: "IKZF1 **expression**" vs "a facial **expression**".
-- Attention covers the **whole input**, not just your last prompt: everything in the context can change the answer.
+- Attention covers the whole input provided to AI model
 
 ::::: {.content-visible when-format="revealjs"}
 ::: notes
