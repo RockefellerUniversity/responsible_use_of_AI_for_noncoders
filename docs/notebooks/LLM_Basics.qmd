@@ -122,7 +122,7 @@ The LLM tools commonly used today are owned by extremely powerful, multi-billion
 
 ## Recent LLM Headlines
 
-![A selection of recent headlines related to AI tools and their parent companies. (1) [Anthropic’s AI biolab finds ‘CRISPR-like’ DNA in viruses. What’s next?](https://www.nature.com/articles/d41586-026-03039-6), (2) [Meta fined $25bn for 'lies' over user data privacy](https://www.bbc.com/news/articles/cqdr8zxrr3dxo),  (3) [In a New Anthropic Lab, A.I. Turns to Biology](https://www.nytimes.com/2026/09/24/science/anthropic-biology-lab-enzyme.html), (4) [Some people's chats with Claude AI found to be publicly available online](https://www.bbc.com/news/articles/cly5qgjk5ywo), (5) [Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own?](https://www.nytimes.com/2026/09/27/science/anthropic-biology-enzyme-mestre.html), (6) [Anthropic's Claude AI escapes to hack into three organisations](https://www.bbc.com/news/articles/cz7dl7w8y7po)](headlines.png)
+![A selection of recent headlines related to AI tools and their parent companies. (1) [Anthropic’s AI biolab finds ‘CRISPR-like’ DNA in viruses. What’s next?](https://www.nature.com/articles/d41586-026-03039-6), (2) [Meta fined $25bn for 'lies' over user data privacy](https://www.bbc.com/news/articles/cqdr8zxrr3dxo),  (3) [In a New Anthropic Lab, A.I. Turns to Biology](https://www.nytimes.com/2026/09/24/science/anthropic-biology-lab-enzyme.html), (4) [Some people's chats with Claude AI found to be publicly available online](https://www.bbc.com/news/articles/cly5qgjk5ywo), (5) [Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own?](https://www.nytimes.com/2026/09/27/science/anthropic-biology-enzyme-mestre.html), (6) [Anthropic's Claude AI escapes to hack into three organisations](https://www.bbc.com/news/articles/cz7dl7w8y7po)](../imgs/headlines.png)
 
 ## LLM Access Restrictions
 
@@ -136,7 +136,7 @@ NEVER give LLMs access to PHI or PII (ex: patient health records, financial info
 
 A caveat to some of these privacy concerns is *siloing*. 
 
-For Claude and Copilot, data from users with RU emails will not be used to train models.You can also adjust settings to have the same effect in other models.
+For Claude and Copilot, data from users with RU emails will not be used to train models. You can also adjust settings to have the same effect in other models.
 
 This is important because it prevents the leakage of private data and research ideas to other users of the LLMs. 
 
@@ -154,7 +154,7 @@ The final responsibility for AI-generated results lies with you. This includes *
 
 Funder mandates and best practices require sharing of detailed data and metadata in dedicated data repositories (ex: Zenodo, Dryad, GEO, etc.). Make sure that you are working with AI in a way that is documentable and reproducible.
 
-DO: use AI to help generate metadata, analysis code/pipeline, READme files, etc. which can then be shared and used to recreate your process/results.
+DO: use AI to help generate metadata, analysis code/pipelines, READme files, etc. which can then be shared and used to recreate your process/results.
 
 DON'T: use AI to perform an analysis of your data with no "paper trail".
 
