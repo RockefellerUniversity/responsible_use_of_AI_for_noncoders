@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-- [What is a good workflow](#what-is-a-good-workflow)
+- [Good workflows](#good-workflows)
 - [Hard lines](#hard-lines)
 - [Controlling what is allowed](#controlling-what-is-allowed)
 

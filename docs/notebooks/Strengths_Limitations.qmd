@@ -388,3 +388,11 @@ You can push the model and see how confident it is:
 If it gives a correct answer, you say “Are you sure? I think it’s X”, and see if it changes to X without new evidence.
 
 Adversarial review can help, but ultimately you need to make sure you need to understand the analysis inside out yourself. 
+
+## Time for an exercise!
+
+Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Hallucination_exercise.html)
+
+## Answers to exercise
+
+Answers can be found [here](../../exercises/answers/Exercise_Hallucination_answers.html)
