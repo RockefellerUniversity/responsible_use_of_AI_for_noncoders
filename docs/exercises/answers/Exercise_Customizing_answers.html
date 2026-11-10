@@ -3075,28 +3075,261 @@ vertical-align: -.125em;
 <p>
  
 </p>
-<p>These exercises are about customizing an AI assistant with instruction files, skills and connectors.</p>
+<p>These exercises are about customizing an AI agent with built-in commands, skills, connectors (MCP servers) and plugins.</p>
+<p>You will need Claude Code or Codex, and a new, empty project folder. All the data used here are public.</p>
 <p><strong>Do not paste protected or unpublished data into any AI tool.</strong></p>
-<p><strong>Exercise 1</strong> - <strong>Before and after CLAUDE.md</strong></p>
+<p><strong>Exercise 1</strong> - <strong>Find your built-in commands</strong></p>
 <ul>
-<li>??Ask the assistant a question. Then add an instruction to your CLAUDE.md (or equivalent custom instructions), start a new conversation and ask the same question. What changed??</li>
+<li>In your agent, type <code>/</code> and look through the list. Find the commands from the slides that: compress the conversation, ask a side question, go back to an earlier point, and plan before changing anything.</li>
+<li>Run <code>/context</code> (Claude Code) to see how full the context is. Ask a side question with <code>/btw</code> (for example “what does <code>log2FoldChange</code> mean?”), then run <code>/context</code> again. Did the side question add to the context?</li>
+<li>Switch to plan mode (<code>/plan</code>) and ask it to “make a folder called <code>results</code> and write a README in it”. What does it do?</li>
 </ul>
 <div class="cell">
-<p>??Expected observation??</p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What it does</th>
+<th>Claude Code</th>
+<th>Codex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compress the conversation</td>
+<td><code>/compact</code></td>
+<td><code>/compact</code></td>
+</tr>
+<tr class="even">
+<td>Side question, not added to the conversation</td>
+<td><code>/btw</code></td>
+<td><code>/side</code> (or <code>/btw</code>)</td>
+</tr>
+<tr class="odd">
+<td>Go back to an earlier point</td>
+<td><code>/rewind</code></td>
+<td><code>Esc Esc</code></td>
+</tr>
+<tr class="even">
+<td>Plan first, change nothing</td>
+<td><code>/plan</code></td>
+<td><code>/plan</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A <code>/btw</code> question and its answer are <strong>not</strong> added to the conversation, so the context stays the same size. It is the right place for quick questions that the main task doesn’t need to remember.</li>
+<li>In plan mode the agent writes a plan (make the folder, what goes in the README) and <strong>creates nothing</strong> until you approve it. This is the cheapest way to catch a misunderstanding before any files change.</li>
+<li>Command names change between versions. If one is missing, type <code>/</code> to see the list for your version.</li>
+</ul>
 </div>
-<p><strong>Exercise 2</strong> - <strong>Invoke a skill</strong></p>
+<p><strong>Exercise 2</strong> - <strong>Read a skill before you use it</strong></p>
+<p>Open this skill from the BRC’s <em>Responsible use of Agentic AI</em> course: <a href="https://github.com/RockefellerUniversity/responsible_use_of_Agentic_AI/blob/master/docs/data/de-volcano-report-skill/SKILL.md" target="_blank">de-volcano-report-skill/SKILL.md</a>. It turns a DESeq2 results table into a volcano-plot report.</p>
+<p>Without installing it, answer:</p>
 <ul>
-<li>??Invoke a provided skill and compare the result with the same request made without the skill??</li>
+<li><strong>When will it load?</strong> What would you have to say for the agent to use it?</li>
+<li><strong>What does it read and write?</strong> Does it ever change your data?</li>
+<li><strong>Does it run anything without asking?</strong></li>
+<li><strong>Is it written for you?</strong> What would you change before using it in your lab?</li>
 </ul>
 <div class="cell">
-<p>??Expected observation??</p>
+<ul>
+<li><strong>When it loads:</strong> the <code>description</code> says when to use it: a DESeq2 / DGE results CSV and a request for a volcano plot, a DE report or “a plot and table of my DE results”, even if you only say “make a volcano plot for this”. So “make a volcano plot of this DE table” should load it; “summarise this paper” should not.</li>
+<li><strong>What it reads and writes:</strong>
+<ul>
+<li>It reads only the <strong>first ~5 lines</strong> of the CSV to learn the column names (“these can be sensitive genomics data”).</li>
+<li>It writes <strong>one new <code>.qmd</code> file</strong> next to the CSV, filled in from the template in <code>assets/</code>.</li>
+<li>It <strong>never modifies the CSV</strong>. If a report with that name already exists, it shows a diff and asks before overwriting.</li>
+</ul></li>
+<li><strong>Does it run anything?</strong> No. It <strong>doesn’t render automatically</strong>: rendering is a shell command, so it offers the <code>quarto render</code> command instead. It also never installs packages.</li>
+<li><strong>Is it written for you?</strong> No. It was written for one person (“Douglas”) and encodes his choices: green/purple colours, cutoffs of padj &lt; 0.05 and |log2FC| ≥ 1, the top 5 genes labelled on each side, and his rules about approval. A good skill bakes in someone’s preferences, so read it and change what doesn’t fit your lab.</li>
+</ul>
+<p>Good signs in this skill: it asks rather than guessing the column names and the direction of the contrast, reads as little data as possible, and changes nothing without permission. Look for the same things in any skill you install.</p>
 </div>
-<p><strong>Exercise 3</strong> - <strong>Query an MCP connector</strong></p>
+<p><strong>Exercise 3</strong> - <strong>Write a skill of your own</strong></p>
+<p>Use the public RNA-seq results table <a href="https://raw.githubusercontent.com/RockefellerUniversity/responsible_use_of_Agentic_AI/master/docs/data/p53_null_minus_p53_WT_DGE.csv" target="_blank">p53_null_minus_p53_WT_DGE.csv</a> (a DESeq2 comparison of p53-null vs p53 wild-type cells; right-click and save it into your project folder).</p>
 <ul>
-<li>??Use a connector to answer a question from an outside source, and compare with the answer the model gives without it??</li>
+<li>Build a skill that makes a reusable differential expression report from a table like this. The report should at least include:
+<ul>
+<li>a summary of how many genes go up and down</li>
+<li>a volcano plot (log2 fold change vs significance)</li>
+<li>a searchable table of the results</li>
+</ul></li>
+<li>The skill should save a <code>.qmd</code> or <code>.Rmd</code> file that produces the report, so the analysis can be re-run. A static HTML file is not enough.</li>
+<li>Save the skill so it is available <strong>only in this project</strong>, not everywhere on your computer.</li>
+<li>Choose your approach: write the folder and <code>SKILL.md</code> yourself, or ask the agent to build it with its skill creator. Either way, put the report template in the skill’s <code>assets/</code> folder.</li>
+<li><strong>Test it.</strong> In a fresh session, try at least four prompts and note whether the skill loads:
+<ul>
+<li>“Make a DE report for this table.”</li>
+<li>“Volcano plot please.”</li>
+<li>“Summarise the p53 results.”</li>
+<li>“What is p53?” (this one should <strong>not</strong> load it)</li>
+</ul></li>
+<li><strong>Check the result.</strong> Does the report get the direction of the comparison right?</li>
 </ul>
 <div class="cell">
-<p>??Expected observation??</p>
+<p><strong>Where it goes:</strong> for Claude Code, <code>.claude/skills/&lt;skill-name&gt;/SKILL.md</code> inside the project folder (<code>~/.claude/skills/</code> would make it global). For Codex, <code>.codex/skills/&lt;skill-name&gt;/</code> in the project.</p>
+<p><strong>What your report should show</strong>, computed from the table with adjusted p &lt; 0.05 and |log2FC| ≥ 1:</p>
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th></th>
+<th>Genes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tested (adjusted p not NA)</td>
+<td>19,925</td>
+</tr>
+<tr class="even">
+<td>Significant</td>
+<td>1,814</td>
+</tr>
+<tr class="odd">
+<td>Higher in p53 null</td>
+<td>553</td>
+</tr>
+<tr class="even">
+<td>Lower in p53 null</td>
+<td>1,261</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Strongest changes by Wald statistic: <strong>VIM, EHF, KLK6</strong> up; <strong>SLC2A1, NDRG1, CDKN1A, WNT16</strong> down in p53 null.</li>
+<li><strong>A built-in check:</strong> <em>CDKN1A</em> (p21) is a classic p53 target, so it should go <strong>down</strong> when p53 is lost. Here it is −3.1 log2 fold. If your report shows it going up, the direction of the comparison is backwards.</li>
+<li>The table has 70,929 rows, but only 19,925 have an adjusted p-value. DESeq2 filtered the rest out, so they are <em>untested</em>, not <em>non-significant</em>. A good report says so, or drops them.</li>
+</ul>
+<p><strong>Testing that it loads:</strong></p>
+<ul>
+<li>“Make a DE report for this table” and “Volcano plot please” should load it.</li>
+<li>“Summarise the p53 results” may or may not, which shows why the <code>description</code> needs the words people actually use.</li>
+<li>“What is p53?” should not.</li>
+</ul>
+<p>If it doesn’t load when it should, add those words to the <code>description</code> (for example “volcano”, “DE report”, “DESeq2 results”) and test again.</p>
+<p><strong>Example to compare against:</strong> the BRC’s <a href="https://github.com/RockefellerUniversity/responsible_use_of_Agentic_AI/tree/master/docs/data/de-volcano-report-skill" target="_blank">de-volcano-report-skill</a> and the <a href="https://github.com/RockefellerUniversity/responsible_use_of_Agentic_AI/blob/master/docs/data/p53_null_minus_p53_WT_DGE_volcano_report.qmd" target="_blank">report template it produced</a>. It was made by going back and forth with the agent until the report looked right, then asking the agent to turn the working <code>.qmd</code> and the conversation into a skill. That is usually quicker than writing a skill from scratch.</p>
+</div>
+<p><strong>Exercise 4</strong> - <strong>The same question, with and without a skill</strong></p>
+<p>This course has an example skill, <a href="https://github.com/RockefellerUniversity/responsible_use_of_AI_for_noncoders/tree/master/docs/data/claude_examples/global/skills/gene-summary" target="_blank">gene-summary</a>, that looks a gene up in NCBI Gene, UniProt and PubMed and fills in a Markdown template.</p>
+<ul>
+<li>In a fresh session <strong>without</strong> the skill, ask: “Summarise the human gene IKZF1: ID, location, aliases, function and three key papers.”</li>
+<li>Copy the <code>gene-summary</code> folder into your project’s <code>.claude/skills/</code> folder, start a new session and ask the same question.</li>
+<li>Compare the two answers. Which facts come with a source? Which papers can you open? What does each answer say it could not check?</li>
+</ul>
+<div class="cell">
+<p>With the skill, the identity section comes from the skill’s script querying NCBI, not from the model’s memory. Running that script gives:</p>
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>NCBI Gene</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gene ID</td>
+<td><a href="https://www.ncbi.nlm.nih.gov/gene/10320">10320</a></td>
+</tr>
+<tr class="even">
+<td>Full name</td>
+<td>IKAROS family zinc finger 1</td>
+</tr>
+<tr class="odd">
+<td>Location</td>
+<td>7p12.2</td>
+</tr>
+<tr class="even">
+<td>Aliases</td>
+<td>CVID13, IK1, IKAROS, LYF1, LyF-1, PPP1R92, ZNFN1A1 (and others)</td>
+</tr>
+</tbody>
+</table>
+<p>What usually differs:</p>
+<ul>
+<li><strong>Without the skill:</strong> a fluent summary from training data. The ID and location are often right for a well-known gene like IKZF1, but nothing says where they came from, and references may be incomplete, out of date or invented.</li>
+<li><strong>With the skill:</strong>
+<ul>
+<li>the same headings every time (from the template in <code>assets/</code>)</li>
+<li>a source tag on every fact, such as <code>[NCBI Gene]</code>, <code>[PMID: …]</code> or <code>[Model knowledge, not verified]</code></li>
+<li>“Not found” rather than a guess</li>
+<li>a “Not checked” section</li>
+<li>the summary saved as a file you can keep</li>
+</ul></li>
+</ul>
+<p>Still check: open each PubMed link and confirm the title and finding match. A skill makes good behaviour more likely, not certain.</p>
+</div>
+<p><strong>Exercise 5</strong> - <strong>Check a plugin before you install it</strong></p>
+<p>Look at the <code>bio-research</code> plugin in <a href="https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research" target="_blank">anthropics/knowledge-work-plugins</a>. Without installing it, open its <code>.mcp.json</code> file and its <code>skills</code> folder.</p>
+<ul>
+<li>How many MCP servers does it add, and <strong>who runs each one</strong>?</li>
+<li>What would leave your computer when you use them?</li>
+<li>What would installing it cost in context, in every session?</li>
+<li>Would you install all of it? What would you do instead?</li>
+</ul>
+<div class="cell">
+<p>Looking at the plugin on GitHub (November 2026):</p>
+<ul>
+<li><strong>6 skills:</strong> instrument-data-to-allotrope, nextflow-development, scientific-problem-selection, scvi-tools, single-cell-rna-qc, start.</li>
+<li><strong>11 MCP servers</strong>, all remote (<code>https://…</code>), run by different organisations:</li>
+</ul>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Server</th>
+<th>Run by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PubMed, bioRxiv, clinical trials, ChEMBL</td>
+<td>Anthropic-hosted (<code>*.mcp.claude.com</code>)</td>
+</tr>
+<tr class="even">
+<td>BioRender</td>
+<td>BioRender</td>
+</tr>
+<tr class="odd">
+<td>Consensus</td>
+<td>Consensus</td>
+</tr>
+<tr class="even">
+<td>Synapse</td>
+<td>Sage Bionetworks (synapse.org)</td>
+</tr>
+<tr class="odd">
+<td>Wiley</td>
+<td>Wiley, via scholargateway.ai</td>
+</tr>
+<tr class="even">
+<td>Owkin</td>
+<td>Owkin</td>
+</tr>
+<tr class="odd">
+<td>Open Targets</td>
+<td>Open Targets</td>
+</tr>
+<tr class="even">
+<td>Benchling</td>
+<td>Benchling</td>
+</tr>
+</tbody>
+</table>
+<p>What this means:</p>
+<ul>
+<li><strong>What leaves your computer:</strong> every question the agent sends to a connector (search terms, gene names, sometimes text from your conversation) goes to that organisation’s server. Check each one’s terms before using it with unpublished work.</li>
+<li><strong>Context cost:</strong> each connected server adds its tool descriptions to every session, before you type anything (remember the 52,000 tokens in the <em>What Happens With a Query</em> session).</li>
+<li><strong>Instead:</strong> install only what you need. Most agents let you turn individual connectors off, so you could keep, say, PubMed and Open Targets and switch off the rest. If you only want one skill, copy that skill rather than the whole plugin.</li>
+<li><strong>Who publishes it matters.</strong> This plugin comes from Anthropic’s own repository, but most of the servers it connects to are third parties. Check them the way you would check any software.</li>
+</ul>
 </div>
 
 </main>
