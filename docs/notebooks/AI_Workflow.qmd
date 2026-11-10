@@ -47,6 +47,12 @@ Two questions decide how much to trust AI with a task:
 
 ## What is a good AI workflow
 
+A core principle of working with the LLM is being the driver. It is easy to be a passenger. Especially if there's time pressure or it seems to be agreeing with you. The more you yield decision-making and executive control to these tools, the more chance that mistakes happen. 
+
+If at any point you feel out of your depth or if the analysis starts to feel like a black box, that is when you need to reach out for support from your friendly neighborhood bioinformatician. 
+
+## What is a good AI workflow
+
 A good AI workflow for bioinformatics largely replicates a good bioinformatics workflow without AI. As with how we code more traditionally, taking short-cuts comes back to haunt us later. Very little of Bioinformatics is just 'plug and play'.
 
 Key cornerstones:
@@ -55,11 +61,7 @@ Key cornerstones:
 - Reproducibility
 - Checkpoints and Review
 
-## What is a good AI workflow
 
-A core principle of working with the LLM is being the driver. It is easy to be a passenger. The more you yield decision-making and executive control to these tools, the more chance that mistakes happen. 
-
-If at any point you feel out of your depth or if the analysis starts to feel like a black box, that is when you need to reach out for support from your friendly neighborhood bioinformatician. 
 
 ## Getting Started
 

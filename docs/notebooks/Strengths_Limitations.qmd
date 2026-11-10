@@ -55,8 +55,6 @@ So it is most useful when:
 2.  **Everything it needs is in the prompt**: (the less it has to infer the better)
 3.  **You can check the output** quickly
 
-It does worse when one or more of these conditions are not met.
-
 ```{mermaid}
 %%| fig-align: center
 flowchart LR
@@ -142,7 +140,7 @@ Asking for an entire analysis in one go ("here is my data, find the differences 
 
 - **Hidden decisions.** Filtering thresholds, normalization, which samples to include and which statistical test to run are scientific choices. A model will make them silently, picking whatever is most typical, not what is right for your design.
 
-- **No ground truth.** The model cannot see that a PCA looks wrong or that a result is biologically implausible unless you show it.
+- **No ground truth.** The model is unlikely to see that a PCA looks wrong or that a result is biologically implausible unless you interrogate it.
 
 - **Long sessions drift.** Early instructions and decisions get diluted as the conversation grows. We talked about this in relation to *Context Limits*
 
