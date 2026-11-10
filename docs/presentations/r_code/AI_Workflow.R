@@ -14,12 +14,12 @@
 ##   end
 ## 
 ##   UP -- "all modules done" --> F["8 Scale up<br/>full data"]
-##   F --> R["9 Report<br/>report.qmd + model ID"]
+##   F --> R["9 Report<br/>"]
 ## 
-##   classDef step fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000
-##   classDef setup fill:#23373B,stroke:#23373B,color:#ffffff
-##   classDef check fill:#EB811B,stroke:#EB811B,color:#000000
-##   classDef done fill:#2E8B57,stroke:#2E8B57,color:#ffffff
+##   classDef step fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000,font-family:Arial
+##   classDef setup fill:#23373B,stroke:#23373B,color:#ffffff,font-family:Arial
+##   classDef check fill:#EB811B,stroke:#EB811B,color:#000000,font-family:Arial
+##   classDef done fill:#2E8B57,stroke:#2E8B57,color:#ffffff,font-family:Arial
 ##   class P,E setup
 ##   class M,C,S,U,UP step
 ##   class D check
@@ -43,11 +43,11 @@
 ## 
 ##   ROW ~~~ BASE
 ## 
-##   classDef ai fill:#EB811B,stroke:#EB811B,color:#000000
-##   classDef layer fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000
-##   classDef human fill:#23373B,stroke:#23373B,color:#ffffff
-##   classDef net fill:#2F6FA8,stroke:#2F6FA8,color:#ffffff
-##   classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff
+##   classDef ai fill:#EB811B,stroke:#EB811B,color:#000000,font-family:Arial
+##   classDef layer fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000,font-family:Arial
+##   classDef human fill:#23373B,stroke:#23373B,color:#ffffff,font-family:Arial
+##   classDef net fill:#2F6FA8,stroke:#2F6FA8,color:#ffffff,font-family:Arial
+##   classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff,font-family:Arial
 ##   class AI ai
 ##   class L1,L2 layer
 ##   class L3 human

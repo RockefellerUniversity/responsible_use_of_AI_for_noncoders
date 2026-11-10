@@ -3117,7 +3117,6 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><strong>Everything it needs is in the prompt</strong>: (the less it has to infer the better)</li>
 <li><strong>You can check the output</strong> quickly</li>
 </ol>
-<p>It does worse when one or more of these conditions are not met.</p>
 <div class="cell" data-reveal="true" data-layout-align="center">
 <div class="cell-output-display">
 <div>
@@ -3135,8 +3134,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
   G([&quot;&lt;b&gt;Good fit for an LLM&lt;/b&gt;&lt;br/&gt;a good workflow&quot;])
   C --&gt; G
 
-  classDef cond fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000
-  classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff
+  classDef cond fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000,font-family:Arial
+  classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff,font-family:Arial
   class A,B,C cond
   class G ok
 
@@ -3259,7 +3258,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2>Complete Analysis</h2>
 <ul>
 <li><p><strong>Hidden decisions.</strong> Filtering thresholds, normalization, which samples to include and which statistical test to run are scientific choices. A model will make them silently, picking whatever is most typical, not what is right for your design.</p></li>
-<li><p><strong>No ground truth.</strong> The model cannot see that a PCA looks wrong or that a result is biologically implausible unless you show it.</p></li>
+<li><p><strong>No ground truth.</strong> The model is unlikely to see that a PCA looks wrong or that a result is biologically implausible unless you interrogate it.</p></li>
 <li><p><strong>Long sessions drift.</strong> Early instructions and decisions get diluted as the conversation grows. We talked about this in relation to <em>Context Limits</em></p></li>
 </ul>
 </section>
@@ -3299,20 +3298,20 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 
   subgraph STEP [&quot;Step-by-step with checkpoints&quot;]
     direction LR
-    R1[&quot;&lt;b&gt;Prompt 1&lt;/b&gt;&lt;br/&gt;With this scRNAseq mouse PBMC dataset read the cells&lt;br/&gt;into Seurat in R and do some basic QC. Make a report.&quot;]
-    R2{{&quot;Review report&lt;br/&gt;Any QC concerns?&quot;}}
-    R3[&quot;&lt;b&gt;Prompt 2&lt;/b&gt;&lt;br/&gt;Add filtering for cells with mt rate &gt; 1, regress out cell cycle,&lt;br/&gt;and check for doublets using Scrublet.&quot;]
+    R1[&quot;&lt;b&gt;Prompt 1&lt;/b&gt;&lt;br/&gt;Read this scRNAseq mouse PBMC&lt;br/&gt;dataset into Seurat in R and do&lt;br/&gt;some basic QC. Make a report.&quot;]
+    R2{{&quot;Review report&lt;br/&gt;QC concerns?&quot;}}
+    R3[&quot;&lt;b&gt;Prompt 2&lt;/b&gt;&lt;br/&gt;Filter cells with mt rate &gt; 1,&lt;br/&gt;regress out cell cycle, and check&lt;br/&gt;for doublets using Scrublet.&quot;]
     R4{{&quot;Re-review results&quot;}}
-    R5([&quot;...and many more steps&quot;])
+    R5([&quot;...many more&lt;br/&gt;steps&quot;])
     R1 --&gt; R2 --&gt; R3 --&gt; R4
     R4 -.-&gt; R5
   end
 
   ONE ~~~ STEP
 
-  classDef prompt fill:#23373B,stroke:#23373B,color:#ffffff
-  classDef review fill:#EB811B,stroke:#EB811B,color:#000000
-  classDef more fill:#ffffff,stroke:#999999,stroke-dasharray: 5 5,color:#555555
+  classDef prompt fill:#23373B,stroke:#23373B,color:#ffffff,font-family:Arial
+  classDef review fill:#EB811B,stroke:#EB811B,color:#000000,font-family:Arial
+  classDef more fill:#ffffff,stroke:#999999,stroke-dasharray: 5 5,color:#555555,font-family:Arial
   class L1,R1,R3 prompt
   class L2,R2,R4 review
   class R5 more
@@ -3418,7 +3417,6 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <ul>
 <li>Lab-specific or niche packages have few/no examples in the training set, so the model fills gaps with plausible-looking code.</li>
 <li>A niche tool next to a dominant one: it gives you the <strong>dominant tool’s</strong> arguments and workflow, with the niche tool’s name on it (e.g. Seurat terminology for a lesser-known single-cell package).</li>
-<li>Small-community tools may have little documentation beyond the paper.</li>
 </ul>
 </section>
 <section id="minor-methods-why-it-happens-1" class="slide level2">
@@ -3598,7 +3596,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 </section>
 <section id="time-for-an-exercise" class="slide level2">
 <h2>Time for an exercise!</h2>
-<p>Exercise on hallucinations can be found <a href="../../exercises/exercises/Exercise_StrengthsLimitations_exercise.html">here</a></p>
+<p>Exercises can be found <a href="../../exercises/exercises/Exercise_StrengthsLimitations_exercise.html">here</a></p>
 </section>
 <section id="answers-to-exercise" class="slide level2">
 <h2>Answers to exercise</h2>

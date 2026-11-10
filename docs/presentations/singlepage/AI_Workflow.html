@@ -4980,11 +4980,6 @@ z-index: 1000;
   <ul class="collapse">
   <li><a href="#checkpoints" id="toc-checkpoints" class="nav-link" data-scroll-target="#checkpoints">Checkpoints</a></li>
   <li><a href="#what-should-i-do-if-i-cant-read-the-code" id="toc-what-should-i-do-if-i-cant-read-the-code" class="nav-link" data-scroll-target="#what-should-i-do-if-i-cant-read-the-code">What should I do if I can’t read the code</a></li>
-  </ul></li>
-  <li><a href="#other-things-to-consider" id="toc-other-things-to-consider" class="nav-link" data-scroll-target="#other-things-to-consider">Other things to consider</a>
-  <ul class="collapse">
-  <li><a href="#managing-resources" id="toc-managing-resources" class="nav-link" data-scroll-target="#managing-resources">Managing resources</a></li>
-  <li><a href="#building-reports" id="toc-building-reports" class="nav-link" data-scroll-target="#building-reports">Building Reports</a></li>
   <li><a href="#the-analysis-loop-one-step-at-a-time" id="toc-the-analysis-loop-one-step-at-a-time" class="nav-link" data-scroll-target="#the-analysis-loop-one-step-at-a-time">The analysis loop: one step at a time</a></li>
   <li><a href="#good-practice-still-applies" id="toc-good-practice-still-applies" class="nav-link" data-scroll-target="#good-practice-still-applies">Good practice still applies</a></li>
   </ul></li>
@@ -5096,6 +5091,8 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h1 class="center middle" data-background-color="#23373B">Good workflows</h1>
 <section id="what-is-a-good-ai-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-good-ai-workflow">What is a good AI workflow</h2>
+<p>A core principle of working with the LLM is being the driver. It is easy to be a passenger. Especially if there’s time pressure or it seems to be agreeing with you. The more you yield decision-making and executive control to these tools, the more chance that mistakes happen.</p>
+<p>If at any point you feel out of your depth or if the analysis starts to feel like a black box, that is when you need to reach out for support from your friendly neighborhood bioinformatician.</p>
 <p>A good AI workflow for bioinformatics largely replicates a good bioinformatics workflow without AI. As with how we code more traditionally, taking short-cuts comes back to haunt us later. Very little of Bioinformatics is just ‘plug and play’.</p>
 <p>Key cornerstones:</p>
 <ul>
@@ -5103,8 +5100,6 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Reproducibility</li>
 <li>Checkpoints and Review</li>
 </ul>
-<p>A core principle of working with the LLM is being the driver. It is easy to be a passenger. The more you yield decision-making and executive control to these tools, the more chance that mistakes happen.</p>
-<p>If at any point you feel out of your depth or if the analysis starts to feel like a black box, that is when you need to reach out for support from your friendly neighborhood bioinformatician.</p>
 </section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
@@ -5140,7 +5135,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <section id="reproducibility-1" class="level2">
 <h2 class="anchored" data-anchor-id="reproducibility-1">Reproducibility</h2>
 <p>LLMs in general are not reproducible. If I ask the same prompt multiple times I will get different responses.</p>
-<p>Say I had perfectly copied my context so that someone could replicate my work they may struggle to use the identical model. Frontier models like those from Claude and ChatGPT, do update and are then retired with limited to access them.</p>
+<p>Say I had perfectly copied my context so that someone could replicate my work they could still struggle to use the identical model. Frontier models like those from Claude and ChatGPT, do update and are then retired with limited to access them.</p>
 <p><strong>If this is the state of play how do you stay reproducible?</strong></p>
 <p>There are two aspects that are most important to ensure that you stay reproducible.</p>
 <ul>
@@ -5152,15 +5147,15 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <section id="managing-software" class="level2">
 <h2 class="anchored" data-anchor-id="managing-software">Managing software</h2>
 <p>It doesn’t matter if you are running code in R, python, shell scripts etc. What matters is that you have static versions of these software and the packages they use across your analysis. This means once you start on a project you <strong>do not</strong> update the software.</p>
-<p>You can use package managers like Conda/Mamba or create containers like Dockers to help manage your software and also enable you to share these with other people or other systems i.e. HPC. We have a whole course on reproducibility including software management <a href="https://rockefelleruniversity.github.io/RU_reproducibleR/">here</a></p>
+<p>You can use package managers like <em>Conda/Mamba</em> or create containers like <em>Dockers</em> to help manage your software and also enable you to share these with other people or other systems i.e. HPC. We have a whole course on reproducibility including software management <a href="https://rockefelleruniversity.github.io/RU_reproducibleR/">here</a></p>
 <p>You do not need to do this alone though. Setting up these software environments is something that Claude and ChatGPT are pretty good at. Once you are set up you can ensure it takes an appropriate snapshot, then you are good to go.</p>
 </section>
 <section id="always-make-code" class="level2">
 <h2 class="anchored" data-anchor-id="always-make-code">Always make code</h2>
 <p>Once you have your software the next step is code. You can easily prompt code generation by simply asking for it.</p>
-<p>Especially when working on my laptop I will have a folder in which I will have data, results and the code which links the two.</p>
+<p>When working on a project I will have a folder in which I will have data, results and the code which links the two.</p>
 <p>If we are using Claude Code or Codex, these files will be generated in your project.</p>
-<p>Ideally you would be using Git and Github as you go to manage version control. Again Claude can help with this.</p>
+<p>Ideally you would be using Git and Github as you go to manage version control. Again Claude can help with this (though you should give it limited permissions).</p>
 </section>
 </section>
 <section id="checkpoints-and-review" class="level1 center middle" data-background-color="#23373B">
@@ -5172,7 +5167,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>It’s easier for the LLMs to get overwhelmed by the scale of the task.</li>
 <li>It’s easier for the user to skip essential checkpoints and tests.</li>
 </ul>
-<p>If you are trying something for the first time or working on something exploratory this is checkpoints are even more important. The key part is to evaluate code line-by-line and review the outcomes. You should hopefully have technical and biological expectations about the data as it is processed.</p>
+<p>If you are trying something for the first time or working on something exploratory checkpoints are even more important. The key is to evaluate code line-by-line and review the outcomes. You should hopefully have technical and biological expectations about the data as it is processed.</p>
 <p>For example:</p>
 <ul>
 <li>How many rows should the matrix have?</li>
@@ -5184,33 +5179,33 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <section id="what-should-i-do-if-i-cant-read-the-code" class="level2">
 <h2 class="anchored" data-anchor-id="what-should-i-do-if-i-cant-read-the-code">What should I do if I can’t read the code</h2>
 <p>If you do not understand the code that you are generating take some extra time and break it down. Just because it runs, does not mean it is doing what you want it to do.</p>
-<p>Here are some suggested steps are based on key principles in coding and Bioinformatics that we use when we run new tools or languages we are unfamiliar with.</p>
+<p>Here are some suggested steps based on key principles in coding and Bioinformatics that we use when we run new tools or languages we are unfamiliar with.</p>
 <ul>
 <li><p><strong>Ask for annotation of the code</strong> - Once annotated read the overviews and ask questions (not just to the LLMs). Add your own additional annotations to help fill in the gaps or correct mistakes.</p></li>
 <li><p><strong>Run it</strong> - If code is wrong, it often errors or gives warnings. If it runs, check the output is right. If you don’t know what right looks like then you need some positive controls and trial datasets. If it gives warnings, double-check why.</p></li>
-<li><p><strong>Look it up</strong> - Check arguments against the package help and vignettes. Check anytime it points you to a paper. Review the core principles of your analysis</p></li>
 </ul>
 <ul>
+<li><p><strong>Look it up</strong> - Check arguments against the package help and vignettes. Check anytime it points you to a paper. Review the core principles of your analysis</p></li>
 <li><p><strong>Start small</strong> - Only use a small amount of the data. You do not need to run all the data at once. Make sure you understand it first so you know it is doing what is is supposed to be doing.</p></li>
 <li><p><strong>Double-check what it is actually doing</strong> - As you work through chunks of code, check the saved variables. Do they look as expected? If not, why?</p></li>
 <li><p><strong>Verify the numbers</strong> - Does it make sense? Export results to spreadsheets so you can manually review. Do directions of changes make sense? Does the normalization make sense? Compare to plots and visualizations.</p></li>
-<li><p><strong>Cross-check</strong> - Ask in a fresh session, or a different model, and compare. Disagreement means look carefully.</p></li>
 </ul>
+<ul>
+<li><strong>Cross-check</strong> - Ask in a fresh session, or a different model, or different LLM provider, and compare. Disagreement means look carefully.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="Remember">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You remain responsible for everything the LLMs produce.</p>
-</section>
-</section>
-<section id="other-things-to-consider" class="level1 center middle" data-background-color="#23373B">
-<h1 class="center middle" data-background-color="#23373B">Other things to consider</h1>
-<section id="managing-resources" class="level2">
-<h2 class="anchored" data-anchor-id="managing-resources">Managing resources</h2>
-<p>When you are building scripts and planning something that is a little more computationally intensive you should also consider the resources you have available to you. Either on your laptop or on remote servers i.e. HPC systems.</p>
-<p>Already we suggest running your analysis on a subset to start, so you can make sure the code itself runs ok.</p>
-<p>Once you have functioning code and are ready to run everything, then you should provide information about your computational setup so LLMs can adapt the code to your limits.</p>
-</section>
-<section id="building-reports" class="level2">
-<h2 class="anchored" data-anchor-id="building-reports">Building Reports</h2>
-<p>We work with reports as the hub for our deliverable analysis. Reports enable us to tie code directly to our output figures in fixed documents. This means no orphan plots where we’re not sure exactly how they were generated.</p>
-<p>Popular examples include Quarto, Rmarkdown and Jupyter.</p>
+</div>
+</div>
 </section>
 <section id="the-analysis-loop-one-step-at-a-time" class="level2">
 <h2 class="anchored" data-anchor-id="the-analysis-loop-one-step-at-a-time">The analysis loop: one step at a time</h2>
@@ -5235,12 +5230,12 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
   end
 
   UP -- &quot;all modules done&quot; --&gt; F[&quot;8 Scale up&lt;br/&gt;full data&quot;]
-  F --&gt; R[&quot;9 Report&lt;br/&gt;report.qmd + model ID&quot;]
+  F --&gt; R[&quot;9 Report&lt;br/&gt;&quot;]
 
-  classDef step fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000
-  classDef setup fill:#23373B,stroke:#23373B,color:#ffffff
-  classDef check fill:#EB811B,stroke:#EB811B,color:#000000
-  classDef done fill:#2E8B57,stroke:#2E8B57,color:#ffffff
+  classDef step fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000,font-family:Arial
+  classDef setup fill:#23373B,stroke:#23373B,color:#ffffff,font-family:Arial
+  classDef check fill:#EB811B,stroke:#EB811B,color:#000000,font-family:Arial
+  classDef done fill:#2E8B57,stroke:#2E8B57,color:#ffffff,font-family:Arial
   class P,E setup
   class M,C,S,U,UP step
   class D check
@@ -5261,7 +5256,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li>Reproducibility</li>
 <li>Checkpoints and Review</li>
 </ul>
-<p>Ultimately you still need to understand what the analysis is doing, how it is doing it, and why it is doing that. Through this you keep your hands on the wheel. If this is too much reach out to your friendly neighborhood bioinformatician for help.</p>
+<p>Ultimately you still need to understand what the analysis is doing, how it is doing it, and why it is doing that. Through this you keep your hands on the wheel. If this is too much, reach out to your friendly neighborhood bioinformatician for help.</p>
 </section>
 </section>
 <section id="bad-practice" class="level1 center middle" data-background-color="#23373B">
@@ -5270,7 +5265,7 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2 class="anchored" data-anchor-id="who-is-driving">Who is driving?</h2>
 <p>A repeated analogy we have used is “who is driving?”. It is very easy to give away our control.</p>
 <p>Claude code generally tries to make this danger clear i.e. the full permissions CLI mode is called “–dangerously-skip-permissions”.</p>
-<p>That said we can achieve something similar with a much less scary prompt:</p>
+<p>That said we can achieve something similarly <em>risky</em> with a much less scary prompt:</p>
 <p><em>Complete a scRNAseq analysis on this mouse PBMC dataset. If there are errors fix them. Keep going until you finish.</em></p>
 </section>
 <section id="controlling-what-is-allowed" class="level2">
@@ -5306,11 +5301,11 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 
   ROW ~~~ BASE
 
-  classDef ai fill:#EB811B,stroke:#EB811B,color:#000000
-  classDef layer fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000
-  classDef human fill:#23373B,stroke:#23373B,color:#ffffff
-  classDef net fill:#2F6FA8,stroke:#2F6FA8,color:#ffffff
-  classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff
+  classDef ai fill:#EB811B,stroke:#EB811B,color:#000000,font-family:Arial
+  classDef layer fill:#ffffff,stroke:#EB811B,stroke-width:2px,color:#000000,font-family:Arial
+  classDef human fill:#23373B,stroke:#23373B,color:#ffffff,font-family:Arial
+  classDef net fill:#2F6FA8,stroke:#2F6FA8,color:#ffffff,font-family:Arial
+  classDef ok fill:#2E8B57,stroke:#2E8B57,color:#ffffff,font-family:Arial
   class AI ai
   class L1,L2 layer
   class L3 human
@@ -5327,9 +5322,12 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 </section>
 <section id="llms-find-a-way" class="level2">
 <h2 class="anchored" data-anchor-id="llms-find-a-way">LLMs find a way</h2>
-<p>The way we instruct these tools can accidentally give them freedom beyond what we allow. It doesn’t have to be as expliocit as prior examples.</p>
+<p>The way we instruct these tools can accidentally give them freedom beyond what we allow. It doesn’t have to be as explicit as prior examples.</p>
 <p>For example:</p>
-<p>“Lets do the <em>next step in the analysis</em>” “Give me the code for <em>this figure</em>”</p>
+<ul>
+<li>“Lets do the <em>next step in the analysis</em>”</li>
+<li>“Give me the code for <em>this figure</em>”</li>
+</ul>
 <p>In both these cases I though I was being explicit and we had a pattern of step-wise interrogation, action and review. Instead it took this as permissive instructions for it to conduct an entire analysis, or to add the code for a given figure directly into my analysis report.</p>
 </section>
 <section id="hard-lines-can-be-softer-than-you-think" class="level2">
