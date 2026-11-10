@@ -8,7 +8,7 @@
 
 <meta name="author" content="Rockefeller University, Bioinformatics Resource Centre">
 
-<title>Exercise: Provoking a Hallucination</title>
+<title>Exercise: AI in Your Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -3043,7 +3077,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise: Provoking a Hallucination</h1>
+<h1 class="title">Exercise: AI in Your Workflow</h1>
 </div>
 
 
@@ -3075,28 +3109,56 @@ vertical-align: -.125em;
 <p>
  
 </p>
-<p>These exercises are about hallucinations and the limits of what a model knows.</p>
-<p><strong>Do not paste protected or unpublished data into any AI tool.</strong></p>
-<p><strong>Exercise 1</strong> - <strong>Recent knowledge</strong></p>
+<p>These exercises practice the habits behind a good AI workflow: planning, checkpoints, reproducibility, reviewing code you can’t read, and setting hard lines.</p>
+<p>In these exercises we will talk through a dummy dataset from <a href="https://bioconductor.org/packages/release/data/experiment/html/airway.html">Bioconductor</a>. It is RNAseq data for human airway cells treated with dexamethasone.</p>
+<p><strong>Exercise 1</strong> - <strong>Plan first, then decide who decides</strong></p>
 <ul>
-<li>Ask an AI assistant, with web search turned off, about a very recent event, publication or software release. How does it respond? Does it acknowledge that it doesn’t know?</li>
+<li>Open a new project folder in your AI app and give it the public dataset. <strong>Do not ask for any analysis yet.</strong></li>
+<li>Ask the assistant to help you write <code>plan.md</code> for a differential expression analysis of the dataset: the questions, the software, the reference, and the ordered steps (QC, filtering, normalization, testing, reporting).</li>
+<li>Mark up each line of the plan with one of three tags: <strong>[me]</strong> (a scientific choice I made or agree with), <strong>[AI]</strong> (the model chose it and I haven’t thought about it), <strong>[CHECK]</strong> (I need to verify it from a trusted source).</li>
+<li>Open a <strong>fresh</strong> session, give it only <code>plan.md</code>, and ask it to critique the plan. What did it add? What did it challenge? Did it flag any of your [me] decisions as risky?</li>
 </ul>
-<div class="cell">
-<p>Without web search the model can only draw on its training data, which stops at its training cutoff. It may say it doesn’t know, or it may produce a confident but outdated or invented answer.</p>
-</div>
-<p><strong>Exercise 2</strong> - <strong>Invoke a hallucination</strong></p>
+<p><strong>Exercise 2</strong> - <strong>Write down what you expect before you run it</strong></p>
 <ul>
-<li>Try to get the assistant to give a confident but wrong answer. For example, ask for references on a narrow topic, or about the function of a gene or software option that doesn’t exist. Check every claim against a trusted source.</li>
+<li>Choose the QC step from your plan. <strong>Before</strong> running anything, write down 5 expectations in a table: what the distribution of counts should look like, whether the data should be logged, how many genes you expect to survive filtering, which sample groups should cluster together, and one gene whose behavior you can predict.</li>
+<li>Ask the assistant to write and run the QC step <strong>on a subset of the data only</strong> (for example 1,000 genes), saving the code in <code>scripts/</code>.</li>
+<li>Compare the output with your table. Mark each expectation <strong>met</strong>, <strong>not met</strong> or <strong>can’t tell</strong>.</li>
+<li>For one unmet expectation, find out why. Is it the data, the code, or your expectation?</li>
 </ul>
-<div class="cell">
-<p>??Examples of prompts that reliably produce hallucinations, and how to check them??</p>
-</div>
+<p><strong>Exercise 3</strong> - <strong>Reproducibility replay</strong></p>
 <ul>
-<li>How did the tone of the wrong answer compare to the tone of a correct one?</li>
+<li>Write one clear prompt for a small step, for example “Write an R script that reads <code>data/counts.csv</code> and <code>data/coldata.csv</code> and makes a PCA plot of the samples coloured by treatment.”</li>
+<li>Run it in <strong>two fresh sessions</strong> with the same prompt and the same project folder (copy the folder to two places). Compare the two sets of code and outputs, for example with a side-by-side diff or by asking the assistant to compare them.</li>
+<li>List every difference. Which ones change the science (transformation, filtering, number of genes, colours that imply meaning) and which are cosmetic?</li>
+<li>Now list what a colleague would need to reproduce your work without access to your chat. Tick which of these you currently have: the code, the plan, the software environment with exact versions, the model name and version, the prompt or a transcript, the raw data, the random seed.</li>
 </ul>
-<div class="cell">
-<p>Often there is no difference. The model is trained to produce plausible text, so a wrong answer can be written just as confidently as a correct one.</p>
-</div>
+<p><strong>Exercise 4</strong> - <strong>Reviewing code you can’t read</strong></p>
+<p>Setup: this uses the same airway dataset as the previous exercises (<code>data/counts.csv</code> and <code>data/coldata.csv</code>): human airway smooth muscle cells from 4 cell lines, each with and without dexamethasone. The sample sheet columns are <code>cell</code> (cell line) and <code>dex</code> (<code>untrt</code> or <code>trt</code>). An assistant produced the script below. The analysis itself runs, but the script stops with an error at the annotation step. It contains several problems, so think about what the right fix is before changing anything.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(org.Mm.eg.db)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>counts  <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;/Users/jsmith/Desktop/counts.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/coldata.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>counts  <span class="ot">&lt;-</span> counts[, <span class="sc">-</span><span class="dv">3</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> coldata[<span class="sc">-</span><span class="dv">3</span>, ]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(counts, coldata, <span class="at">design =</span> <span class="sc">~</span> dex)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> dds[<span class="fu">rowSums</span>(<span class="fu">counts</span>(dds)) <span class="sc">&gt;</span> <span class="dv">100</span>, ]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">results</span>(dds, <span class="at">contrast =</span> <span class="fu">c</span>(<span class="st">&quot;dex&quot;</span>, <span class="st">&quot;untrt&quot;</span>, <span class="st">&quot;trt&quot;</span>))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sig <span class="ot">&lt;-</span> <span class="fu">subset</span>(<span class="fu">as.data.frame</span>(res), pvalue <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>sig<span class="sc">$</span>symbol <span class="ot">&lt;-</span> <span class="fu">mapIds</span>(org.Mm.eg.db, <span class="fu">rownames</span>(sig), <span class="st">&quot;SYMBOL&quot;</span>, <span class="st">&quot;ENSEMBL&quot;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(sig, <span class="st">&quot;sig_genes.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Work through the techniques from the slides <strong>in order</strong>, noting what each one found:</p>
+<ol type="1">
+<li><strong>Ask for annotation.</strong> Ask an assistant to explain the script line by line. Which problems were obvious from the explanation and which weren’t?</li>
+<li><strong>Run it</strong> on the data and look at the output file. Does anything look odd?</li>
+<li><strong>Look it up.</strong> Check the arguments and the contrast in the DESeq2 documentation. Check which organism the annotation package is for.</li>
+<li><strong>Adversarial review.</strong> In a fresh session, ask the assistant to act as a skeptical reviewer and list problems. Compare with your list.</li>
+</ol>
 
 </main>
 <!-- /main column -->
