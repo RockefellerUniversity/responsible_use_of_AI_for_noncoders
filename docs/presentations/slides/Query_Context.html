@@ -3495,7 +3495,7 @@ display:block!important;
 </section>
 <section id="the-daily-example" class="slide level2">
 <h2>The Daily example</h2>
-<p>Our Ikzf1 session after <code>/compact</code>: <strong>80,863 → 12,999 tokens</strong>.</p>
+<p>Our Ikzf1 session after <code>/compact</code>: the conversation went from <strong>~37k → ~13k tokens</strong>; the ~44k of system prompt and tools stayed (total ~81k → ~57k).</p>
 <table>
 <colgroup>
 <col style="width: 50%">
@@ -3528,7 +3528,7 @@ display:block!important;
 </table>
 <p>The summary also said the review had <strong>not yet been written</strong>. It had.</p>
 <aside class="notes">
-<p>From the session file of the “Context” session, 8 Nov 2026 (compact_boundary record: preTokens 80,863, postTokens 12,999). Claude Code keeps the last few messages verbatim; the summary replaces everything before them, and was written without seeing those kept messages, hence the stale “not yet written”. The summary also included facts never shown in either answer (e.g. RUNX1/3 protecting IKZFs), picked from raw search results. Lesson: numbers tend to survive, caveats and nuance don’t, and a summary can be confidently wrong about what already happened. Source count (5 of 11 kept) is a manual tally.</p>
+<p>From the session file of the “Context” session, 8 Nov 2026 (compact_boundary record: preTokens 80,863, postTokens 12,999). Those two numbers measure different things: 80,863 is the whole context; 12,999 is only the conversation after compaction (summary ~5.4k characters, last messages kept verbatim ~7.3k, plus the re-attached skill list, tool names, agents, MCP and plugin instructions ~50k characters). System prompt and tool definitions (~44k in the context panel: system tools 20.1k, MCP tools 14.5k, system prompt 9.5k) are never compressed, so conversation ~37k → ~13k, total ~81k → ~57k. Approximate: the panel and session file count slightly differently. Claude Code keeps the last few messages verbatim; the summary replaces everything before them, and was written without seeing those kept messages, hence the stale “not yet written”. The summary also included facts never shown in either answer (e.g. RUNX1/3 protecting IKZFs), picked from raw search results. Lesson: numbers tend to survive, caveats and nuance don’t, and a summary can be confidently wrong about what already happened. Source count (5 of 11 kept) is a manual tally.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
