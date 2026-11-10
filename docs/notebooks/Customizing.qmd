@@ -42,8 +42,8 @@ We can also control how an agent acts when it wants to perform a certain task an
 
 To do this we can make use of SKILLs and/or MCP servers.
 
-SKILLs - Self contained markdown files describing tool use or computational protocol.
-MCP - API service allowing the use of specific functions.
+- **SKILLs** - A folder with a markdown file (SKILL.md) describing a protocol or how to use a tool, plus any scripts it needs.
+- **MCP servers** - Connect the agent to outside tools and data (databases, apps, web services) through a standard interface.
 
 ## Built-in Slash commands {.smaller}
 
@@ -84,12 +84,14 @@ Originally formalized by Anthropic, SKILLs follow a open format - [Agent Skills]
 
 A SKILL is directory containing at a minimum a SKILL.md file.
 
+```{.text code-line-numbers="false"}
 My_favourite_Skill/
 ├── SKILL.md          # Required: metadata + instructions
 ├── scripts/          # Optional: executable code
 ├── references/       # Optional: documentation
 ├── assets/           # Optional: templates, resources
 └── ...               # Any additional files or directories
+```
 
 # SKILL.md file {#skill-md .center .middle background-color="#23373B"}
 
@@ -238,10 +240,10 @@ A plugin is a **bundle** of the things we have seen so far, packaged so it can b
 A single plugin can contain:
 
 - Skills
+- MCP servers
 - Slash commands
 - Subagents (helpers with their own instructions)
 - Hooks (actions that run automatically)
-- MCP servers
 :::
 ::: {.column width="50%"}
 Plugins are installed from a **marketplace**: a GitHub repository that lists plugins.

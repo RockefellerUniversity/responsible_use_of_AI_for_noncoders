@@ -3185,7 +3185,10 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2 class="anchored" data-anchor-id="customising-ai-agents-abilities.">Customising AI agent’s abilities.</h2>
 <p>We can also control how an agent acts when it wants to perform a certain task and/or undergo an action.</p>
 <p>To do this we can make use of SKILLs and/or MCP servers.</p>
-<p>SKILLs - Self contained markdown files describing tool use or computational protocol. MCP - API service allowing the use of specific functions.</p>
+<ul>
+<li><strong>SKILLs</strong> - A folder with a markdown file (SKILL.md) describing a protocol or how to use a tool, plus any scripts it needs.</li>
+<li><strong>MCP servers</strong> - Connect the agent to outside tools and data (databases, apps, web services) through a standard interface.</li>
+</ul>
 </section>
 <section id="built-in-slash-commands" class="level2 smaller">
 <h2 class="smaller anchored" data-anchor-id="built-in-slash-commands">Built-in Slash commands</h2>
@@ -3253,7 +3256,12 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <h2 class="anchored" data-anchor-id="the-skill-format">The Skill format</h2>
 <p>Originally formalized by Anthropic, SKILLs follow a open format - <a href="https://agentskills.io/specification">Agent Skills</a> standard</p>
 <p>A SKILL is directory containing at a minimum a SKILL.md file.</p>
-<p>My_favourite_Skill/ ├── SKILL.md # Required: metadata + instructions ├── scripts/ # Optional: executable code ├── references/ # Optional: documentation ├── assets/ # Optional: templates, resources └── … # Any additional files or directories</p>
+<pre class="text"><code>My_favourite_Skill/
+├── SKILL.md          # Required: metadata + instructions
+├── scripts/          # Optional: executable code
+├── references/       # Optional: documentation
+├── assets/           # Optional: templates, resources
+└── ...               # Any additional files or directories</code></pre>
 </section>
 </section>
 <section id="skill-md" class="level1 center middle" data-background-color="#23373B">
@@ -3269,10 +3277,10 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <div class="code-with-filename-file">
 <pre><strong>SKILL.md</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="SKILL.md"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> bioinformatics-skill</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> What does this skill do? When should it be used?</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-filename="SKILL.md"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> bioinformatics-skill</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> What does this skill do? When should it be used?</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="skill.md-file---body-section" class="level2">
@@ -3439,10 +3447,10 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <p>A single plugin can contain:</p>
 <ul>
 <li>Skills</li>
+<li>MCP servers</li>
 <li>Slash commands</li>
 <li>Subagents (helpers with their own instructions)</li>
 <li>Hooks (actions that run automatically)</li>
-<li>MCP servers</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p>Plugins are installed from a <strong>marketplace</strong>: a GitHub repository that lists plugins.</p>
