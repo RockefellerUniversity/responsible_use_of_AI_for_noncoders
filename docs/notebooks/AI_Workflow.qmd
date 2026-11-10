@@ -105,6 +105,13 @@ i.e. scRNAseq has a pretty standard QC workflow, but there are many edge cases:
 - Standard filters will vary between snRNA and scRNAseq
 - Relaxed filtering may be necessary to detect rare cell types
 
+## Planning
+
+There is an example plan built [here](../data/airway_analysis_plan.md) with the help of Claude Opus 5.5 for some differential analysis of some RNAseq data.
+
+There is no defined standard to make a document like this, but you can see here what kind of information  is good to include to help provide consistent context, track progress and to ensure good rigor. 
+
+
 # Reproducibility {background-color="#23373B" .center .middle}
 
 ## Reproducibility
