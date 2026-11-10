@@ -3204,7 +3204,7 @@ display:block!important;
 <p>As this proceeds the full string of conversations and responses is sent alongside our latest prompt.</p>
 <p>The model’s response therefore considers the latest prompt in the context of the whole conversation (previous prompts and responses)</p>
 </section>
-<section id="the-agent-loop" class="slide level2">
+<section id="the-agent-loop" class="slide level2 smaller">
 <h2>The agent loop</h2>
 <blockquote>
 <p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
@@ -3231,7 +3231,21 @@ flowchart LR
 <ul>
 <li>The model can’t search anything itself. It <em>asks</em>, and the harness (e.g. Claude Code) runs the tool.</li>
 <li>Every loop resends the <strong>whole</strong> context, which grows with each tool result.</li>
+<li>The model decides whether to use a tool and when it’s done, so it may answer from memory or stop early. Ask explicitly: “search for…”, “check the file”.</li>
 </ul>
+<aside class="notes">
+<p>A tool call is just formatted text: the model writes e.g. WebSearch {“query”: “IKZF1 deletion B-ALL prognosis”} and stops; it has not searched anything. It knows tools exist because the harness puts a hidden list (name, description, inputs) in the context. Calling one is still next-token prediction: “current literature” in the prompt matches “search the web for current information” in the tool description. Built-in tools (WebSearch, Read, Bash) and MCP tools look identical to the model; only the harness knows where to send the request. The loop ends when an output contains no tool call. Nothing is decided in advance: it is still one token at a time. The loop is the harness’s code, not the model’s: call model, run any tools, add results, call again. The harness also sets permissions and step limits, which is why Claude Code, Codex and opencode feel different on similar models.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="two-questions-four-model-calls" class="slide level2">
 <h2>Two questions, four model calls</h2>

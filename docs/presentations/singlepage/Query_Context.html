@@ -5128,8 +5128,8 @@ flowchart LR
 <p>As this proceeds the full string of conversations and responses is sent alongside our latest prompt.</p>
 <p>The model’s response therefore considers the latest prompt in the context of the whole conversation (previous prompts and responses)</p>
 </section>
-<section id="the-agent-loop" class="level2">
-<h2 class="anchored" data-anchor-id="the-agent-loop">The agent loop</h2>
+<section id="the-agent-loop" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="the-agent-loop">The agent loop</h2>
 <blockquote class="blockquote">
 <p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
 </blockquote>
@@ -5155,6 +5155,7 @@ flowchart LR
 <ul>
 <li>The model can’t search anything itself. It <em>asks</em>, and the harness (e.g. Claude Code) runs the tool.</li>
 <li>Every loop resends the <strong>whole</strong> context, which grows with each tool result.</li>
+<li>The model decides whether to use a tool and when it’s done, so it may answer from memory or stop early. Ask explicitly: “search for…”, “check the file”.</li>
 </ul>
 </section>
 <section id="two-questions-four-model-calls" class="level2">
