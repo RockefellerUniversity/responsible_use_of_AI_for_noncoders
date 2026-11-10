@@ -17,12 +17,15 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-- [How models are built](#how-models-are-built)
+- [How LLMs work](#how-llms-work)
+- [Determinism in LLMs](#determinism-in-llms)
 - [Who runs the models](#who-runs-the-models)
-- [Journal policies](#journal-policies)
+- [Access restrictions and siloing](#llm-access-restrictions)
+- [Funder and journal policies](#funder-and-journal-policies)
+- [Data sharing](#data-sharing)
 - [Terminology](#terminology)
 
-# How LLMs work {background-color="#23373B" .center .middle}
+# How LLMs work {#how-llms-work background-color="#23373B" .center .middle}
 
 ## What does an LLM do?
 

@@ -17,12 +17,15 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-- [What works?](#what-works)
-- [What is a struggle?](#what-is-a-struggle)
+- [A jagged frontier](#a-jagged-frontier)
+- [What works](#what-works)
+- [What is a struggle](#what-is-a-struggle)
+- [Complete analysis](#complete-analysis)
 - [Models are static](#models-are-static)
 - [Minor methods](#minor-methods)
 - [Bioinformatics-specific pitfalls](#science-specific-issues)
 - [Hallucinations](#hallucinations)
+- [Sycophancy](#sycophancy)
 - [Exercise](#time-for-an-exercise)
 
 # Strengths and limitations {.center .middle background-color="#23373B"}
@@ -54,7 +57,6 @@ So it is most useful when:
 
 It does worse when one or more of these conditions are not met.
 
-```{mermaid}
 ```{mermaid}
 %%| fig-align: center
 flowchart LR
@@ -128,7 +130,7 @@ This blog post presents an interesting discussion and starting point for how to 
   - Gene symbols
   - Mixing up annotations
 
-# Complete Analysis {.center .middle background-color="#23373B"}
+# Complete Analysis {#complete-analysis .center .middle background-color="#23373B"}
 
 ## Complete Analysis
 
@@ -387,4 +389,12 @@ Leading questions like “This PCA shows a clear batch effect, doesn’t it?” 
 You can push the model and see how confident it is:
 If it gives a correct answer, you say “Are you sure? I think it’s X”, and see if it changes to X without new evidence.
 
-Adversarial review can help, but ultimately you need to make sure you need to understand the analysis inside out yourself. 
+Adversarial review can help, but ultimately you need to make sure you need to understand the analysis inside out yourself.
+
+## Time for an exercise! {#time-for-an-exercise}
+
+Exercise on hallucinations can be found [here](../../exercises/exercises/Exercise_Hallucination_exercise.html)
+
+## Answers to exercise
+
+Answers can be found [here](../../exercises/answers/Exercise_Hallucination_answers.html) 

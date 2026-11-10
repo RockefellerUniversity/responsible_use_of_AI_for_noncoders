@@ -2,6 +2,7 @@
 
 Real-world examples of where AI helps and where it fails, tied back to how models work.
 
-* Models are static — limited knowledge of recent news and brand-new tools
-* Hallucinations — and why the model sounds so confident
-* Exercise: provoke a hallucination
+* The jagged frontier: what works and what is a struggle
+* Models are static, and minor methods
+* Bioinformatics pitfalls: numbers, gene symbols, annotation versions
+* Hallucinations and sycophancy

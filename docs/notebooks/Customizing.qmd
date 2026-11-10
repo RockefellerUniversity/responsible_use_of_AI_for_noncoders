@@ -17,8 +17,12 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
+- [Built-in slash commands](#built-in-slash-commands)
 - [Skills](#skills)
-- [Connectors ](#connectors)
+- [The SKILL.md file](#skill-md)
+- [Skill management and installation](#skillmanagment)
+- [Connectors](#connectors)
+- [MCP connectors](#mcp-connectors)
 - [Plugins](#plugins)
 - [Exercises](#time-for-an-exercise)
 

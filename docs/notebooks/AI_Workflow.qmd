@@ -17,9 +17,17 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ## Overview
 
-- [What is a good workflow](#what-is-a-good-workflow)
-- [Hard lines](#hard-lines)
+- [Should I use AI for this task?](#should-i-use-ai-for-this-task)
+- [What is a good AI workflow](#what-is-a-good-ai-workflow)
+- [Planning](#planning)
+- [Reproducibility](#reproducibility)
+- [Checkpoints and review](#checkpoints-and-review)
+- [Other things to consider](#other-things-to-consider)
+- [The analysis loop](#the-analysis-loop-one-step-at-a-time)
+- [Bad practice](#bad-practice)
 - [Controlling what is allowed](#controlling-what-is-allowed)
+- [Hard lines](#hard-lines)
+- [Exercise](#time-for-an-exercise)
 
 ## Should I use AI for this task?
 
@@ -312,11 +320,7 @@ This happens despite these limits being saved in CLAUDE.md files.
 
 ## Time for an exercise! {#time-for-an-exercise}
 
-Exercise on hallucinations and maybe generating a multi-step workflow can be found [here](../../exercises/exercises/Exercise_Hallucination_exercise.html)
-
-## Answers to exercise
-
-Answers can be found [here](../../exercises/answers/Exercise_Hallucination_answers.html)
+??Workflow exercise to come (e.g. generating a multi-step workflow). The hallucination exercise now sits in *What AI Is Good and Bad At*.??
 
 ## Further reading
 
