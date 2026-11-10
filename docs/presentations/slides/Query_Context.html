@@ -3112,11 +3112,91 @@ Bioinformatics Resource Center - Rockefeller University<p></p>
 <li><a href="https://platform.openai.com/tokenizer">OpenAI Tokenizer</a></li>
 </ul>
 </section>
-<section id="the-response" class="slide level2">
-<h2>The response</h2>
-<p>The token embedding is then used with a transformer to generate a token response, one token at a time.</p>
-<p>The transformer puts tokens into their context of other tokens within the supplied AI input.</p>
-<p>Output tokens are detokenized back to raw text we receive as a response.</p>
+<section id="from-prompt-to-response" class="slide level2">
+<h2>From prompt to response</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {&quot;flowchart&quot;: {&quot;htmlLabels&quot;: false}}}%%
+flowchart LR
+  P([&quot;Your prompt&lt;br/&gt;+ hidden instructions&quot;]) --&gt; T[&quot;Tokenise&lt;br/&gt;text → numbers&quot;]
+  T --&gt; M[&quot;Transformer&lt;br/&gt;(attention: each token&lt;br/&gt;weighs every other)&quot;]
+  M --&gt; N[&quot;Probability of&lt;br/&gt;every possible&lt;br/&gt;next token&quot;]
+  N --&gt; S[&quot;Pick one&quot;]
+  S -- &quot;add it, go again&quot; --&gt; M
+  S --&gt; O([&quot;Detokenise&lt;br/&gt;numbers → text&quot;])
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>The answer is built <strong>one token at a time</strong>; each new token is added to the input and the model runs again.</li>
+<li>Knowledge comes from patterns learned in training. Nothing is looked up.</li>
+</ul>
+<aside class="notes">
+<p>Hidden instructions = system prompt (who the model is, today’s date, tools available) plus the earlier conversation. Attention: “it” gets linked back to “Ikzf1”; this is what “tokens in their context” means. A 500-word answer is roughly 700 passes through the whole model. Text appears word by word because each token is detokenised as soon as it is picked.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="attention-tokens-in-context" class="slide level2">
+<h2>Attention: tokens in context</h2>
+<blockquote>
+<p>“What does Ikzf1 do, and is it linked to leukaemia?”</p>
+</blockquote>
+<ul>
+<li>Inside the transformer, <strong>attention</strong> lets every token look at every other token in the input.</li>
+<li>“it” attends to “Ikzf1”, so the model knows what <em>it</em> means; “leukaemia” shapes what “linked” means.</li>
+<li>The same word means different things in different context: “IKZF1 <strong>expression</strong>” vs “a facial <strong>expression</strong>”.</li>
+<li>Attention covers the <strong>whole input</strong>, not just your last prompt: everything in the context can change the answer.</li>
+</ul>
+<aside class="notes">
+<p>This is the bridge to the rest of the session: because every token can attend to everything in the input, what is in the context matters. Good context steers the answer; irrelevant or wrong context can steer it just as strongly (later: context rot).</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="one-token-at-a-time" class="slide level2">
+<h2>One token at a time</h2>
+<p>“IKZF1 encodes” → <strong>Ikaros</strong> (92%) · a (5%) · the (2%) …</p>
+<ul>
+<li>The model picks a <strong>likely</strong> next token, not a checked fact: fluent text can still be wrong.</li>
+<li>Some randomness in the pick (<em>temperature</em>) means the same prompt can give different answers.</li>
+<li>Once a token is written, it can’t be taken back.</li>
+</ul>
+<aside class="notes">
+<p>Percentages are illustrative, not real model output. Hallucinated citations come from this: a plausible-looking reference is a likely sequence of tokens. Can’t take tokens back is why “think step by step” helps: the model writes its reasoning before the answer.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="model-has-no-memory" class="slide level2">
 <h2>Model has no memory</h2>

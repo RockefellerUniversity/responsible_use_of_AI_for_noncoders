@@ -1,5 +1,14 @@
 ## %%{init: {"flowchart": {"htmlLabels": false}}}%%
 ## flowchart LR
+##   P(["Your prompt<br/>+ hidden instructions"]) --> T["Tokenise<br/>text → numbers"]
+##   T --> M["Transformer<br/>(attention: each token<br/>weighs every other)"]
+##   M --> N["Probability of<br/>every possible<br/>next token"]
+##   N --> S["Pick one"]
+##   S -- "add it, go again" --> M
+##   S --> O(["Detokenise<br/>numbers → text"])
+
+## %%{init: {"flowchart": {"htmlLabels": false}}}%%
+## flowchart LR
 ##   P(["Your prompt"]) --> M["Model reads the<br/>whole context"]
 ##   M --> D{"Needs a tool?"}
 ##   D -- "Yes" --> T["Harness runs the tool<br/>(e.g. web search)"]
