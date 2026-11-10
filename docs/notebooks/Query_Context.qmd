@@ -293,7 +293,7 @@ Examples: [global CLAUDE.md](https://github.com/RockefellerUniversity/responsibl
 
 ## Claude.md/Agents.md Conventions
 
-Much like the system prompt and again in MD format
+Much like the system prompt and again in [markdown format](https://rockefelleruniversity.github.io/RU_reproducibleR/presentations/slides/reproducibleR.html#15){target="_blank"}
 
 Claude.md is Claude specific and Agents.md is general use.
 
